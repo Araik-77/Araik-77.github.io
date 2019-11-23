@@ -51,6 +51,7 @@
 </script>
 
   <meta name="description" content="最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是SSH连接）：   查看配置SSH 秘钥是否有效先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署    查看你的github博客仓库连接方式在博客仓库的do">
+<meta name="keywords" content="hexo github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="delay需要重复输入github密码的解决">
 <meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;index.html">
@@ -59,7 +60,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh1%E6%88%AA%E5%9B%BE.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-11-23T19:42:32.524Z">
+<meta property="og:updated_time" content="2019-11-23T20:30:02.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh1%E6%88%AA%E5%9B%BE.png">
 
@@ -147,7 +148,17 @@
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>一个人的自白</a>
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>自白</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-archives">
@@ -205,7 +216,18 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2019-11-24 03:18:49 / 修改时间：03:42:32" itemprop="dateCreated datePublished" datetime="2019-11-24T03:18:49+08:00">2019-11-24</time>
+              <time title="创建时间：2019-11-24 03:18:49 / 修改时间：04:30:02" itemprop="dateCreated datePublished" datetime="2019-11-24T03:18:49+08:00">2019-11-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">博客搭建</span>
+                  </a>
+                </span>
             </span>
 
           
@@ -242,6 +264,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo-github/" rel="tag"># hexo github</a>
+          </div>
 
         
 
@@ -313,9 +338,16 @@
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+          
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
