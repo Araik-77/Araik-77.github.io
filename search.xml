@@ -4,11 +4,11 @@
     <title>delay需要重复输入github密码的解决</title>
     <url>/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是<strong>SSH连接</strong>）：  </p>
-<h4 id="查看配置SSH-秘钥是否有效"><a href="#查看配置SSH-秘钥是否有效" class="headerlink" title="查看配置SSH 秘钥是否有效"></a>查看配置SSH 秘钥是否有效</h4><p>先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署  <a id="more"></a></p>
+<h4 id="1查看配置SSH-秘钥是否有效"><a href="#1查看配置SSH-秘钥是否有效" class="headerlink" title="1查看配置SSH 秘钥是否有效"></a>1查看配置SSH 秘钥是否有效</h4><p>先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署  <a id="more"></a></p>
 <p><img src="/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/ssh1%E6%88%AA%E5%9B%BE.png" alt></p>
-<h4 id="查看你的github博客仓库连接方式"><a href="#查看你的github博客仓库连接方式" class="headerlink" title="查看你的github博客仓库连接方式"></a>查看你的github博客仓库连接方式</h4><p>在博客仓库的download下查看是否为SSH连接方式，如下图应该显示clone with ssh  </p>
+<h4 id="2查看你的github博客仓库连接方式"><a href="#2查看你的github博客仓库连接方式" class="headerlink" title="2查看你的github博客仓库连接方式"></a>2查看你的github博客仓库连接方式</h4><p>在博客仓库的download下查看是否为SSH连接方式，如下图应该显示clone with ssh  </p>
 <p><img src="/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/ssh%E6%88%AA%E5%9B%BE.png" alt></p>
-<h4 id="查看hexo框架下的配置文件"><a href="#查看hexo框架下的配置文件" class="headerlink" title="查看hexo框架下的配置文件"></a>查看hexo框架下的配置文件</h4><p>在hexo框架下查看配置文件config.yml，你的url应该从https改为ssh模式  </p>
+<h4 id="3查看hexo框架下的配置文件"><a href="#3查看hexo框架下的配置文件" class="headerlink" title="3查看hexo框架下的配置文件"></a>3查看hexo框架下的配置文件</h4><p>在hexo框架下查看配置文件config.yml，你的url应该从https改为ssh模式  </p>
 <p><code>repo: www.github.com/Araik-77/Araik-77.github.io.git</code><br>应该改为下面这个<br><code>repo: git@github.com/Araik-77/Araik-77.github.io.git</code>  </p>
 <p>至此，问题已经解决</p>
 ]]></content>
