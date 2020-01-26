@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT算法笔记学习记录</title>
+    <url>/2019/12/23/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>开一篇文章记录一下学习算法笔记过程中遇到的问题。</p><p>1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量<br>2.B1003 我要通过！map&lt;char,int&gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数。</p>]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记、</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>delay需要重复输入github密码的解决</title>
     <url>/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是<strong>SSH连接</strong>）：  </p>
