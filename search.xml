@@ -3,8 +3,8 @@
   <entry>
     <title>PAT算法笔记学习记录</title>
     <url>/2019/12/23/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>开一篇文章记录一下学习PAT过程中遇到的问题。</p><p>1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量<br>2.B1003 我要通过！map&lt;char,int&gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；<br>3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使用cin&gt;&gt;name&gt;&gt;sum来输入，中间的间隔就是空格。输出空格时cout&lt;&lt;” “,双引号之间一定有空格。&lt;–!more–&gt;<br>4.B1005 继续3n+1猜想。vector<int> v是两个变长数值，做题时发生了段错误，应该改为vector<int> v[k]表示其中一个是固定长度的。认真体会最后的关于用flag标记来输出中间空格的方法。<br>5.B1006换个格式输出整数。思维不要僵化，用数组存储各个位的数字，用取余%和整除/。<br>6.B1007素数对猜想。记住isprime函数的书写方式  </int></int></p><a id="more"></a>
-
+    <content><![CDATA[<p>开一篇文章记录一下学习PAT过程中遇到的问题。</p>
+<p>1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量<br>2.B1003 我要通过！map&lt;char,int&gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；<br>3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使用cin&gt;&gt;name&gt;&gt;sum来输入，中间的间隔就是空格。输出空格时cout&lt;&lt;” “,双引号之间一定有空格。<a id="more"></a><br>4.B1005 继续3n+1猜想。vector<int> v是两个变长数值，做题时发生了段错误，应该改为vector<int> v[k]表示其中一个是固定长度的。认真体会最后的关于用flag标记来输出中间空格的方法。<br>5.B1006换个格式输出整数。思维不要僵化，用数组存储各个位的数字，用取余%和整除/。<br>6.B1007素数对猜想。记住isprime函数的书写方式  </int></int></p>
 <pre><code>bool isprime(int a){
 for(int i=2;i*i&lt;=a;i++)
     if(a%i==0) return false;
@@ -14,7 +14,19 @@ return true;
 vector&lt;int&gt; a(10) ;   //声明一个初始大小为10的向量
 vector&lt;int&gt; a(10, 1) ;    //声明一个初始大小为10且初始值都为1的向量
 vector&lt;int&gt; b(a) ;       //声明并用向量a初始化向量b
-vector&lt;int&gt; b(a.begin(), a.begin()+3) ;//将a向量中从第0个到第2个(共3个)作为向量b的初始值  </code></pre><p>reverse的用法；</p>
+vector&lt;int&gt; b(a.begin(), a.begin()+3) ;//将a向量中从第0个到第2个(共3个)作为向量b的初始值  </code></pre><p>reverse的用法，注意<code>reverse(a,a+4)</code>表示翻转a[0]~a[3]；<br>8.B1010一元多项式求导。认真审题，输出中的0是1-1得0；可以用<code>while(cin&gt;&gt;a&gt;&gt;b)</code>来一直输入；同B1005体会用标记flag来输出空格的方法。<br>9.B1011A+B大于C。读题读3遍，看好细节；大整数运算时必须使用scanf和printf来输入输出；注意各个类型的取值范围  </p>
+<pre><code>char -128 ~ +127 (1 Byte)
+short -32767 ~ + 32768 (2 Bytes)
+unsigned short 0 ~ 65536 (2 Bytes)
+int -2147483648 ~ +2147483647 (4 Bytes) 2的31次幂
+unsigned int 0 ~ 4294967295 (4 Bytes)
+long == int
+long long -9223372036854775808 ~ +9223372036854775807 (8 Bytes)
+double 1.7 * 10^308 (8 Bytes)
+unsigned int 0～4294967295
+long long的最大值：9223372036854775807
+long long的最小值：-9223372036854775808
+unsigned long long的最大值：184467440737095516  </code></pre><p>10.B1012数字分类。用scanf进行输入时，必须使用&amp;，否则会出现段错误，避免段错误有，大数组必须定义在全局变量，数组开小了，sort函数排序出问题。当n1-n2+n3-n4…时可以在每一层循环中加入符号变量s=s*（-1），使用头文件<cmath>中的pow（double n1，double n2）中注意double类型。当输出空格时可以循环printf（” “）,也可以直接输出printf，也可以直接printf(“N “);不存在和等于0不是相等的，所以A2的测试点8一直通不过，这道题简直太精辟了；</cmath></p>
 ]]></content>
       <categories>
         <category>PAT</category>
