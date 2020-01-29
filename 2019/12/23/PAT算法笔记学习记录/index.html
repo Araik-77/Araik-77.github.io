@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="开一篇文章记录一下学习PAT过程中遇到的问题。 1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量2.B1003 我要通过！map&amp;lt;char,int&amp;gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使用c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-28T07:02:44.641Z">
+<meta property="og:updated_time" content="2020-01-29T10:46:44.258Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2019/12/23/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-28 15:02:44" itemprop="dateModified" datetime="2020-01-28T15:02:44+08:00">2020-01-28</time>
+                <time title="修改时间：2020-01-29 18:46:44" itemprop="dateModified" datetime="2020-01-29T18:46:44+08:00">2020-01-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,7 +276,40 @@ double 1.7 * 10^308 (8 Bytes)
 unsigned int 0～4294967295
 long long的最大值：9223372036854775807
 long long的最小值：-9223372036854775808
-unsigned long long的最大值：184467440737095516  </code></pre><p>10.B1012数字分类。用scanf进行输入时，必须使用&amp;，否则会出现段错误，避免段错误有，大数组必须定义在全局变量，数组开小了，sort函数排序出问题。当n1-n2+n3-n4…时可以在每一层循环中加入符号变量s=s*（-1），使用头文件<cmath>中的pow（double n1，double n2）中注意double类型。当输出空格时可以循环printf（” “）,也可以直接输出printf，也可以直接printf(“N “);不存在和等于0不是相等的，所以A2的测试点8一直通不过，这道题简直太精辟了；</cmath></p>
+unsigned long long的最大值：184467440737095516  </code></pre><p>10.B1012数字分类。用scanf进行输入时，必须使用&amp;，否则会出现段错误，避免段错误有，大数组必须定义在全局变量，数组开小了，sort函数排序出问题。当n1-n2+n3-n4…时可以在每一层循环中加入符号变量s=s*（-1），使用头文件<cmath>中的pow（double n1，double n2）中注意double类型。当输出空格时可以循环printf（” “）,也可以直接输出printf，也可以直接printf(“N “);不存在和等于0不是相等的，所以A2的测试点8一直通不过，这道题简直太精辟了；<br>11.B1013数素数。按照每行10个的输出方式是用循环，注意前后顺序，判断和打印不能颠倒。代码背下来，：</cmath></p>
+<pre><code>cnt=0;
+for(int i=0;i&lt;v.size();i++){
+    cnt++;
+    if(cnt%10!=1) printf(&quot; &quot;);
+    printf(&quot;%d&quot;,v[i]);
+    if(cnt%10==0) printf(&quot;\n&quot;);
+}  </code></pre><p>写判断是否为素数的bool函数，要注意括号的位置：  </p>
+<pre><code>bool isprime(int a){
+for(int i=2;i*i&lt;=a;i++)
+    if (a%i==0) return false;
+    return true;
+}  </code></pre><p>12.B1014福尔摩斯的约会。星期隐含着要A~G。输出的星期要是字符串，时间要是整型。时间注意前面要补零。找到相同的字符串后要跳出。判断分钟的时候用for条件语句时可以使用中间两个条件，当使用if判断条件时，必须在一个if里面全包括如下，如果去掉<code>((s1[j]&gt;=&#39;A&#39;&amp;&amp;s1[j]&lt;=&#39;N&#39;)||isdigit(s1[j]))</code>  就会导致测试点1和2错误。</p>
+<pre><code>for(int j=k+1;j&lt;s1.size()&amp;&amp;j&lt;s2.size();j++){
+        if(s1[j]==s2[j]&amp;&amp;((s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;)||isdigit(s1[j]))){
+            if(isdigit(s1[j])) printf(&quot;%02d:&quot;,s1[j]-&apos;0&apos;);
+            if(s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;) printf(&quot;%d:&quot;,s1[j]-&apos;A&apos;+10);
+            break;
+        }
+    }。  </code></pre><p>ctype中相关的函数    </p>
+<pre><code>isalnum        是否为字母数字
+isalpha        是否为字母
+islower        是否为小写字母
+isupper        是否为大写字母
+isdigit        是否为数字
+isxdigit    是否为16进制数字
+iscntrl        是否为控制字符
+isgraph        是否为图形字符（例如，空格、控制字符都不是）
+isspace        是否为空格字符（包括制表符、回车符、换行符等）
+isblank        是否为空白字符(C99/C++11新增)（包括水平制表符）
+isprint        是否为可打印字符
+ispunct        是否为标点
+tolower        转换为小写
+toupper        转换为大写</code></pre><p>这道题是一道文字游戏题，一定要认真审题后再下笔。</p>
 
     </div>
 
