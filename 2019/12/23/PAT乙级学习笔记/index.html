@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="开一篇文章记录一下学习PAT乙级过程中遇到的问题。 1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量2.B1003 我要通过！map&amp;lt;char,int&amp;gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-31T08:28:55.683Z">
+<meta property="og:updated_time" content="2020-02-01T09:19:37.962Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-31 16:28:55" itemprop="dateModified" datetime="2020-01-31T16:28:55+08:00">2020-01-31</time>
+                <time title="修改时间：2020-02-01 17:19:37" itemprop="dateModified" datetime="2020-02-01T17:19:37+08:00">2020-02-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,7 +295,7 @@ for(int i=2;i*i&lt;=a;i++)
             if(s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;) printf(&quot;%d:&quot;,s1[j]-&apos;A&apos;+10);
             break;
         }
-    }。  </code></pre><p>ctype中相关的函数    </p>
+    }。  </code></pre><p>ctype中相关的函数（都是判断一个字符，不能判断字符串）    </p>
 <pre><code>isalnum        是否为字母数字
 isalpha        是否为字母
 islower        是否为小写字母
@@ -349,8 +349,7 @@ for(int i=0;i&lt;3;i++){
                 if(s[k]==&apos;]&apos;){
                     row.push_back(s.substr(j+1,k-j-1));
                     break;
-                }
-
+                }                    
             }
         }
         j++;
@@ -365,12 +364,22 @@ for(int i=0;i&lt;n;i++){
         cout&lt;&lt;&quot;Are you kidding me? @\\/@&quot;&lt;&lt;endl;
         continue;
     }    
-    cout&lt;&lt;v[0][a-1]&lt;&lt;&quot;(&quot;&lt;&lt;v[1][b-1]&lt;&lt;v[2][c-1]&lt;&lt;v[1][d-1]&lt;&lt;&quot;)&quot;&lt;&lt;v[0][e-1]&lt;&lt;endl;
-
+    cout&lt;&lt;v[0][a-1]&lt;&lt;&quot;(&quot;&lt;&lt;v[1][b-1]&lt;&lt;v[2][c-1]&lt;&lt;v[1][d-1]&lt;&lt;&quot;)&quot;&lt;&lt;v[0][e-1]&lt;&lt;endl;        
 }
-
 return 0;    
-}</code></pre>
+}    </code></pre><p>6.B1054求平均值。当输入有不同字符时，可以采用sscanf和sprintf来实现不同格式的输入输出<code>scanf(&quot;%s&quot;, a);sscanf(a,&quot;%lf&quot;,&amp;temp);sprintf(b,&quot;%.2f&quot;,temp);</code>其中a和b为字符数组。scanf结束的几种方式，空格或跳格，超过指定宽度，当非法输入。判断是否是非法字符的方式如下，用读入两位小数的字符数组长度和原来的字符数组长度长度来计算：方法很巧妙。    </p>
+<pre><code>for(int j=0;j&lt;strlen(a);j++){
+        if(a[j]!=b[j]) flag=1;
+        if(flag||tmp&lt;-1000||tmp&gt;1000){
+            printf(&quot;ERROR: %s is not a legal number\n&quot;,a);
+            continue;
+        }
+        else{
+            sum+=tmp;
+            cnt++;
+        }
+    }  </code></pre><p>7.B1067试密码。oj中输入和输出可以一起输出，也可以单次输出。用getchar（）来吸收后面的换行”\n”。getline（cin，s)可以一次输入一整行。做好题目的分析，最后先打好流程图。<br>8.B1081检查密码。非空字符串也可以是空格，所以不能用cin来读入，需要使用<code>getline(cin,s)</code>来读入一行。第一行读入之后要求将最后回车键吸收掉<code>getchar()</code>.对于PAT考试，“对于有多组测试数据的输入，可以全部读入之后再输出，也可以处理一组测试数据就输出一组”，详见PAT运行说明。</p>
+
     </div>
 
     
