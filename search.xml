@@ -128,7 +128,8 @@ return 0;
             sum+=tmp;
             cnt++;
         }
-    }  </code></pre><p>7.B1067试密码。oj中输入和输出可以一起输出，也可以单次输出。用getchar（）来吸收后面的换行”\n”。getline（cin，s)可以一次输入一整行。做好题目的分析，最后先打好流程图。<br>8.B1081检查密码。非空字符串也可以是空格，所以不能用cin来读入，需要使用<code>getline(cin,s)</code>来读入一行。第一行读入之后要求将最后回车键吸收掉<code>getchar()</code>.对于PAT考试，“对于有多组测试数据的输入，可以全部读入之后再输出，也可以处理一组测试数据就输出一组”，详见PAT运行说明。</p>
+    }  </code></pre><p>7.B1067试密码。PAToj中输入和输出可以一起输出，也可以单次输出。用getchar（）来吸收后面的换行”\n”。getline（cin，s)可以一次输入一整行。做好题目的分析，最后先打好流程图。<br>8.B1081检查密码。非空字符串也可以是空格，所以不能用cin来读入，需要使用<code>getline(cin,s)</code>来读入一行。第一行读入之后要求将最后回车键吸收掉<code>getchar()</code>.对于PAT考试，“对于有多组测试数据的输入，可以全部读入之后再输出，也可以处理一组测试数据就输出一组”，详见PAT运行说明。<br>9.B1084外观数列。当定义二维vector数组时，vector&lt;vector<int> &gt;v(45)后面尽量写上一个维的大小，否则容易容器下标越界。本题是采用双指针的方法，认真体会指针回溯的过程：<br>        for(int i=0;i&lt;s.length();<strong>i=j</strong>){<br>            for(j=i;j&lt;s.length()&amp;&amp;s[j]==s[i];j++);<br>            t+=s[i]+to_string(j-i);<br>        }  </int></p>
+<p>10.B1086就不告诉你。输出要是数字，使用stoi（）函数来实现。将数字反转的时候采用reverse（s.begin(),s.end())来实现。</p>
 ]]></content>
       <categories>
         <category>PAT</category>
