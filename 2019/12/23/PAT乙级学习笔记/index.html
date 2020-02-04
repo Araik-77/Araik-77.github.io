@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="开一篇文章记录一下学习PAT乙级过程中遇到的问题。 1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量2.B1003 我要通过！map&amp;lt;char,int&amp;gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-03T09:07:30.635Z">
+<meta property="og:updated_time" content="2020-02-04T13:13:04.400Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-03 17:07:30" itemprop="dateModified" datetime="2020-02-03T17:07:30+08:00">2020-02-03</time>
+                <time title="修改时间：2020-02-04 21:13:04" itemprop="dateModified" datetime="2020-02-04T21:13:04+08:00">2020-02-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -330,7 +330,7 @@ toupper        转换为大写</code></pre><p>这道题是一道文字游戏题�
 （17）a.resize(10,2); //将a的现有元素个数调至10个，多则删，少则补，其值为2
 （18）a.reserve(100); //将a的容量（capacity）扩充至100，也就是说现在测试a.capacity();的时候返回值是100.这种操作只有在需要给a添加大量数据的时候才         显得有意义，因为这将避免内存多次容量扩充操作（当a的容量不足时电脑会自动扩容，当然这必然降低性能） 
 （19）a.swap(b); //b为向量，将a中的元素和b中的元素进行整体性交换
-（20）a==b; //b为向量，向量的比较操作还有!=,&gt;=,&lt;=,&gt;,&lt;  </code></pre><p>2.B1024科学技术法。寻找字符串中某一个字符的位置可以用<code>int i=0;while(s[i]!=&#39;E&#39;) i++;</code>。截取字符串和截取字符串转换为数字可以使用<code>string t=s.substr(1,i-1);//这是E前面的字符串 //int n=stoi(s.substr(i+1));//从i+1开始一直截取到最后//</code>.注意体会一个for循环中有两对条件的方法。<br>3.B1031查验身份证。当出现有判断时，先考虑是否采用函数，方程更简单。学会string每一位校验的时候，出现特殊情况怎么处理，将它剔除来单独处理。<code>int tmp=(s[17]==&#39;X&#39;) ? 10 : (s[17]-&#39;0&#39;);return b[num%11]==tmp;</code>这个返回写的太棒了。cin输入结束是以空格结束的。用flag来标记是否已经输出的方法继续学习。<br>4.B1048数字加密。A的长度大于B时，加不加0需要商讨。学会用字符串反转，<code>reverse(a.begin(),a.end());</code>a为字符串。学会使用append用法。<code>b.append(lena-lenb,&#39;0&#39;);</code>使用append()添加文本常用方法:直接添加另一个完整的字符串:如str1.appen(str2);<br>添加另一个字符串的某一段子串:如str1.append(str2, 11, 7);<br>添加几个相同的字符:如str1.append(5, ‘.’);。用字符串来存储加密之后的结果<code>c+=str[(a[i]-&#39;0&#39;+b[i]-&#39;0&#39;)%13];</code>。定义字符数组用<code>char str[14]={&quot;0123456789JQK&quot;};</code>访问时可以直接使用str[n]来访问。<br>5.B1052卖个萌。break只能跳出一层循环，只能用于do~while,for,while语句，不能用于if语句，continue语句表示本次循环体中余下尚未执行的语句，立即进行下一次的循环条件判定，可以理解为仅结束本次循环，continue语句并没有使整个循环终止。<code>vector&lt;vector&lt;string&gt; &gt;v</code>。相当于二维可变长度数组。\表示转义字符，当想输出时必须再加上\即\。一行内有空格时必须使用<code>string s;getline(cin,s);</code>来读入一行。注意变量的定义位置，当把<code>vector&lt;string&gt; row;</code>定义在三层循环外面的时候会出现答案错误。中间读取字符的时候多用while语句，类似于一个双指针的操作，十分精彩。贴上大神的代码：  </p>
+（20）a==b; //b为向量，向量的比较操作还有!=,&gt;=,&lt;=,&gt;,&lt;  </code></pre><p>2.B1024科学技术法。寻找字符串中某一个字符的位置可以用<code>int i=0;while(s[i]!=&#39;E&#39;) i++;</code>。截取字符串和截取字符串转换为数字可以使用<code>string t=s.substr(1,i-1);//这是E前面的字符串 //int n=stoi(s.substr(i+1));//从i+1开始一直截取到最后//</code>.注意体会一个for循环中有两对条件的方法。<br>3.B1031查验身份证。当出现有判断时，先考虑是否采用函数，方程更简单。学会string每一位校验的时候，出现特殊情况怎么处理，将它剔除来单独处理。<code>int tmp=(s[17]==&#39;X&#39;) ? 10 : (s[17]-&#39;0&#39;);return b[num%11]==tmp;</code>这个返回写的太棒了。cin输入结束是以空格结束的。用flag来标记是否已经输出的方法继续学习。<br>4.B1048数字加密。A的长度大于B时，加不加0需要商讨。学会用字符串反转，<code>reverse(a.begin(),a.end());</code>a为字符串。学会使用append用法。<code>b.append(lena-lenb,&#39;0&#39;);</code>表示在字符b的结尾添加lena-lena长度的字符‘0’。使用append()添加文本常用方法:直接添加另一个完整的字符串:如str1.appen(str2);<br>添加另一个字符串的某一段子串:如str1.append(str2, 11, 7);<br>添加几个相同的字符:如str1.append(5, ‘.’);。用字符串来存储加密之后的结果<code>c+=str[(a[i]-&#39;0&#39;+b[i]-&#39;0&#39;)%13];</code>。定义字符数组用<code>char str[14]={&quot;0123456789JQK&quot;};</code>访问时可以直接使用str[n]来访问。<br>5.B1052卖个萌。break只能跳出一层循环，只能用于do~while,for,while语句，不能用于if语句，continue语句表示本次循环体中余下尚未执行的语句，立即进行下一次的循环条件判定，可以理解为仅结束本次循环，continue语句并没有使整个循环终止。<code>vector&lt;vector&lt;string&gt; &gt;v</code>。相当于二维可变长度数组。\表示转义字符，当想输出时必须再加上\即\。一行内有空格时必须使用<code>string s;getline(cin,s);</code>来读入一行。注意变量的定义位置，当把<code>vector&lt;string&gt; row;</code>定义在三层循环外面的时候会出现答案错误。中间读取字符的时候多用while语句，类似于一个双指针的操作，十分精彩。贴上大神的代码：  </p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;string&gt;
 #include &lt;algorithm&gt;
@@ -383,8 +383,64 @@ return 0;
         for(j=i;j&lt;s.length()&amp;&amp;s[j]==s[i];j++);
         t+=s[i]+to_string(j-i);    
     }  </code></pre><p>10.B1086就不告诉你。输出要是数字，使用stoi（）函数来实现。将数字反转的时候采用reverse（s.begin(),s.end())来实现。  </p>
-<p>以下是PAT乙级的逻辑题<br>1.B1084三人行。<code>double c=2*1.0/5，cout&lt;&lt;c;</code>等于0.4。<code>double c=2/5，cout&lt;&lt;c;</code>等于0。<code>double(2/5)</code>表示先进行除法，再进行强制类型转换。注意输出格式是一行内还是多行。本题的输出可以用一个函数：<br>    void print(double t) {<br>    if (m == t) printf(“ Ping”);<br>    else if (m &lt; t) printf(“ Cong”);<br>    else printf(“ Gai”);<br>    }<br>  注意abs(a-b)的使用，返回的是int类型，fabs返回的是double类型。一个两位数的倒着输出可以用<code>= i % 10 * 10 + i / 10;</code>同样的三位数也适用。<br>2.B1082射击比赛。可以采用<algorithm>下的MAX()来取最大值。本题是一道先假设最大和最小之后依次替换的典型题目，注意当n=0时，即最大和最小都是一个人的时候。<br>3.B1079延迟的回文数。大整数计算的写法：<br>    string add(string s1,string s2){<br>    string s=s1;<br>    int carry=0;<br>    for(int i=s1.length()-1;i&gt;=0;i–){<br>        s[i]=(s1[i]-‘0’+s2[i]-‘0’+carry)%10+’0’;//字符串先变成数字进行运算再加上’0’变成字符。<br>        carry=(s1[i]-‘0’+s2[i]-‘0’+carry)/10;<br>    }<br>    if(carry&gt;0) s=’1’+s;<br>    return s;<br>    }<br>注意reverse是一个函数的过程，不能够赋值，string s=reverse(a.begin(),a.end())这样的写法会出现问题；判断是否是回文数字的时候采用的是函数内写reverse()的方法。</algorithm></p>
-
+<p>以下是PAT乙级的逻辑题<br>1.B1084三人行。<code>double c=2*1.0/5，cout&lt;&lt;c;</code>等于0.4。<code>double c=2/5，cout&lt;&lt;c;</code>等于0。<code>double(2/5)</code>表示先进行除法，再进行强制类型转换。注意输出格式是一行内还是多行。本题的输出可以用一个函数：<br>    void print(double t) {<br>    if (m == t) printf(“ Ping”);<br>    else if (m &lt; t) printf(“ Cong”);<br>    else printf(“ Gai”);<br>    }<br>  注意abs(a-b)的使用，返回的是int类型，fabs返回的是double类型。一个两位数的倒着输出可以用<code>= i % 10 * 10 + i / 10;</code>同样的三位数也适用。<br>2.B1082射击比赛。可以采用<algorithm>下的MAX()来取最大值。本题是一道先假设最大和最小之后依次替换的典型题目，注意当n=0时，即最大和最小都是一个人的时候。<br>3.B1079延迟的回文数。大整数计算的写法：  </algorithm></p>
+<pre><code>string add(string s1,string s2){
+string s=s1;
+int carry=0;
+for(int i=s1.length()-1;i&gt;=0;i--){
+    s[i]=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)%10+&apos;0&apos;;//字符串先变成数字进行运算再加上&apos;0&apos;变成字符。 
+    carry=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)/10;
+}
+if(carry&gt;0) s=&apos;1&apos;+s;
+return s;
+}  </code></pre><p>注意reverse是一个函数的过程，不能够赋值，string s=reverse(a.begin(),a.end())这样的写法会出现问题；判断是否是回文数字的时候采用的是函数内写reverse()的方法。主函数当中如果出现return 0；就表示直接退出主函数，程序结束运行。<br>4.B1078字符串的压缩与解压。当压缩的时候也可以不采用双指针的方式，也可以采用单指针加上while循环的形式。注意解压的时候数字不一定是一位数，也可能是多位数，认真体会下面的统计位数的函数。  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;cctype&gt;
+#include&lt;cmath&gt; 
+#include&lt;algorithm&gt;
+using namespace std;
+void c(string s){
+int j=0;
+for(int i=0;i&lt;s.length();i++){
+    int cnt=0;
+    while(s[i]==s[i+1])
+        i++,cnt++; 
+    if(cnt!=0) cout&lt;&lt;cnt+1;
+    cout&lt;&lt;s[i];  
+}    
+}
+void d(string s){
+for(int i=0;i&lt;s.length();i++){
+    int sum=0;
+    while(isdigit(s[i]))
+        sum=sum*10+s[i++]-&apos;0&apos;;
+    for(int j=0;j&lt;sum;j++)
+        cout&lt;&lt;s[i];
+    if(sum==0)
+        cout&lt;&lt;s[i];
+}
+}
+int main(){
+string s,s0;
+cin&gt;&gt;s0;
+getchar();
+getline(cin,s);
+if(s0==&quot;C&quot;) c(s);
+if(s0==&quot;D&quot;) d(s); 
+return 0;    
+}</code></pre><p>5.B1074宇宙无敌加法器。当从字符串最后一项是是s[s.length()-1]。注意“==”的书写。自定义函数当中变量的改变不会影响主函数中变量的改变。注意本道题中s（进制数字符）需要初始化，算法中直接赋值了。加法器定义的array必须定义在循环的外侧。加法器每一次只能够进1位。如何使用flag只标记一次，本题给出了if的方法。  </p>
+<pre><code>for(int i = 0; i &lt; ans.size(); i++) {
+if (ans[i] != &apos;0&apos; || flag == 1) {
+flag = 1;
+cout &lt;&lt; ans[i];
+}
+}</code></pre><p>当两个字符串需要补同样长的时候，除了使用，reverse（）反转再使用append（）在字符后加0之外，也可以采取本题的方式，很巧妙。  </p>
+<pre><code>string ss1(s.length() - s1.length(), &apos;0&apos;);
+ s1 = ss1 + s1;
+string ss2(s.length() - s2.length(), &apos;0&apos;);
+s2 = ss2 + s2;</code></pre>
     </div>
 
     
