@@ -190,7 +190,13 @@ cout &lt;&lt; ans[i];
 <pre><code>string ss1(s.length() - s1.length(), &apos;0&apos;);
  s1 = ss1 + s1;
 string ss2(s.length() - s2.length(), &apos;0&apos;);
-s2 = ss2 + s2;</code></pre>]]></content>
+s2 = ss2 + s2;  </code></pre><p>6.B1060爱丁顿数。本题的大数组定义在了函数内部也没有超时，但是时间明显增加了很多，为了保险起见，大数组还是要开全局。数组的下标可以从1开始，不一定要从0开始，注意使用的时候也是从下标1开始的如sort。当书写sort的比较函数的时候，为了产生冲突，把比较函数定义为cmp1。本题有一个测试点没做出来，因为题意理解不明白…..<br>7.B1059C语言竞赛。注意模块化编程的思想，分步骤完成每一个功能。当出现要更改的时候，一定要把所有的地方都改到，本题就是把cout输出改为printf输出的时候有一个地方没改到导致测试点2通过不了。注意体会柳神代码中，使用set来标记是否输出的方法，set可以自动去掉查找的过程中重复的id插入：  </p>
+<pre><code>if(ss.find(id) == ss.end()) //表示没有找到id值就插入
+ss.insert(id);
+} else {
+printf(&quot;Checked\n&quot;);
+continue;
+}  </code></pre>]]></content>
       <categories>
         <category>PAT</category>
       </categories>
