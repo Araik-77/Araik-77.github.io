@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT乙级学习笔记（二）</title>
+    <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>#续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
+double isvoid1=(double)isvoid/n*100;
+printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre><a id="more"></a>
+<p>使用%%来输出一个%。使用\来输出一个,对于其他的转义字符需要\来输出，如printf(“\n”）将输出一个\n。<br>2.B1051复数乘法。当A或B在-0.005到+0.005之间时候，应该输出0.00而不应该输出-0.00，所以在输出的时候需要有一步判断。<br>3.B1050螺旋矩阵。这道题的思路不是很明确，不知道怎么样输出螺旋矩阵，所以做不出来。柳神给出来的思路很明确，需要借鉴参考学习。<br>4.B1046划拳。比较简单的一道题，5分钟就搞定了，注意书写变量的命名。<br>5.B1026程序运行时间。认真体会四舍五入时加上50的写法。注意当其中一项是0的时候应该输出00所以输出格式应该是%02d。输出控制符%.mf是保障精确到小数点后面几位，不是四舍五入，四舍五入应该用round（double）函数。<br>6.B1018锤子剪子布。题目较简单，注意变量命名的方式，一定要让自己能够看懂。对于每一个人胜利的存储可以参考柳神的方式，用数组，然后找出最大的下标。很巧妙。  </p>
+<pre><code>int maxjia = jia[0] &gt;= jia[1] ? 0 : 1;
+maxjia = jia[maxjia] &gt;= jia[2] ? maxjia : 2;
+int maxyi = yi[0] &gt;= yi[1] ? 0 : 1;
+maxyi = yi[maxyi] &gt;= yi[2] ? maxyi : 2;
+char str[4] = {&quot;BCJ&quot;};
+cout &lt;&lt; str[maxjia] &lt;&lt; &quot; &quot; &lt;&lt; str[maxyi];  </code></pre><p>7.B1016部分A+B。题目较简单，认为书写函数的方式要好于柳神的方法，代码也比较短。</p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（一）</title>
     <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>##开一篇文章记录一下学习PAT乙级过程中遇到的问题。</p>
@@ -197,21 +218,6 @@ ss.insert(id);
 printf(&quot;Checked\n&quot;);
 continue;
 }  </code></pre><p>8.B1063输出谱半径。注意printf函数中%md,%0md,%.mf这三种用法。<br>9.B1040有多少个PAT.本题如果暴力求解（就是使用三层for循环）会导致运算结果超时。本题的核心是先找A，找到A 就把结果更新，对于每一个A，它的左侧的P个数和右侧的T个数乘积就是这个A对应的PAT，所有结果相加就得到最后结果。这里有一个技巧是先遍历一遍字符串，求出T的个数，然后，每次判断如果为T 就把T个数减1.注意更新结果的时候每一次都对1000000007取余，结果更小。 </p>
-]]></content>
-      <categories>
-        <category>PAT</category>
-      </categories>
-      <tags>
-        <tag>算法笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PAT乙级学习笔记（二）</title>
-    <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>#续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
-double isvoid1=(double)isvoid/n*100;
-printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre><a id="more"></a>
-<p>使用%%来输出一个%。使用\来输出一个,对于其他的转义字符需要\来输出，如printf(“\n”）将输出一个\n。</p>
 ]]></content>
       <categories>
         <category>PAT</category>
