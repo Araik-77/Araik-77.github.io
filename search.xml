@@ -12,7 +12,8 @@ maxjia = jia[maxjia] &gt;= jia[2] ? maxjia : 2;
 int maxyi = yi[0] &gt;= yi[1] ? 0 : 1;
 maxyi = yi[maxyi] &gt;= yi[2] ? maxyi : 2;
 char str[4] = {&quot;BCJ&quot;};
-cout &lt;&lt; str[maxjia] &lt;&lt; &quot; &quot; &lt;&lt; str[maxyi];  </code></pre><p>7.B1016部分A+B。题目较简单，认为书写函数的方式要好于柳神的方法，代码也比较短。</p>
+cout &lt;&lt; str[maxjia] &lt;&lt; &quot; &quot; &lt;&lt; str[maxyi];  </code></pre><p>7.B1016部分A+B。题目较简单，认为书写函数的方式要好于柳神的方法，代码也比较短。  </p>
+<p>##以下PAT乙级数学题<br>1.B1056组合数的和。本题每个输入的数，相当于被加了N-1次，所以可以使用柳神的方式<code>sum += temp * 10 * (N - 1) + temp * (N - 1);</code>当然考场上如果想不起来，也可以使用两层for循环来写，也非常简单。<br>2.1049数列的片段和。编程不难，数学思想比较难想到，可以通过画图找规律，每一个数实际上都是被加了（n-i）*（n+1）次，通过在纸上演算可以得到。也可以参考柳神的代码用双指针的思想考虑，每个片段的头指针有i种选择，每个尾指针有n-1-i种选择。<br>3.B1019数字黑洞。这是一道做过的题，注意输入可能不是4位数，计算的过程中可能不是4位数，所以需要两次判断。<code>s.insert(0,4-s.length(),&#39;0&#39;);</code>这种插入的用法必须学会。另外当输入为6174的时候也需要进行循环，所以需要使用do语句，不能使用while语句。</p>
 ]]></content>
       <categories>
         <category>PAT</category>
