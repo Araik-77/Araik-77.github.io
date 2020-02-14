@@ -52,15 +52,15 @@
   };
 </script>
 
-  <meta name="description" content="#续接PAT乙级学习笔记（一）##以下PAT乙级模拟题1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  double mayvoid1=(double)mayvoid&#x2F;n*100; double isvoid1=(double)isvoid&#x2F;n*100; printf(&amp;quot;%.1f%% %.1f%">
+  <meta name="description" content="##续接PAT乙级学习笔记（一）##以下PAT乙级模拟题1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  double mayvoid1=(double)mayvoid&#x2F;n*100; double isvoid1=(double)isvoid&#x2F;n*100; printf(&amp;quot;%.1f%% %.1f">
 <meta name="keywords" content="算法笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT乙级学习笔记（二）">
 <meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;12&#x2F;23&#x2F;PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="#续接PAT乙级学习笔记（一）##以下PAT乙级模拟题1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  double mayvoid1=(double)mayvoid&#x2F;n*100; double isvoid1=(double)isvoid&#x2F;n*100; printf(&amp;quot;%.1f%% %.1f%">
+<meta property="og:description" content="##续接PAT乙级学习笔记（一）##以下PAT乙级模拟题1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  double mayvoid1=(double)mayvoid&#x2F;n*100; double isvoid1=(double)isvoid&#x2F;n*100; printf(&amp;quot;%.1f%% %.1f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-10T03:26:39.612Z">
+<meta property="og:updated_time" content="2020-02-14T03:32:55.798Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-10 11:26:39" itemprop="dateModified" datetime="2020-02-10T11:26:39+08:00">2020-02-10</time>
+                <time title="修改时间：2020-02-14 11:32:55" itemprop="dateModified" datetime="2020-02-14T11:32:55+08:00">2020-02-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>#续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
+        <p>##续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
 double isvoid1=(double)isvoid/n*100;
 printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre><a id="more"></a>
 <p>使用%%来输出一个%。使用\来输出一个,对于其他的转义字符需要\来输出，如printf(“\n”）将输出一个\n。<br>2.B1051复数乘法。当A或B在-0.005到+0.005之间时候，应该输出0.00而不应该输出-0.00，所以在输出的时候需要有一步判断。<br>3.B1050螺旋矩阵。这道题的思路不是很明确，不知道怎么样输出螺旋矩阵，所以做不出来。柳神给出来的思路很明确，需要借鉴参考学习。<br>4.B1046划拳。比较简单的一道题，5分钟就搞定了，注意书写变量的命名。<br>5.B1026程序运行时间。认真体会四舍五入时加上50的写法。注意当其中一项是0的时候应该输出00所以输出格式应该是%02d。输出控制符%.mf是保障精确到小数点后面几位，不是四舍五入，四舍五入应该用round（double）函数。<br>6.B1018锤子剪子布。题目较简单，注意变量命名的方式，一定要让自己能够看懂。对于每一个人胜利的存储可以参考柳神的方式，用数组，然后找出最大的下标。很巧妙。  </p>
@@ -263,8 +263,181 @@ int maxyi = yi[0] &gt;= yi[1] ? 0 : 1;
 maxyi = yi[maxyi] &gt;= yi[2] ? maxyi : 2;
 char str[4] = {&quot;BCJ&quot;};
 cout &lt;&lt; str[maxjia] &lt;&lt; &quot; &quot; &lt;&lt; str[maxyi];  </code></pre><p>7.B1016部分A+B。题目较简单，认为书写函数的方式要好于柳神的方法，代码也比较短。  </p>
-<p>##以下PAT乙级数学题<br>1.B1056组合数的和。本题每个输入的数，相当于被加了N-1次，所以可以使用柳神的方式<code>sum += temp * 10 * (N - 1) + temp * (N - 1);</code>当然考场上如果想不起来，也可以使用两层for循环来写，也非常简单。<br>2.1049数列的片段和。编程不难，数学思想比较难想到，可以通过画图找规律，每一个数实际上都是被加了（n-i）*（n+1）次，通过在纸上演算可以得到。也可以参考柳神的代码用双指针的思想考虑，每个片段的头指针有i种选择，每个尾指针有n-1-i种选择。<br>3.B1019数字黑洞。这是一道做过的题，注意输入可能不是4位数，计算的过程中可能不是4位数，所以需要两次判断。<code>s.insert(0,4-s.length(),&#39;0&#39;);</code>这种插入的用法必须学会。另外当输入为6174的时候也需要进行循环，所以需要使用do语句，不能使用while语句。</p>
-
+<p>##以下PAT乙级数学题<br>1.B1056组合数的和。本题每个输入的数，相当于被加了N-1次，所以可以使用柳神的方式<code>sum += temp * 10 * (N - 1) + temp * (N - 1);</code>当然考场上如果想不起来，也可以使用两层for循环来写，也非常简单。<br>2.1049数列的片段和。编程不难，数学思想比较难想到，可以通过画图找规律，每一个数实际上都是被加了（n-i）*（n+1）次，通过在纸上演算可以得到。也可以参考柳神的代码用双指针的思想考虑，每个片段的头指针有i种选择，每个尾指针有n-1-i种选择。<br>3.B1019数字黑洞。这是一道做过的题，注意输入可能不是4位数，计算的过程中可能不是4位数，所以需要两次判断。<code>s.insert(0,4-s.length(),&#39;0&#39;);</code>这种插入的用法必须学会。另外当输入为6174的时候也需要进行循环，所以需要使用do语句，不能使用while语句。<br>##以下是PAT乙级HASH散列问题<br>1.B1083是否存在相等的数。将相减的数直接作为数组的下标记录个数就行，相对较简单。<br>2.B1047编程团体赛。本题注意柳神的scanf的应用，比我的方法简单太多了。<code>scanf(&quot;%d-%d %d&quot;, &amp;t, &amp;num, &amp;score);</code>我是采用读取字符串，然后判断的方法，简直蠢透了。附上我的代码  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt; 
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;cctype&gt;
+#include&lt;cmath&gt; 
+#include&lt;algorithm&gt;
+#include&lt;stack&gt;
+#include&lt;set&gt;
+using namespace std;
+int main(){
+int n,sum[1001]={0};
+int maxnum,maxscore=0;
+string s;
+cin&gt;&gt;n;
+getchar();
+for(int i=0;i&lt;n;i++){
+    int com,score=0;
+    getline(cin,s);
+    for(int j=0;j&lt;s.length();j++){
+        if(s[j]==&apos;-&apos;){
+            com=stoi(s.substr(0,j));
+        }
+        if(s[j]==&apos; &apos;){
+            score=stoi(s.substr(j+1));
+        }    
+    }
+    sum[com]+=score;
+}
+for(int i=1;i&lt;=1000;i++){
+    if(sum[i]&gt;maxscore){ 
+        maxscore=sum[i];
+        maxnum=i;
+    }
+}
+cout&lt;&lt;maxnum&lt;&lt;&quot; &quot;&lt;&lt;maxscore;
+return 0;
+}  </code></pre><p>附上柳神的代码：  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+ int n, t, num, score;
+ cin &gt;&gt; n;
+ int team[1001] = {0};
+ for (int i = 1; i &lt;= n; i++) {
+ scanf(&quot;%d-%d %d&quot;, &amp;t, &amp;num, &amp;score);
+ team[t] += score;
+ }
+ int max = 0;
+ for (int i = 0; i &lt; 1001; i++) {
+ if (team[max] &lt; team[i])
+ max = i;
+ }
+ cout &lt;&lt; max &lt;&lt; &quot; &quot; &lt;&lt; team[max];
+ return 0;
+}  </code></pre><p>3.B1043输出PATest。我的思路是遍历每一个字符，然后如果字符是P就把他放在字符数组的第1个位置，对于下一个P就把它放在第七个位置，但是代码能力太弱，写出来的漏洞百出。以下附上柳神的代码以供学习：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt; 
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;cctype&gt;
+#include&lt;cmath&gt; 
+#include&lt;algorithm&gt;
+#include&lt;stack&gt;
+#include&lt;set&gt;
+using namespace std;
+int main(){
+int map[128]={0},c;\\一共128个ascii码。
+while((c=cin.get())!=EOF) map[c]++;
+while (map[&apos;P&apos;] &gt; 0 || map[&apos;A&apos;] &gt; 0 || map[&apos;T&apos;] &gt; 0 || map[&apos;e&apos;] &gt; 0 ||map[&apos;s&apos;] &gt; 0 || map[&apos;t&apos;] &gt; 0) {
+    if (map[&apos;P&apos;]-- &gt; 0) cout &lt;&lt; &apos;P&apos;;
+    if (map[&apos;A&apos;]-- &gt; 0) cout &lt;&lt; &apos;A&apos;;
+    if (map[&apos;T&apos;]-- &gt; 0) cout &lt;&lt; &apos;T&apos;;
+    if (map[&apos;e&apos;]-- &gt; 0) cout &lt;&lt; &apos;e&apos;;
+    if (map[&apos;s&apos;]-- &gt; 0) cout &lt;&lt; &apos;s&apos;;
+    if (map[&apos;t&apos;]-- &gt; 0) cout &lt;&lt; &apos;t&apos;;
+ }
+ return 0;
+}  </code></pre><p>4.B1042字符统计。所有变量如果不直接输入都要初始化，这道题如果不初始化t，就会导致测试点2不通过。对于单个字符的hash散列可以使用它的ascii码作为键值。当要求有并列的时候从最小的输出时候，可以从遍历字母的最小的ascii开始。<br>5.B1039到底买不买。每一个珠子个数都存成a[s[i]-‘0’]的形式，a[]里面对应的不一定是这个字符的ascii码，不过不会影响最后的结果，不过像下面这样也是可以的s[i]默认选取其ascii码。柳神的代码采用了两个for循环，不易想到。  </p>
+<pre><code>string s1,s2;
+cin&gt;&gt;s1&gt;&gt;s2;
+for(int i=0;i&lt;s2.length();i++){
+    b[s2[i]]++;
+}  </code></pre><p>6.B1038统计同成绩的学生的个数。相对简单，柳神的代码中使用了vector容器，我是用了数组保存成绩，注意数组的范围是a[101]。<br>7.B1033旧键盘打印。题目较难，可以参考柳神的代码，尤其注意string：：npos的用法，《算法笔记》p207有详细解释：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;string&gt;
+#include&lt;cctype&gt;
+#include &lt;map&gt;
+using namespace std;
+int main(){
+string bad,should;
+getline(cin,bad);
+getline(cin,should);
+for(int i=0;i&lt;should.length();i++){
+    if(bad.find(toupper(should[i]))!=string::npos) continue;
+    if(isupper(should[i])&amp;&amp;bad.find(&apos;+&apos;)!=string::npos) continue;
+    cout&lt;&lt;should[i];
+} 
+return 0;
+}  </code></pre><p>8.B1029旧键盘。学会了柳神的find函数，对于判断字母还是大小写处理的还不是很好。  </p>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;string&gt;
+#include&lt;cctype&gt;
+#include &lt;map&gt;
+using namespace std;
+int main(){
+string s1,s2;
+cin&gt;&gt;s1&gt;&gt;s2; 
+int a[128]={0};
+for(int i=0;i&lt;s1.length();i++){
+    if(s2.find(s1[i])==string::npos&amp;&amp;a[s1[i]]==0){
+        if(!isalpha(s1[i])){
+            a[s1[i]]++;
+            cout&lt;&lt;s1[i];
+        }else{
+            if(islower(s1[i])){
+                a[s1[i]-32]++;
+                a[s1[i]]++;
+                s1[i]=toupper(s1[i]);
+                cout&lt;&lt;s1[i];
+            }
+            else{
+                a[s1[i]+32]++;
+                a[s1[i]]++;
+                cout&lt;&lt;s1[i];    
+            }
+        }
+    } 
+} 
+return 0;
+}    </code></pre><p>柳神的代码采用字符串相加的方式,真是妙！  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cctype&gt;
+using namespace std;
+int main() {
+    string s1, s2, ans;
+    cin &gt;&gt; s1 &gt;&gt; s2;
+    for (int i = 0; i &lt; s1.length(); i++)
+    if (s2.find(s1[i]) == string::npos &amp;&amp; ans.find(toupper(s1[i])) ==string::npos)
+    ans += toupper(s1[i]);
+    cout &lt;&lt; ans;
+ return 0;
+}  </code></pre><p>##以下是PAT乙级STL-map题：<br>1.B1090危险品装箱。这道题比较难，参考了柳神的代码：</p>
+<pre><code>#include&lt;iostream&gt;
+#include &lt;string&gt;
+#include&lt;cctype&gt;
+#include&lt;map&gt;
+#include&lt;vector&gt;
+using namespace std;
+int main(){
+int n,k,t1,t2;
+map&lt;int,vector&lt;int&gt; &gt; m;//每个数关联的数不是确定个，所以使用vector 
+scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+for(int i=0;i&lt;n;i++){
+    scanf(&quot;%d%d&quot;,&amp;t1,&amp;t2);
+    m[t1].push_back(t2);
+    m[t2].push_back(t1);
+}
+while(k--){
+    int cnt,flag=0,a[100000]={0};
+    scanf(&quot;%d&quot;,&amp;cnt);
+    vector&lt;int&gt; v(cnt);
+    for(int i=0;i&lt;cnt;i++){
+        scanf(&quot;%d&quot;,&amp;v[i]);
+        a[v[i]]=1;//将每一个数都设置为1，散列 
+    }
+    for(int i=0;i&lt;v.size();i++)//从输入的第一个数开始遍历 
+        for(int j=0;j&lt;m[v[i]].size();j++)//从每个数关联的数开始遍历 
+        if(a[m[v[i]][j]]==1) flag=1;
+        //m[v[i][j]]表示关联的第j个数，a[]表示关联的数存在 
+    printf(&quot;%s\n&quot;,flag ? &quot;No&quot; : &quot;Yes&quot;); 
+}
+return 0;
+}</code></pre>
     </div>
 
     
@@ -280,14 +453,17 @@ cout &lt;&lt; str[maxjia] &lt;&lt; &quot; &quot; &lt;&lt; str[maxyi];  </code></
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="next" title="PAT乙级学习笔记（一）">
-                  <i class="fa fa-chevron-left"></i> PAT乙级学习笔记（一）
+                <a href="/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/" rel="next" title="delay需要重复输入github密码的解决">
+                  <i class="fa fa-chevron-left"></i> delay需要重复输入github密码的解决
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="PAT乙级学习笔记（一）">
+                  PAT乙级学习笔记（一） <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
