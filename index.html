@@ -189,6 +189,268 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%93%BE%E8%A1%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">数据结构之线性表</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-15 20:58:05 / 修改时间：20:33:42" itemprop="dateCreated datePublished" datetime="2020-02-15T20:58:05+08:00">2020-02-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>线性表是一种最基本的数据结构，下面是线性表的顺序存储方式  </p><pre><code>#include&lt;stdio.h&gt;
+#include&lt;malloc.h&gt;
+#define MAXSIZE 100
+typedef int ElementType;
+typedef struct LNode *List;
+struct LNode{
+ElementType Data[MAXSIZE];
+int Last;
+}; 
+List L;
+
+List MakeEmpty();
+int Find(ElementType X,List L);
+void Insert(ElementType X,int i,List L);
+void Delete(int i,List L);
+ElementType FindKth(int K,List L);
+
+//初始化
+List MakeEmpty(){
+List L;
+L=(List)malloc(sizeof(struct LNode));
+L-&gt;Last=-1;
+return L;
+}
+//按值查找 
+int Find(ElementType X,List L){
+int i=0;
+while(i&lt;=L-&gt;Last&amp;&amp;L-&gt;Data[i]!=X)
+    i++;
+if(L-&gt;Last&lt;i)
+    return -1;
+    else 
+    return i;
+}
+
+//插入,下面的为头插法 
+void Insert(ElementType X,int i,List L){
+int j;
+if(L-&gt;Last==MAXSIZE-1){
+    printf(&quot;表满&quot;);
+    return;
+}
+if(i&lt;0||L-&gt;Last+1&lt;i){
+    printf(&quot;位置不合法&quot;);
+    return; 
+}
+for(j=L-&gt;Last;j&gt;=i;j--)
+    L-&gt;Data[j+1]=L-&gt;Data[j];
+    L-&gt;Data[i]=X;
+    L-&gt;Last++;
+    return;
+} 
+
+void Delete(int i,List L){
+int j;
+if(i&lt;0||L-&gt;Last&lt;i){
+    printf(&quot;L-&gt;Data[%d]不存在元素&quot;,i);
+    return;
+}
+for(j=i;j&lt;L-&gt;Last;j++)//删除第i个元素，实际上对应的下标是i-1 
+    L-&gt;Data[j-1]=L-&gt;Data[j];
+    L-&gt;Last--;
+    return; 
+}
+ElementType FindKth(int K,List L){
+if(K&lt;0||L-&gt;Last&lt;K){
+    printf(&quot;L-&gt;Data[%d]不存在元素&quot;,K);
+    return;
+}
+return L-&gt;Data[K];
+}
+int Length(List L){
+return L-&gt;Last+1;
+}
+int main(){
+int i=0;
+L=MakeEmpty();
+Insert(11,0,L);
+printf(&quot;在线性表L-&gt;Data[0]插入11\n&quot;);
+Insert(25,0,L);
+printf(&quot;在线性表L-&gt;Data[0]插入25\n&quot;);
+Insert(33,0,L);
+printf(&quot;在线性表L-&gt;Data[0]插入33\n&quot;);
+Insert(77,0,L);
+printf(&quot;在线性表L-&gt;Data[0]插入77\n&quot;);
+printf(&quot;此时线性表为；&quot;);
+for(i=0;i&lt;Length(L);i++)
+    printf(&quot;%d&quot;,L-&gt;Data[i]);
+printf(&quot;\n&quot;);
+printf(&quot;查找值为12的下标为：%d\n&quot;,Find(12,L));
+printf(&quot;下标为3的线性表的值是：%d\n&quot;,FindKth(3,L));
+Delete(2,L);
+printf(&quot;删除下标为2的元素\n&quot;); 
+Delete(2,L);
+printf(&quot;删除下标为2的元素\n&quot;);  
+    printf(&quot;此时线性表为；&quot;);
+for(i=0;i&lt;Length(L);i++)
+    printf(&quot;%d&quot;,L-&gt;Data[i]);
+printf(&quot;\n&quot;);
+return 0;
+}  </code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%93%BE%E8%A1%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">PAT乙级学习笔记（二）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-23 20:58:05" itemprop="dateCreated datePublished" datetime="2019-12-23T20:58:05+08:00">2019-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-15 12:55:20" itemprop="dateModified" datetime="2020-02-15T12:55:20+08:00">2020-02-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>##续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
+double isvoid1=(double)isvoid/n*100;
+printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -250,91 +512,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Araik">
-      <meta itemprop="description" content="越努力，越幸运">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨阳 の blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title-link" itemprop="url">PAT乙级学习笔记（二）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-23 20:58:05" itemprop="dateCreated datePublished" datetime="2019-12-23T20:58:05+08:00">2019-12-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-14 11:32:55" itemprop="dateModified" datetime="2020-02-14T11:32:55+08:00">2020-02-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PAT/" itemprop="url" rel="index">
-                    <span itemprop="name">PAT</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>##续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p><pre><code>double mayvoid1=(double)mayvoid/n*100;
-double isvoid1=(double)isvoid/n*100;
-printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -560,20 +737,20 @@ printf(&quot;%.1f%% %.1f%%&quot;,mayvoid1,isvoid1);  </code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
