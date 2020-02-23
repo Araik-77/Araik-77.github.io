@@ -163,6 +163,273 @@ for (int i = 1; i &lt;= row; i++) {
 }
 cout &lt;&lt; (N - (2 * row * (row + 2) + 1));
 return 0;
+}  </code></pre><p>6.B1028人口普查。这道题注意，先设置最大和最小的极限情况，然后一一遍历，得出情况。判断是否合法可以使用一个函数来实现，注意当没有合法生日的时候，不应该输出名字！！！我的代码如下：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;set&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+bool isright(int y, int m, int d){
+if(y &gt; 2014 || y == 2014 &amp;&amp; m &gt; 9 || y == 2014 &amp;&amp; m == 9 &amp;&amp; d &gt; 6){
+    return false;
+}
+else if(y &lt; 1814 || y == 1814 &amp;&amp; m &lt; 9 || y == 1814 &amp;&amp; m == 9 &amp;&amp; d &lt; 6){
+    return false;
+} 
+else return true;
+}
+int main(){
+int n,cnt = 0;
+string s, maxs, mins;
+int y, m, d, maxy = 2014 , maxm = 9, maxd = 6, miny = 1814, minm = 9, mind = 6;
+cin &gt;&gt; n;
+for(int i = 0; i &lt; n; i++){
+    cin &gt;&gt; s;
+    scanf(&quot;%d/%d/%d&quot;, &amp;y, &amp;m, &amp;d);
+    if(isright(y, m, d)){
+        cnt++;
+        if(y &gt; miny || y == miny  &amp;&amp; m &gt; minm || y == miny &amp;&amp; m == minm &amp;&amp; d &gt; mind){
+            mins = s;
+            miny = y;
+            minm = m;
+            mind = d;
+        }
+        if(y &lt; maxy || y == maxy  &amp;&amp; m &lt; maxm || y == maxy &amp;&amp; m == maxm &amp;&amp; d &lt; maxd){
+            maxs = s;
+            maxy = y;
+            maxm = m;
+            maxd = d;
+        }
+    }    
+} 
+if(cnt == 0) cout &lt;&lt; 0;
+else cout &lt;&lt; cnt &lt;&lt; &quot; &quot; &lt;&lt; maxs &lt;&lt; &quot; &quot; &lt;&lt; mins;
+return 0;
+} </code></pre><p>看完柳神的代码，真的自叹不如。判断生日大小直接采用字符串比较，我还多写了一个函数，还要分情况讨论，代码写的真的冗长，附上柳神的代码：  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+int n, cnt = 0;
+cin &gt;&gt; n;
+string name, birth, maxname, minname, maxbirth = &quot;1814/09/06&quot;, minbirth = &quot;2014/09/06&quot;;
+for (int i = 0; i &lt; n; i++) {
+    cin &gt;&gt; name &gt;&gt; birth;
+    if (birth &gt;= &quot;1814/09/06&quot; &amp;&amp; birth &lt;= &quot;2014/09/06&quot;) {
+        cnt++;
+        if (birth &gt;= maxbirth) {
+            maxbirth = birth;
+            maxname = name;
+        }
+        if (birth &lt;= minbirth) {
+            minbirth = birth;
+            minname = name;
+        }
+    }
+}
+cout &lt;&lt; cnt;
+if (cnt != 0) cout &lt;&lt; &quot; &quot; &lt;&lt; minname &lt;&lt; &quot; &quot; &lt;&lt; maxname;
+return 0;
+}  </code></pre><p>7.B1030完美数列。这道题注意溢出的情况int最多2*10^9，所以p要设置为lonlong类型，要是超时的时候可以考虑两个for循环的代码优化，外层for循环不优化也可以，因为如果条件不满足没有语句执行，思考问题的时候最好是正向思维，避免出错，如果j从最后一项开始遍历，就比较乱    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+int n;
+long p;
+cin &gt;&gt; n &gt;&gt; p;
+int a[n];
+for(int k = 0; k &lt; n; k++){
+    scanf(&quot;%d&quot;,&amp;a[k]);
+} 
+sort(a,a + n);
+int maxcnt = 0,temp = 0;
+for(int i = 0; i &lt;= n; i++){
+    for(int j = i + maxcnt; j &lt; n; j++){
+        if(a[j] &lt;= p * a[i]){
+            temp = j - i + 1;
+            if(temp &gt; maxcnt) maxcnt = temp;
+        }
+        else break;    
+    }    
+}
+cout &lt;&lt; maxcnt;
+return 0;
+}  </code></pre><p>8.B1032挖掘机技术哪家强。这道题比较简单，注意审题，题目中说没有重复并列，学校序号从0开始连续编号，所以简单不少，注意柳神当中把最大值当做第一个，遍历从第二项开始遍历的写法，下面是我的代码：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    int a[n + 1] = {0};
+    for(int i = 0; i &lt; n; i++ ){
+        int sch, score;
+        cin &gt;&gt; sch &gt;&gt; score;
+        a[sch] += score;
+    } 
+    int max = 0,t = 0;
+    for(int i = 1; i &lt;= n; i++){
+        if(a[i] &gt;= max){
+            max = a[i];
+            t = i;    
+        }
+    }
+cout &lt;&lt; t &lt;&lt; &quot; &quot;&lt;&lt; max;
+return 0;
+}  </code></pre><p>9.B1036跟奥巴马一起学编程。这道题相对简单，注意每一列之间没有空格，就直接是换行，下面是代码：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+    int n;
+    char c;
+    cin &gt;&gt; n &gt;&gt; c;
+    int row = n % 2 == 0 ? n / 2 : n / 2 + 1;
+    for(int i = 0; i &lt; n; i++) cout &lt;&lt; c;
+    cout &lt;&lt; endl;
+    for(int i = 0; i &lt; row - 2; i++){
+        cout &lt;&lt; c;
+        for(int j = 0; j &lt; n - 2; j++) cout &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; c &lt;&lt; endl;
+    }
+    for(int i = 0; i &lt; n; i++) cout &lt;&lt; c;
+return 0;
+}  </code></pre><p>注意体会柳神代码中如何分类奇数和偶数的写法,真的是比我的简单多了<br><code>int t = N / 2 + N % 2;</code>  </p>
+<p>10.B1037在霍格沃茨找零钱。这道题比较简单，看成是计算时间的那道题即可，下面是代码：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int main(){
+    int g1, s1, k1, g2, s2, k2;
+    scanf(&quot;%d.%d.%d %d.%d.%d&quot;,&amp;g1, &amp;s1, &amp;k1, &amp;g2, &amp;s2, &amp;k2);
+    int a, b;
+    a = g1 * 17 * 29 + s1 *29 + k1;
+    b = g2 * 17 * 29 + s2 *29 + k2;
+    int ans;
+    if(a &gt; b){
+        cout &lt;&lt; &quot;-&quot;;
+        ans = a - b;
+    }
+    else ans = b - a;
+    int g, s, k;
+    g = ans / (17 * 29);
+    s = (ans - g * 17 *29) / 29;
+    k = ans - g * 17 * 29 - s *29;
+    cout &lt;&lt; g &lt;&lt; &quot;.&quot; &lt;&lt; s &lt;&lt; &quot;.&quot; &lt;&lt; k;
+    return 0;
+}  </code></pre><p>看了柳神的代码，采用模拟减法运算的方法，简直是太妙了!,附上柳神的代码  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int a, b ,c, m, n, t, x, y, z;
+    scanf(&quot;%d.%d.%d %d.%d.%d&quot;,&amp;a, &amp;b, &amp;c, &amp;m, &amp;n, &amp;t);
+    if (a &gt; m || (a == m &amp;&amp; b &gt; n) || (a == m &amp;&amp; b == n &amp;&amp; c &gt; t)) {
+        swap(a, m); swap(b, n); swap(c, t);
+        printf(&quot;-&quot;);        
+    }
+    z = t &lt; c ? t - c + 29 : t - c;
+    n = t &lt; c ? n - 1 : n;
+    y = n &lt; b ? n - b + 17 : n - b;
+    x = n &lt; b ? m - a - 1 : m - a;
+    printf(&quot;%d.%d.%d&quot;, x, y, z);
+    return 0;
+}  </code></pre><p>11.B1041考试座位号。注意如果没有使用循环中的i作为循环体内的数据的时候，尽量让i从0开始，下面是我的代码，这道题和mooc考试成绩，危险品装箱题型类似，注意体会：</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+struct node{
+    string id;
+    int a, b;
+};
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    vector&lt;node&gt; v;
+    for(int i = 0; i &lt; n; i++){
+        string s;
+        int a, b;
+        cin &gt;&gt; s &gt;&gt; a &gt;&gt; b;
+        v.push_back(node{s, a, b});
+    }
+    int m;
+    cin &gt;&gt; m;
+    for(int j = 0; j &lt; m; j++){
+        int temp;
+        cin &gt;&gt; temp;
+        for(int i = 0; i &lt; n; i++){
+            if(v[i].a == temp) cout &lt;&lt; v[i].id &lt;&lt; &quot; &quot; &lt;&lt; v[i].b &lt;&lt; endl;
+        }
+    } 
+return 0;
+}  </code></pre><p>柳神采用的是string类型的二维数组，更加简单！！ </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string stu[1005][2], s1, s2;;
+    int n, m, t;
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; s1 &gt;&gt; t &gt;&gt; s2;
+        stu[t][0] = s1;
+        stu[t][1] = s2; 
+    } 
+    cin &gt;&gt; m;
+    for(int i = 0; i &lt; m; i++) {
+        cin &gt;&gt; t;
+        cout &lt;&lt; stu[t][0] &lt;&lt; &quot; &quot; &lt;&lt; stu[t][1] &lt;&lt; endl;
+    } 
+    return 0;
+}  </code></pre><p>12.B1055集体照。结构体定义struct要放在cmp之前。输入结构体可以直接cin&gt;&gt;v[i].name，不需要临时变量，然后push_back(node{s,a})。注意体会柳神代码中的空格的输出方式。就是先输出第一项，然后输出空格加第i项。将整个题目转换为不同人数的行的计算，不用分类讨论更简单。先左后右不递增就是排序中每隔一个一输出。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+struct node{
+    string name;
+    int high;
+}; 
+bool cmp1(struct node a,struct node b){
+    if(a.high != b.high) return a.high &gt; b.high;
+    else return a.name &lt; b.name; 
+}
+int main(){
+    int n, k, m;
+    cin &gt;&gt; n &gt;&gt; k;
+    vector &lt;node&gt; v(n);
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; v[i].name;
+        cin &gt;&gt; v[i].high;
+    } 
+    sort(v.begin(),v.end(),cmp1);
+    int t = 0, row = k;//t是v的下标，是每一排起始的数 
+    while(row){
+        if(row == k)
+            m = n - n / k * (k - 1);
+        else 
+            m = n / k;
+
+        vector&lt;string&gt; ans(m);
+        ans[m / 2] = v[t].name;
+
+        int j = m / 2 - 1;
+        for(int i = t + 1; i &lt; t + m; i = i + 2) 
+            ans[j--] = v[i].name;
+
+        j = m / 2 + 1;
+        for(int i = t + 2; i &lt; t + m; i = i + 2)
+            ans[j++] = v[i].name;
+
+        cout &lt;&lt; ans[0];
+        for(int i = 1; i &lt; m; i++)
+            cout &lt;&lt; &quot; &quot; &lt;&lt; ans[i];
+        cout &lt;&lt; endl;
+        t = t + m;
+        row--; 
+    }    
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>PAT</category>
