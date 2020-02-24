@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT乙级学习笔记（四）</title>
+    <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
+    <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码  </p><a id="more"></a>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int gcd(int a, int b){
+    if(b == 0) return a;
+    else return gcd(b, a % b);
+}
+int main(){
+    int n1, m1, n2, m2, k;
+    scanf(&quot;%d/%d %d/%d %d&quot;,&amp;n1, &amp;m1, &amp;n2, &amp;m2, &amp;k);
+    if(n1 * m2 &gt; n2 * m1){
+        swap(n1, n2);
+        swap(m1, m2);
+    }
+    int a[k] = {0};
+    int cnt = 0;
+    for(int i = 1; i &lt; k; i++){
+        if(n1 * k &lt; m1 * i &amp;&amp; i * m2 &lt; k * n2 &amp;&amp; gcd(k, i) == 1){
+            a[i] = i;
+            cnt++;
+        }
+    }
+    for(int i = 0; i &lt; k; i++){
+        if(a[i] != 0){
+            printf(&quot;%d/%d&quot;,a[i],k);
+            if(--cnt &gt; 0) cout &lt;&lt; &quot; &quot;; 
+        }
+    }
+    return 0;
+}  </code></pre><p>注意体会柳神代码中输出空格的写法，相当于第一项不输出空格，其他的每一项都先输出空格再输出数</p>
+<pre><code>bool flag = false;
+    while(n1 * k &gt;= m1 * num) num++;
+    while(n1 * k &lt; m1 * num &amp;&amp; m2 * num &lt; n2 * k) {
+        if(gcd(num, k) == 1) {
+            printf(&quot;%s%d/%d&quot;, flag == true ? &quot; &quot; : &quot;&quot;, num, k);
+            flag = true;
+        }
+        num++;
+    }  </code></pre><p>2.B1066图像过滤。这道题比较简单，下面是存储到数组中，统一输出的代码  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+    int m, n, a, b, c;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    int ans[m][n];
+    for(int i = 0; i &lt; m; i++){
+        for(int j = 0; j &lt; n; j++){
+            scanf(&quot;%d&quot;, &amp;ans[i][j]) ;
+            if(ans[i][j] &gt;= a &amp;&amp; ans[i][j] &lt;= b){
+                ans[i][j] = c;
+            }
+        }
+    }
+    for(int i = 0; i &lt; m; i++){
+        for(int j = 0; j &lt; n; j++){
+            printf(&quot;%03d&quot;, ans[i][j]);
+            if(j != n -1) cout &lt;&lt; &quot; &quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>下面是一边处理一边输出的代码  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+    int m, n, a, b, c;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+    int ans[m][n];
+    for(int i = 0; i &lt; m; i++){
+        for(int j = 0; j &lt; n; j++){
+            scanf(&quot;%d&quot;, &amp;ans[i][j]) ;
+            if(ans[i][j] &gt;= a &amp;&amp; ans[i][j] &lt;= b){
+                ans[i][j] = c;    
+            }
+            printf(&quot;%03d&quot;, ans[i][j]);
+            if(j != n -1) cout &lt;&lt; &quot; &quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（三）</title>
     <url>/2020/02/19/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（二）<br>##以下PAT乙级其它题目<br>1.B1015德才论。对于这样的有多数据的比较，先建立结构体，然后写好cmp函数，注意函数一定要写return！！！看题目的时候一定要注意哪些是大于，不大于，哪些是小于，不小于！！  </p><pre><code>#include&lt;iostream&gt;
@@ -429,6 +523,50 @@ int main(){
         t = t + m;
         row--; 
     }    
+    return 0;
+}  </code></pre><p>13.B1057数零壹。这道题比较简单，注意十进制如何转换为二进制，方法要注意，当和为零的时候，应该输出0 0，下面是代码：  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;cctype&gt;
+using namespace std;
+int main(){
+    string s;
+    getline(cin,s);
+    int sum = 0;
+    for(int i = 0; i &lt; s.length(); i++){
+        if(isalpha(s[i])){
+            s[i] = tolower(s[i]);
+            sum += s[i] - &apos;a&apos; + 1;
+        }
+    } 
+    int a = 0, b = 0;
+        while(sum != 0){
+            if(sum % 2 == 0) a++;
+            else b++;
+            sum /= 2; 
+        }
+        cout &lt;&lt; a &lt;&lt; &quot; &quot; &lt;&lt; b;
+    return 0;
+}  </code></pre><p>14.B1061判断题。水题，比较简单，注意写的时候认真点：  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main(){
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    int score[m], right[m];
+    for(int i = 0; i &lt; m; i++) cin &gt;&gt; score[i];
+    for(int i = 0; i &lt; m; i++) cin &gt;&gt; right[i];
+    int sum[n] = {0};
+    for(int i = 0; i &lt; n; i++){
+        for(int j = 0; j &lt; m; j++){
+            int a;
+            cin &gt;&gt; a;
+            if(a == right[j]) sum[i] += score[j];
+        }
+        cout &lt;&lt; sum[i] &lt;&lt; endl;
+    }
     return 0;
 }</code></pre>]]></content>
       <categories>
