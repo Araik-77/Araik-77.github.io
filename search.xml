@@ -86,6 +86,261 @@ int main(){
         cout &lt;&lt; endl;
     }
     return 0;
+}  </code></pre><p>3.B1071小赌怡情。较简单，注意游戏结束后要break退出  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+    int t0, k;
+    cin &gt;&gt; t0 &gt;&gt; k;
+    for(int i = 0; i &lt; k; i++){
+        int n1, b, t, n2;
+        cin &gt;&gt; n1 &gt;&gt; b &gt;&gt; t &gt;&gt; n2;
+        if(t0 == 0){
+            printf(&quot;Game Over.\n&quot;);
+            break;
+        }
+        else{
+            if(t0 &lt; t) printf(&quot;Not enough tokens.  Total = %d.\n&quot;,t0);
+            else{
+                if(b == 0 &amp;&amp; n2 &lt; n1 || b == 1 &amp;&amp; n2 &gt; n1){
+                    t0 = t0 + t;
+                    printf(&quot;Win %d!  Total = %d.\n&quot;,t,t0);
+                }
+                else{
+                    t0 = t0 - t;
+                    printf(&quot;Lose %d.  Total = %d.\n&quot;,t,t0);
+                }
+            }    
+        }
+    }
+    return 0;
+}  </code></pre><p>4.B1072开学寄语。属于简单题，注意变量定义的位置。一定要注意“=”和“==”的区别!!!数组初始化如果全部赋值为0可以直接用={0}来赋值，如果赋值为其他数，需要使用循环或者按照本题目中的做法：  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+int check[10000] = {0};
+int main(){
+    int n, m, cnt0 = 0, cnt1 = 0;
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 0; i &lt; m; i++){
+        int temp;
+        cin &gt;&gt; temp;
+        check[temp] = 1;
+    }
+    for(int i = 0; i &lt; n; i++){
+        string name;
+        int k,flag = 0;
+        cin &gt;&gt; name &gt;&gt; k;
+        int ans[11] = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}; 
+        for(int j = 0; j &lt; k; j++){
+            int temp1;
+            cin &gt;&gt; temp1;
+            if(check[temp1] == 1){
+                flag =1;
+                ans[j] = temp1;
+                cnt1++;
+            }
+        }
+        if(flag == 1){
+            cnt0++;
+            bool space = false;
+            cout &lt;&lt; name &lt;&lt;&quot;: &quot;;
+            for(int j = 0; j &lt; k; j++){
+                if(ans[j] != -1){
+                    if(space == true) cout &lt;&lt; &quot; &quot;;
+                    printf(&quot;%04d&quot;,ans[j]);
+                    space = true;
+                }
+            }
+            cout &lt;&lt; endl;        
+        }
+    }
+    cout &lt;&lt; cnt0 &lt;&lt; &quot; &quot; &lt;&lt; cnt1;
+    return 0;
+}  </code></pre><p>柳神的代码不太好理解，这里有一个技巧就是，输出名字后，其实每一个违禁品编号前面都有有个空格。对于输出也是只有第一个前面输出名字，其他的都不输出。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+bool forbid[10000];
+int main() {
+    int n, m, temp, k, snum = 0, fnum = 0;
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+    for (int i = 0; i &lt; m; i++) {
+        scanf(&quot;%d&quot;, &amp;temp);
+        forbid[temp] = true;
+    }
+    for (int i = 0; i &lt; n; i++) {
+        char name[10];
+        bool flag = false;
+        scanf(&quot;%s %d&quot;, name, &amp;k);
+        for (int j = 0; j &lt; k; j++) {
+            scanf(&quot;%d&quot;, &amp;temp);
+            if (forbid[temp]) {
+                if (!flag) {
+                    printf(&quot;%s:&quot;, name);
+                    flag = true;
+                }
+                printf(&quot; %04d&quot;, temp);
+                fnum++;
+            }
+        }
+        if (flag) {
+            printf(&quot;\n&quot;);
+            snum++;
+        }
+    }
+    printf(&quot;%d %d\n&quot;, snum, fnum);
+    return 0;
+}  </code></pre><p>5.B1076Wifi密码。这道题相对简单，注意使用scanf以%c的形式是可以读入空格和换行的。使用getline之前必须使用getline来吸收一下。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    getchar();
+    string s;
+    for(int i = 0; i &lt; n; i++){
+        getline(cin, s);
+        for(int j = 0; j &lt; s.length(); j++){
+            if(s[j] == &apos;-&apos; &amp;&amp; s[j + 1] == &apos;T&apos;){
+                cout &lt;&lt; s[j - 1] - &apos;A&apos; + 1; 
+            }    
+        }    
+    } 
+    return 0;
+}  </code></pre><p>注意柳神中while的写法，真的太巧妙了  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    string s;
+    while (cin &gt;&gt; s) 
+        if(s.size() == 3 &amp;&amp; s[2] == &apos;T&apos;) cout &lt;&lt; s[0]-&apos;A&apos;+1;
+    return 0;
+}  </code></pre><p>6.B1077互评成绩。注意变量定义后的作用范围，这道题vector需要定义在数组以内，如果定义在外面出错，相当于每个循环都初始化一次。四舍五入就是要加上0.5后得到整数。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int main(){
+    int n, m;
+    double g1, g2;
+    cin &gt;&gt; n &gt;&gt; m;
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; g1;
+        vector&lt;int&gt; v;
+        for(int j = 1; j &lt; n; j++){
+            int temp;
+            cin &gt;&gt; temp;
+            if(temp &gt;= 0 &amp;&amp; temp &lt;= m){
+                v.push_back(temp);
+            }
+        }
+        int sum = 0;
+        sort(v.begin(),v.end());
+        for(int i = 1; i &lt; v.size() - 1; i++){
+            sum += v[i];
+        }    
+        double g2 = sum / (v.size() - 2) ;
+        cout &lt;&lt; (int)((g1 + g2) / 2 + 0.5) &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>7.B1087有多少不同的值。是一道简单题，使用set可以大大减少代码量  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    set&lt;int&gt; st;
+    for(int i = 0; i &lt;= n; i++){
+        int temp = (i / 2) + (i / 3) + (i / 5);
+        st.insert(temp);
+    }
+    cout &lt;&lt; st.size();
+    return 0;
+}  </code></pre><p>8.B1020月饼。注意需要按照单价排序，不是按照价格排序。注意是正数还是正正数。需要考虑所有都不满足的情况。下面是代码  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+struct node{
+    double total, sumprice,price;
+};
+bool cmp(node a, node b){
+        return a.price &gt; b.price;
+}
+int main(){
+    int n, d;
+    cin &gt;&gt; n &gt;&gt; d;
+    vector &lt;node&gt; v(n);
+    for(int i = 0; i &lt; n; i++) cin &gt;&gt; v[i].total;
+    for(int i = 0; i &lt; n; i++) cin &gt;&gt; v[i].sumprice;
+    for(int i = 0; i &lt; n; i++){
+        v[i].price = v[i].sumprice * 1.0 / v[i].total;
+    } 
+    sort(v.begin(),v.end(),cmp);
+//    for(int i = 0; i &lt; n; i++) cout &lt;&lt; v[i].total &lt;&lt;&quot;*&quot;&lt;&lt; v[i].price &lt;&lt; endl;
+    double sum = 0;
+    int i = 0;
+    while(d &gt; 0 &amp;&amp; i &lt; n){
+//        cout &lt;&lt; v[i].total &lt;&lt; v[i].price &lt;&lt; endl;
+        if(d &gt;= v[i].total){
+            sum += v[i].sumprice;
+        }
+        else{
+            sum += (d * v[i].sumprice * 1.0/ v[i].total);
+        }
+        d = d - v[i].total;
+        i++;
+    }
+    int tmp = 0;
+    for(int i = 0; i &lt; n; i++){
+            tmp += v[i].sumprice;
+        }
+    if(d &gt; tmp) cout &lt;&lt; tmp;
+    else printf(&quot;%.2f&quot;, sum);
+    return 0;
+}  </code></pre><p>注意柳神代码中的算法：</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+struct mooncake{
+    float mount, price, unit;
+};
+int cmp(mooncake a, mooncake b) {
+    return a.unit &gt; b.unit;
+}
+int main() {
+    int n, need;
+    cin &gt;&gt; n &gt;&gt; need;
+    vector&lt;mooncake&gt; a(n);
+    for (int i = 0; i &lt; n; i++) scanf(&quot;%f&quot;, &amp;a[i].mount);
+    for (int i = 0; i &lt; n; i++) scanf(&quot;%f&quot;, &amp;a[i].price);
+    for (int i = 0; i &lt; n; i++) a[i].unit = a[i].price / a[i].mount;
+    sort(a.begin(), a.end(), cmp);
+    float result = 0.0;
+    for (int i = 0; i &lt; n; i++) {
+        if (a[i].mount &lt;= need) {
+            result = result + a[i].price;
+        } else {
+            result = result + a[i].unit * need;
+            break;
+        }
+        need = need - a[i].mount;
+    }
+    printf(&quot;%.2f&quot;,result);
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>PAT</category>
