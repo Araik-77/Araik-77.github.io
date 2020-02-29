@@ -3,7 +3,7 @@
   <entry>
     <title>PAT乙级学习笔记（四）</title>
     <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
-    <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码  </p><a id="more"></a>
+    <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码<a id="more"></a>  </p>
 <pre><code>#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
@@ -341,6 +341,52 @@ int main() {
     }
     printf(&quot;%.2f&quot;,result);
     return 0;
+}  </code></pre><p>9.B1068万绿丛中一点红。这道题参考了柳神的代码，注意容器的resize的用法，为重新指定有效元素的个数，当定义两个变长的二维数组的时候，需要这样定义。vector&lt;vector<int>&gt; v(m)这样定义时表示，其中一个维度已经确定了。<br>10.B1070结绳。这道题题目读不懂，所以导致做不出来，不过思路是对的，浮点数与正数相加是浮点数。  </int></p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    int a[n];
+    for(int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];
+    sort(a, a + n);
+    double ans = a[0];
+    for(int i = 1; i &lt; n; i++){
+        ans = (ans + a[i]) / 2;
+    }
+    printf(&quot;%d&quot;, (int)ans);
+    return 0;
+}   </code></pre><p>10.B1045快速排序。这道题注意思路。一个数如果按照从小到大的顺序排列后，它的位置和源位置一样，并且大于左边的最大数，这个数就是主元。（另外一种思路是遍历数组，用一个数组来存储这个数左边的最大数，包括自己，遍历右边的数组，用一个数组存储这个数右边的最小数，包括自己，然后再遍历数组后，经过比较，找到主元。）注意当没有主元的时候，为了体现出第二行，需要输出换行符  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+using namespace std;
+int v[100000];
+int main(){
+    int n;
+    scanf(&quot;%d&quot;, &amp;n);
+    vector&lt;int&gt; a(n), b(n);
+    for(int i = 0; i &lt; n; i++) {
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        b[i] = a[i];
+    }
+    int max = 0, cnt = 0;
+    sort(b.begin(),b.end());
+    for(int i = 0; i &lt; n; i++){
+        if(a[i] == b[i] &amp;&amp; a[i] &gt; max){
+            v[cnt++] = a[i]; 
+        }
+        if(a[i] &gt; max)
+            max = a[i];
+    } 
+    printf(&quot;%d\n&quot;, cnt);
+    for(int i = 0; i &lt; cnt; i++){
+        printf(&quot;%d&quot;, v[i]);
+        if(i != cnt - 1) printf(&quot; &quot;);
+    }
+    printf(&quot;\n&quot;);
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>PAT</category>
@@ -352,7 +398,8 @@ int main() {
   <entry>
     <title>PAT乙级学习笔记（三）</title>
     <url>/2020/02/19/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[<p>##续接PAT乙级学习笔记（二）<br>##以下PAT乙级其它题目<br>1.B1015德才论。对于这样的有多数据的比较，先建立结构体，然后写好cmp函数，注意函数一定要写return！！！看题目的时候一定要注意哪些是大于，不大于，哪些是小于，不小于！！  </p><pre><code>#include&lt;iostream&gt;
+    <content><![CDATA[<p>##续接PAT乙级学习笔记（二）<br>##以下PAT乙级其它题目<br>1.B1015德才论。对于这样的有多数据的比较，先建立结构体，然后写好cmp函数，注意函数一定要写return！！！看题目的时候一定要注意哪些是大于，不大于，哪些是小于，不小于！！<a id="more"></a>  </p>
+<pre><code>#include&lt;iostream&gt;
 #include&lt;set&gt;
 #include&lt;string&gt;
 #include&lt;vector&gt;
@@ -399,8 +446,7 @@ for( int i = 0; i &lt; 4; i++){
         printf(&quot;%s %d %d\n&quot;,v[i][j].name.c_str(), v[i][j].de, v[i][j].cai);
 }
 return 0;
-}   </code></pre><a id="more"></a>
-<p>2.B1017A除以    B。跌跌撞撞的把题做出来了，但是代码冗长不精简，下面是我的代码：  </p>
+}   </code></pre><p>2.B1017A除以    B。跌跌撞撞的把题做出来了，但是代码冗长不精简，下面是我的代码：  </p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;set&gt;
 #include&lt;string&gt;
