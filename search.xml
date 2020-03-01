@@ -387,6 +387,45 @@ int main(){
     }
     printf(&quot;\n&quot;);
     return 0;
+}</code></pre><p>11.B1075链表元素分类。这道题相当于一个模板，用node结构体来存储每一个链表结点的数据和下一个地址，另定义为list[100000]，list的下标就是地址。输入的时候本结点的地址就相当于是临时变量，存储进list结构体里面。遍历的时候注意使用的是while循环，设定临时指针等于第一个地址（start）当p != -1的时候作为遍历条件，结尾组不要忘记p指向下一个地址。输出时第一个结点只输出本结点地址和数据，其他的结点输出一个本结点地址，换行，再输出一个本结点地址，再输出本结点数据，最后的时候不要忘记输出最后结点的下一个地址为-1.本道题和1025反转链表一个采用顺序存储，一个采用链式存储，需要多注意。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+struct node{
+    int data,next;
+}list[100000]; 
+vector &lt;int&gt; v[3];
+int main(){
+    int start, n, k, a;
+    scanf(&quot;%d %d %d&quot;, &amp;start, &amp;n, &amp;k);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;a);
+        scanf(&quot;%d%d&quot;, &amp;list[a].data, &amp;list[a].next);
+    }
+    int p = start;
+    while(p != -1){
+        int data = list[p].data;
+        if(data &lt; 0)
+            v[0].push_back(p);
+        else if(data &gt;= 0 &amp;&amp; data &lt;= k)
+            v[1].push_back(p);
+        else
+            v[2].push_back(p);
+        p = list[p].next;
+    }
+    int flag = 0;
+    for(int i = 0; i &lt; 3; i++){
+        for(int j = 0; j &lt; v[i].size(); j++){
+            if(flag == 0){
+                printf(&quot;%05d %d&quot;, v[i][j], list[v[i][j]].data);
+                flag = 1;
+            }else{
+                printf(&quot; %05d\n%05d %d&quot;,v[i][j], v[i][j], list[v[i][j]].data);
+            }
+        }
+    } 
+    printf(&quot; -1&quot;);    
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>PAT</category>
