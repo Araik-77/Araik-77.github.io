@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PAT甲级学习笔记（一）</title>
+    <url>/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/</url>
+    <content><![CDATA[<p>##以下PAT甲级数据结构相关 题目<br>1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口  </p><a id="more"></a>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+struct node{
+    char data;
+    int next;
+    bool flag;
+} list[100000];
+int main(){
+    int start1, start2, n;
+    scanf(&quot;%d %d %d&quot;, &amp;start1, &amp;start2, &amp;n);
+
+    for(int i = 0; i &lt; n; i++){
+        char c;
+        int a, b;
+        scanf(&quot;%d %c %d&quot;,&amp;a, &amp;c, &amp;b);
+        list[a] = {c, b, false};
+    }
+    for(int i = start1; i != -1; i = list[i].next){
+        list[i].flag = true;
+    }
+    for(int i = start2; i != -1; i = list[i].next){
+        if(list[i].flag == true){
+            printf(&quot;%05d&quot;,i);
+            return 0;
+        }
+    }
+    printf(&quot;-1&quot;);
+    return 0;
+} </code></pre>]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（四）</title>
     <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码<a id="more"></a>  </p>
@@ -427,6 +468,17 @@ int main(){
     printf(&quot; -1&quot;);    
     return 0;
 }</code></pre>]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT乙级学习笔记（四）</title>
+    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式</p>]]></content>
       <categories>
         <category>PAT</category>
       </categories>
@@ -1883,211 +1935,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>PAT乙级学习笔记（一）</title>
-    <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>##开一篇文章记录一下学习PAT乙级过程中遇到的问题。</p>
-<p>1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量<br>2.B1003 我要通过！map&lt;char,int&gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；<br>3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使用cin&gt;&gt;name&gt;&gt;sum来输入，中间的间隔就是空格。输出空格时cout&lt;&lt;” “,双引号之间一定有空格。<a id="more"></a><br>4.B1005 继续3n+1猜想。vector<int> v是两个变长数值，做题时发生了段错误，应该改为vector<int> v[k]表示其中一个是固定长度的。认真体会最后的关于用flag标记来输出中间空格的方法。<br>5.B1006换个格式输出整数。思维不要僵化，用数组存储各个位的数字，用取余%和整除/。<br>6.B1007素数对猜想。记住isprime函数的书写方式  </int></int></p>
-<pre><code>bool isprime(int a){
-for(int i=2;i*i&lt;=a;i++)
-    if(a%i==0) return false;
-return true;
-}  </code></pre><p>7.B1008数组元素循环右移。使用vector时必须要添加相应的头文件；vector<int> v(N)注意是小括号，当使用[]时表示vector数组  </int></p>
-<pre><code>vector&lt;int&gt; a ;      //声明一个int型向量a
-vector&lt;int&gt; a(10) ;   //声明一个初始大小为10的向量
-vector&lt;int&gt; a(10, 1) ;    //声明一个初始大小为10且初始值都为1的向量
-vector&lt;int&gt; b(a) ;       //声明并用向量a初始化向量b
-vector&lt;int&gt; b(a.begin(), a.begin()+3) ;//将a向量中从第0个到第2个(共3个)作为向量b的初始值  </code></pre><p>reverse的用法，注意<code>reverse(a,a+4)</code>表示翻转a[0]~a[3]；<br>8.B1010一元多项式求导。认真审题，输出中的0是1-1得0；可以用<code>while(cin&gt;&gt;a&gt;&gt;b)</code>来一直输入；同B1005体会用标记flag来输出空格的方法。<br>9.B1011A+B大于C。读题读3遍，看好细节；大整数运算时必须使用scanf和printf来输入输出；注意各个类型的取值范围  </p>
-<pre><code>char -128 ~ +127 (1 Byte)
-short -32767 ~ + 32768 (2 Bytes)
-unsigned short 0 ~ 65536 (2 Bytes)
-int -2147483648 ~ +2147483647 (4 Bytes) 2的31次幂
-unsigned int 0 ~ 4294967295 (4 Bytes)
-long == int
-long long -9223372036854775808 ~ +9223372036854775807 (8 Bytes)
-double 1.7 * 10^308 (8 Bytes)
-unsigned int 0～4294967295
-long long的最大值：9223372036854775807
-long long的最小值：-9223372036854775808
-unsigned long long的最大值：184467440737095516  </code></pre><p>10.B1012数字分类。用scanf进行输入时，必须使用&amp;，否则会出现段错误，避免段错误有，大数组必须定义在全局变量，数组开小了，sort函数排序出问题。当n1-n2+n3-n4…时可以在每一层循环中加入符号变量s=s*（-1），使用头文件<cmath>中的pow（double n1，double n2）中注意double类型。当输出空格时可以循环printf（” “）,也可以直接输出printf，也可以直接printf(“N “);不存在和等于0不是相等的，所以A2的测试点8一直通不过，这道题简直太精辟了；<br>11.B1013数素数。按照每行10个的输出方式是用循环，注意前后顺序，判断和打印不能颠倒。代码背下来，：</cmath></p>
-<pre><code>cnt=0;
-for(int i=0;i&lt;v.size();i++){
-    cnt++;
-    if(cnt%10!=1) printf(&quot; &quot;);
-    printf(&quot;%d&quot;,v[i]);
-    if(cnt%10==0) printf(&quot;\n&quot;);
-}  </code></pre><p>写判断是否为素数的bool函数，要注意括号的位置：  </p>
-<pre><code>bool isprime(int a){
-for(int i=2;i*i&lt;=a;i++)
-    if (a%i==0) return false;
-    return true;
-}  </code></pre><p>12.B1014福尔摩斯的约会。星期隐含着要A~G。输出的星期要是字符串，时间要是整型。时间注意前面要补零。找到相同的字符串后要跳出。判断分钟的时候用for条件语句时可以使用中间两个条件，当使用if判断条件时，必须在一个if里面全包括如下，如果去掉<code>((s1[j]&gt;=&#39;A&#39;&amp;&amp;s1[j]&lt;=&#39;N&#39;)||isdigit(s1[j]))</code>  就会导致测试点1和2错误。</p>
-<pre><code>for(int j=k+1;j&lt;s1.size()&amp;&amp;j&lt;s2.size();j++){
-        if(s1[j]==s2[j]&amp;&amp;((s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;)||isdigit(s1[j]))){
-            if(isdigit(s1[j])) printf(&quot;%02d:&quot;,s1[j]-&apos;0&apos;);
-            if(s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;) printf(&quot;%d:&quot;,s1[j]-&apos;A&apos;+10);
-            break;
-        }
-    }。  </code></pre><p>ctype中相关的函数（都是判断一个字符，不能判断字符串）以下结果如果是，就返回设定值，如果不是就返回原来的值，所以可以直接用，不用判断是否为大写字母等，如果是就tolower例子见B1029.    </p>
-<pre><code>isalnum        是否为字母数字
-isalpha        是否为字母
-islower        是否为小写字母
-isupper        是否为大写字母
-isdigit        是否为数字
-isxdigit    是否为16进制数字
-iscntrl        是否为控制字符
-isgraph        是否为图形字符（例如，空格、控制字符都不是）
-isspace        是否为空格字符（包括制表符、回车符、换行符等）
-isblank        是否为空白字符(C99/C++11新增)（包括水平制表符）
-isprint        是否为可打印字符
-ispunct        是否为标点
-tolower        转换为小写
-toupper        转换为大写</code></pre><p>这道题是一道文字游戏题，一定要认真审题后再下笔。  </p>
-<p>##以下是乙级字符串处理的题：<br>1.B1021个位数统计。比较简单，vector<int> a[10]表示建立一个vector数组，a[0]~a[9]每一个都是一个vector容器，vector常见用法如下：    </int></p>
-<pre><code>（1）a.assign(b.begin(), b.begin()+3); //b为向量，将b的0~2个元素构成的向量赋给a
-（2）a.assign(4,2); //是a只含4个元素，且每个元素为2
-（3）a.back(); //返回a的最后一个元素
-（4）a.front(); //返回a的第一个元素
-（5）a[i]; //返回a的第i个元素，当且仅当a[i]存在2013-12-07
-（6）a.clear(); //清空a中的元素
-（7）a.empty(); //判断a是否为空，空则返回ture,不空则返回false
-（8）a.pop_back(); //删除a向量的最后一个元素
-（9）a.erase(a.begin()+1,a.begin()+3); //删除a中第1个（从第0个算起）到第2个元素，也就是说删除的元素从a.begin()+1算起（包括它）一直到a.begin()+         3（不包括它）
-（10）a.push_back(5); //在a的最后一个向量后插入一个元素，其值为5
-（11）a.insert(a.begin()+1,5); //在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4
-（12）a.insert(a.begin()+1,3,5); //在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5
-（13）a.insert(a.begin()+1,b+3,b+6); //b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8         ，插入元素后为1,4,5,9,2,3,4,5,9,8
-（14）a.size(); //返回a中元素的个数；
-（15）a.capacity(); //返回a在内存中总共可以容纳的元素个数
-（16）a.resize(10); //将a的现有元素个数调至10个，多则删，少则补，其值随机
-（17）a.resize(10,2); //将a的现有元素个数调至10个，多则删，少则补，其值为2
-（18）a.reserve(100); //将a的容量（capacity）扩充至100，也就是说现在测试a.capacity();的时候返回值是100.这种操作只有在需要给a添加大量数据的时候才         显得有意义，因为这将避免内存多次容量扩充操作（当a的容量不足时电脑会自动扩容，当然这必然降低性能） 
-（19）a.swap(b); //b为向量，将a中的元素和b中的元素进行整体性交换
-（20）a==b; //b为向量，向量的比较操作还有!=,&gt;=,&lt;=,&gt;,&lt;  </code></pre><p>2.B1024科学技术法。寻找字符串中某一个字符的位置可以用<code>int i=0;while(s[i]!=&#39;E&#39;) i++;</code>。截取字符串和截取字符串转换为数字可以使用<code>string t=s.substr(1,i-1);//这是E前面的字符串 //int n=stoi(s.substr(i+1));//从i+1开始一直截取到最后//</code>.注意体会一个for循环中有两对条件的方法。<br>3.B1031查验身份证。当出现有判断时，先考虑是否采用函数，方程更简单。学会string每一位校验的时候，出现特殊情况怎么处理，将它剔除来单独处理。<code>int tmp=(s[17]==&#39;X&#39;) ? 10 : (s[17]-&#39;0&#39;);return b[num%11]==tmp;</code>这个返回写的太棒了。cin输入结束是以空格结束的。用flag来标记是否已经输出的方法继续学习。<br>4.B1048数字加密。A的长度大于B时，加不加0需要商讨。学会用字符串反转，<code>reverse(a.begin(),a.end());</code>a为字符串。学会使用append用法。<code>b.append(lena-lenb,&#39;0&#39;);</code>表示在字符b的结尾添加lena-lena长度的字符‘0’。使用append()添加文本常用方法:直接添加另一个完整的字符串:如str1.appen(str2);<br>添加另一个字符串的某一段子串:如str1.append(str2, 11, 7);<br>添加几个相同的字符:如str1.append(5, ‘.’);。用字符串来存储加密之后的结果<code>c+=str[(a[i]-&#39;0&#39;+b[i]-&#39;0&#39;)%13];</code>。定义字符数组用<code>char str[14]={&quot;0123456789JQK&quot;};</code>访问时可以直接使用str[n]来访问。<br>5.B1052卖个萌。break只能跳出一层循环，只能用于do~while,for,while语句，不能用于if语句，continue语句表示本次循环体中余下尚未执行的语句，立即进行下一次的循环条件判定，可以理解为仅结束本次循环，continue语句并没有使整个循环终止。<code>vector&lt;vector&lt;string&gt; &gt;v</code>。相当于二维可变长度数组。\表示转义字符，当想输出时必须再加上\即\。一行内有空格时必须使用<code>string s;getline(cin,s);</code>来读入一行。注意变量的定义位置，当把<code>vector&lt;string&gt; row;</code>定义在三层循环外面的时候会出现答案错误。中间读取字符的时候多用while语句，类似于一个双指针的操作，十分精彩。贴上大神的代码：  </p>
-<pre><code>#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include &lt;algorithm&gt;
-#include&lt;vector&gt;
-using namespace std;
-int main(){
-vector&lt;vector&lt;string&gt; &gt; v;
-for(int i=0;i&lt;3;i++){
-    string s;
-    getline(cin,s);
-    int j=0,k=0;
-    vector&lt;string&gt; row;
-    while(j&lt;s.length()){
-        if(s[j]==&apos;[&apos;){
-            while(k++&lt;s.length()){
-                if(s[k]==&apos;]&apos;){
-                    row.push_back(s.substr(j+1,k-j-1));
-                    break;
-                }                    
-            }
-        }
-        j++;
-    }
-    v.push_back(row);    
-}
-int n,a,b,c,d,e;
-cin&gt;&gt;n;
-for(int i=0;i&lt;n;i++){
-    cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e;
-    if(a&gt;v[0].size()||b&gt;v[1].size()||c&gt;v[2].size()||d&gt;v[1].size()||e&gt;v[0].size()||a&lt;1||b&lt;1||c&lt;1||d&lt;1||e&lt;1){
-        cout&lt;&lt;&quot;Are you kidding me? @\\/@&quot;&lt;&lt;endl;
-        continue;
-    }    
-    cout&lt;&lt;v[0][a-1]&lt;&lt;&quot;(&quot;&lt;&lt;v[1][b-1]&lt;&lt;v[2][c-1]&lt;&lt;v[1][d-1]&lt;&lt;&quot;)&quot;&lt;&lt;v[0][e-1]&lt;&lt;endl;        
-}
-return 0;    
-}    </code></pre><p>6.B1054求平均值。当输入有不同字符时，可以采用sscanf和sprintf来实现不同格式的输入输出<code>scanf(&quot;%s&quot;, a);sscanf(a,&quot;%lf&quot;,&amp;temp);sprintf(b,&quot;%.2f&quot;,temp);</code>其中a和b为字符数组。scanf结束的几种方式，空格或跳格，超过指定宽度，当非法输入。判断是否是非法字符的方式如下，用读入两位小数的字符数组长度和原来的字符数组长度长度来计算：方法很巧妙。    </p>
-<pre><code>for(int j=0;j&lt;strlen(a);j++){
-        if(a[j]!=b[j]) flag=1;
-        if(flag||tmp&lt;-1000||tmp&gt;1000){
-            printf(&quot;ERROR: %s is not a legal number\n&quot;,a);
-            continue;
-        }
-        else{
-            sum+=tmp;
-            cnt++;
-        }
-    }  </code></pre><p>7.B1067试密码。PAToj中输入和输出可以一起输出，也可以单次输出。用getchar（）来吸收后面的换行”\n”。getline（cin，s)可以一次输入一整行。做好题目的分析，最后先打好流程图。<br>8.B1081检查密码。非空字符串也可以是空格，所以不能用cin来读入，需要使用<code>getline(cin,s)</code>来读入一行。第一行读入之后要求将最后回车键吸收掉<code>getchar()</code>.对于PAT考试，“对于有多组测试数据的输入，可以全部读入之后再输出，也可以处理一组测试数据就输出一组”，详见PAT运行说明。<br>9.B1084外观数列。当定义二维vector数组时，vector&lt;vector<int> &gt;v(45)后面尽量写上一个维的大小，否则容易容器下标越界。本题是采用双指针的方法，认真体会指针回溯的过程：  </int></p>
-<pre><code>for(int i=0;i&lt;s.length();**i=j**){
-        for(j=i;j&lt;s.length()&amp;&amp;s[j]==s[i];j++);
-        t+=s[i]+to_string(j-i);    
-    }  </code></pre><p>10.B1086就不告诉你。输出要是数字，使用stoi（）函数来实现。将数字反转的时候采用reverse（s.begin(),s.end())来实现。<br>11.B1058选择题。注意变量的命名方式一定要规范，绝对不能出现拼音。用vector&lt;set<char> &gt;rigtht(m)来存储每道题的正确答案可以保证一定是按照字母顺序输入的，同时使用st<char>来存储学生的答案。注意本题当中所使用的scanf（“ %c”，&amp;c）的用法，当以%c的形式来读入时是可以读入空格的。  </char></char></p>
-<p>##以下是PAT乙级的逻辑题<br>1.B1084三人行。<code>double c=2*1.0/5，cout&lt;&lt;c;</code>等于0.4。<code>double c=2/5，cout&lt;&lt;c;</code>等于0。<code>double(2/5)</code>表示先进行除法，再进行强制类型转换。注意输出格式是一行内还是多行。本题的输出可以用一个函数：<br>    void print(double t) {<br>    if (m == t) printf(“ Ping”);<br>    else if (m &lt; t) printf(“ Cong”);<br>    else printf(“ Gai”);<br>    }<br>  注意abs(a-b)的使用，返回的是int类型，fabs返回的是double类型。一个两位数的倒着输出可以用<code>= i % 10 * 10 + i / 10;</code>同样的三位数也适用。<br>2.B1082射击比赛。可以采用<algorithm>下的MAX()来取最大值。本题是一道先假设最大和最小之后依次替换的典型题目，注意当n=0时，即最大和最小都是一个人的时候。<br>3.B1079延迟的回文数。大整数计算的写法：  </algorithm></p>
-<pre><code>string add(string s1,string s2){
-string s=s1;
-int carry=0;
-for(int i=s1.length()-1;i&gt;=0;i--){
-    s[i]=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)%10+&apos;0&apos;;//字符串先变成数字进行运算再加上&apos;0&apos;变成字符。 
-    carry=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)/10;
-}
-if(carry&gt;0) s=&apos;1&apos;+s;
-return s;
-}  </code></pre><p>注意reverse是一个函数的过程，不能够赋值，string s=reverse(a.begin(),a.end())这样的写法会出现问题；判断是否是回文数字的时候采用的是函数内写reverse()的方法。主函数当中如果出现return 0；就表示直接退出主函数，程序结束运行。<br>4.B1078字符串的压缩与解压。当压缩的时候也可以不采用双指针的方式，也可以采用单指针加上while循环的形式。注意解压的时候数字不一定是一位数，也可能是多位数，认真体会下面的统计位数的函数。  </p>
-<pre><code>#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;vector&gt;
-#include&lt;cctype&gt;
-#include&lt;cmath&gt; 
-#include&lt;algorithm&gt;
-using namespace std;
-void c(string s){
-int j=0;
-for(int i=0;i&lt;s.length();i++){
-    int cnt=0;
-    while(s[i]==s[i+1])
-        i++,cnt++; 
-    if(cnt!=0) cout&lt;&lt;cnt+1;
-    cout&lt;&lt;s[i];  
-}    
-}
-void d(string s){
-for(int i=0;i&lt;s.length();i++){
-    int sum=0;
-    while(isdigit(s[i]))
-        sum=sum*10+s[i++]-&apos;0&apos;;
-    for(int j=0;j&lt;sum;j++)
-        cout&lt;&lt;s[i];
-    if(sum==0)
-        cout&lt;&lt;s[i];
-}
-}
-int main(){
-string s,s0;
-cin&gt;&gt;s0;
-getchar();
-getline(cin,s);
-if(s0==&quot;C&quot;) c(s);
-if(s0==&quot;D&quot;) d(s); 
-return 0;    
-}</code></pre><p>5.B1074宇宙无敌加法器。当从字符串最后一项是是s[s.length()-1]。注意“==”的书写。自定义函数当中变量的改变不会影响主函数中变量的改变。注意本道题中s（进制数字符）需要初始化，算法中直接赋值了。加法器定义的array必须定义在循环的外侧。加法器每一次只能够进1位。如何使用flag只标记一次，本题给出了if的方法。  </p>
-<pre><code>for(int i = 0; i &lt; ans.size(); i++) {
-if (ans[i] != &apos;0&apos; || flag == 1) {
-flag = 1;
-cout &lt;&lt; ans[i];
-}
-}</code></pre><p>当两个字符串需要补同样长的时候，除了使用，reverse（）反转再使用append（）在字符后加0之外，也可以采取本题的方式，很巧妙。  </p>
-<pre><code>string ss1(s.length() - s1.length(), &apos;0&apos;);
- s1 = ss1 + s1;
-string ss2(s.length() - s2.length(), &apos;0&apos;);
-s2 = ss2 + s2;  </code></pre><p>6.B1060爱丁顿数。本题的大数组定义在了函数内部也没有超时，但是时间明显增加了很多，为了保险起见，大数组还是要开全局。数组的下标可以从1开始，不一定要从0开始，注意使用的时候也是从下标1开始的如sort。当书写sort的比较函数的时候，为了产生冲突，把比较函数定义为cmp1。本题有一个测试点没做出来，因为题意理解不明白…..<br>7.B1059C语言竞赛。注意模块化编程的思想，分步骤完成每一个功能。当出现要更改的时候，一定要把所有的地方都改到，本题就是把cout输出改为printf输出的时候有一个地方没改到导致测试点2通过不了。注意体会柳神代码中，使用set来标记是否输出的方法，set可以自动去掉查找的过程中重复的id插入：  </p>
-<pre><code>if(ss.find(id) == ss.end()) //表示没有找到id值就插入
-ss.insert(id);
-} else {
-printf(&quot;Checked\n&quot;);
-continue;
-}  </code></pre><p>8.B1063输出谱半径。注意printf函数中%md,%0md,%.mf这三种用法。<br>9.B1040有多少个PAT.本题如果暴力求解（就是使用三层for循环）会导致运算结果超时。本题的核心是先找A，找到A 就把结果更新，对于每一个A，它的左侧的P个数和右侧的T个数乘积就是这个A对应的PAT，所有结果相加就得到最后结果。这里有一个技巧是先遍历一遍字符串，求出T的个数，然后，每次判断如果为T 就把T个数减1.注意更新结果的时候每一次都对1000000007取余，结果更小。 </p>
-]]></content>
-      <categories>
-        <category>PAT</category>
-      </categories>
-      <tags>
-        <tag>算法笔记</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PAT乙级学习笔记（二）</title>
     <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（一）<br>##以下PAT乙级模拟题<br>1.B1053住房空置率。注意变量的命名方式，更加有助于解题和找bug。注意题目中输出一位小数点百分数的方式，（double）强制类型转换。  </p>
@@ -2470,6 +2317,211 @@ for(auto it = ans.begin(); it != ans.end(); it++){
 }
 return 0;
 }  </code></pre><p>7.B1064朋友数。这道题比较简单，注意后面输出空格的方法。另外，stoi只能作用于字符串。 </p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PAT乙级学习笔记（一）</title>
+    <url>/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>##开一篇文章记录一下学习PAT乙级过程中遇到的问题。</p>
+<p>1.string中截取字符串函数s.substr(2,3),表示从s的下标为2的字符开始连续截取3个字符，其中2和3不能为变量<br>2.B1003 我要通过！map&lt;char,int&gt; mp,当使用mp[‘T’]访问时，返回的是字符T的个数；mp.size()返回的是映射的对数；<br>3.B1004 成绩排名。当输入中有空格的字符串时，可以直接使用cin&gt;&gt;name&gt;&gt;sum来输入，中间的间隔就是空格。输出空格时cout&lt;&lt;” “,双引号之间一定有空格。<a id="more"></a><br>4.B1005 继续3n+1猜想。vector<int> v是两个变长数值，做题时发生了段错误，应该改为vector<int> v[k]表示其中一个是固定长度的。认真体会最后的关于用flag标记来输出中间空格的方法。<br>5.B1006换个格式输出整数。思维不要僵化，用数组存储各个位的数字，用取余%和整除/。<br>6.B1007素数对猜想。记住isprime函数的书写方式  </int></int></p>
+<pre><code>bool isprime(int a){
+for(int i=2;i*i&lt;=a;i++)
+    if(a%i==0) return false;
+return true;
+}  </code></pre><p>7.B1008数组元素循环右移。使用vector时必须要添加相应的头文件；vector<int> v(N)注意是小括号，当使用[]时表示vector数组  </int></p>
+<pre><code>vector&lt;int&gt; a ;      //声明一个int型向量a
+vector&lt;int&gt; a(10) ;   //声明一个初始大小为10的向量
+vector&lt;int&gt; a(10, 1) ;    //声明一个初始大小为10且初始值都为1的向量
+vector&lt;int&gt; b(a) ;       //声明并用向量a初始化向量b
+vector&lt;int&gt; b(a.begin(), a.begin()+3) ;//将a向量中从第0个到第2个(共3个)作为向量b的初始值  </code></pre><p>reverse的用法，注意<code>reverse(a,a+4)</code>表示翻转a[0]~a[3]；<br>8.B1010一元多项式求导。认真审题，输出中的0是1-1得0；可以用<code>while(cin&gt;&gt;a&gt;&gt;b)</code>来一直输入；同B1005体会用标记flag来输出空格的方法。<br>9.B1011A+B大于C。读题读3遍，看好细节；大整数运算时必须使用scanf和printf来输入输出；注意各个类型的取值范围  </p>
+<pre><code>char -128 ~ +127 (1 Byte)
+short -32767 ~ + 32768 (2 Bytes)
+unsigned short 0 ~ 65536 (2 Bytes)
+int -2147483648 ~ +2147483647 (4 Bytes) 2的31次幂
+unsigned int 0 ~ 4294967295 (4 Bytes)
+long == int
+long long -9223372036854775808 ~ +9223372036854775807 (8 Bytes)
+double 1.7 * 10^308 (8 Bytes)
+unsigned int 0～4294967295
+long long的最大值：9223372036854775807
+long long的最小值：-9223372036854775808
+unsigned long long的最大值：184467440737095516  </code></pre><p>10.B1012数字分类。用scanf进行输入时，必须使用&amp;，否则会出现段错误，避免段错误有，大数组必须定义在全局变量，数组开小了，sort函数排序出问题。当n1-n2+n3-n4…时可以在每一层循环中加入符号变量s=s*（-1），使用头文件<cmath>中的pow（double n1，double n2）中注意double类型。当输出空格时可以循环printf（” “）,也可以直接输出printf，也可以直接printf(“N “);不存在和等于0不是相等的，所以A2的测试点8一直通不过，这道题简直太精辟了；<br>11.B1013数素数。按照每行10个的输出方式是用循环，注意前后顺序，判断和打印不能颠倒。代码背下来，：</cmath></p>
+<pre><code>cnt=0;
+for(int i=0;i&lt;v.size();i++){
+    cnt++;
+    if(cnt%10!=1) printf(&quot; &quot;);
+    printf(&quot;%d&quot;,v[i]);
+    if(cnt%10==0) printf(&quot;\n&quot;);
+}  </code></pre><p>写判断是否为素数的bool函数，要注意括号的位置：  </p>
+<pre><code>bool isprime(int a){
+for(int i=2;i*i&lt;=a;i++)
+    if (a%i==0) return false;
+    return true;
+}  </code></pre><p>12.B1014福尔摩斯的约会。星期隐含着要A~G。输出的星期要是字符串，时间要是整型。时间注意前面要补零。找到相同的字符串后要跳出。判断分钟的时候用for条件语句时可以使用中间两个条件，当使用if判断条件时，必须在一个if里面全包括如下，如果去掉<code>((s1[j]&gt;=&#39;A&#39;&amp;&amp;s1[j]&lt;=&#39;N&#39;)||isdigit(s1[j]))</code>  就会导致测试点1和2错误。</p>
+<pre><code>for(int j=k+1;j&lt;s1.size()&amp;&amp;j&lt;s2.size();j++){
+        if(s1[j]==s2[j]&amp;&amp;((s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;)||isdigit(s1[j]))){
+            if(isdigit(s1[j])) printf(&quot;%02d:&quot;,s1[j]-&apos;0&apos;);
+            if(s1[j]&gt;=&apos;A&apos;&amp;&amp;s1[j]&lt;=&apos;N&apos;) printf(&quot;%d:&quot;,s1[j]-&apos;A&apos;+10);
+            break;
+        }
+    }。  </code></pre><p>ctype中相关的函数（都是判断一个字符，不能判断字符串）以下结果如果是，就返回设定值，如果不是就返回原来的值，所以可以直接用，不用判断是否为大写字母等，如果是就tolower例子见B1029.    </p>
+<pre><code>isalnum        是否为字母数字
+isalpha        是否为字母
+islower        是否为小写字母
+isupper        是否为大写字母
+isdigit        是否为数字
+isxdigit    是否为16进制数字
+iscntrl        是否为控制字符
+isgraph        是否为图形字符（例如，空格、控制字符都不是）
+isspace        是否为空格字符（包括制表符、回车符、换行符等）
+isblank        是否为空白字符(C99/C++11新增)（包括水平制表符）
+isprint        是否为可打印字符
+ispunct        是否为标点
+tolower        转换为小写
+toupper        转换为大写</code></pre><p>这道题是一道文字游戏题，一定要认真审题后再下笔。  </p>
+<p>##以下是乙级字符串处理的题：<br>1.B1021个位数统计。比较简单，vector<int> a[10]表示建立一个vector数组，a[0]~a[9]每一个都是一个vector容器，vector常见用法如下：    </int></p>
+<pre><code>（1）a.assign(b.begin(), b.begin()+3); //b为向量，将b的0~2个元素构成的向量赋给a
+（2）a.assign(4,2); //是a只含4个元素，且每个元素为2
+（3）a.back(); //返回a的最后一个元素
+（4）a.front(); //返回a的第一个元素
+（5）a[i]; //返回a的第i个元素，当且仅当a[i]存在2013-12-07
+（6）a.clear(); //清空a中的元素
+（7）a.empty(); //判断a是否为空，空则返回ture,不空则返回false
+（8）a.pop_back(); //删除a向量的最后一个元素
+（9）a.erase(a.begin()+1,a.begin()+3); //删除a中第1个（从第0个算起）到第2个元素，也就是说删除的元素从a.begin()+1算起（包括它）一直到a.begin()+         3（不包括它）
+（10）a.push_back(5); //在a的最后一个向量后插入一个元素，其值为5
+（11）a.insert(a.begin()+1,5); //在a的第1个元素（从第0个算起）的位置插入数值5，如a为1,2,3,4，插入元素后为1,5,2,3,4
+（12）a.insert(a.begin()+1,3,5); //在a的第1个元素（从第0个算起）的位置插入3个数，其值都为5
+（13）a.insert(a.begin()+1,b+3,b+6); //b为数组，在a的第1个元素（从第0个算起）的位置插入b的第3个元素到第5个元素（不包括b+6），如b为1,2,3,4,5,9,8         ，插入元素后为1,4,5,9,2,3,4,5,9,8
+（14）a.size(); //返回a中元素的个数；
+（15）a.capacity(); //返回a在内存中总共可以容纳的元素个数
+（16）a.resize(10); //将a的现有元素个数调至10个，多则删，少则补，其值随机
+（17）a.resize(10,2); //将a的现有元素个数调至10个，多则删，少则补，其值为2
+（18）a.reserve(100); //将a的容量（capacity）扩充至100，也就是说现在测试a.capacity();的时候返回值是100.这种操作只有在需要给a添加大量数据的时候才         显得有意义，因为这将避免内存多次容量扩充操作（当a的容量不足时电脑会自动扩容，当然这必然降低性能） 
+（19）a.swap(b); //b为向量，将a中的元素和b中的元素进行整体性交换
+（20）a==b; //b为向量，向量的比较操作还有!=,&gt;=,&lt;=,&gt;,&lt;  </code></pre><p>2.B1024科学技术法。寻找字符串中某一个字符的位置可以用<code>int i=0;while(s[i]!=&#39;E&#39;) i++;</code>。截取字符串和截取字符串转换为数字可以使用<code>string t=s.substr(1,i-1);//这是E前面的字符串 //int n=stoi(s.substr(i+1));//从i+1开始一直截取到最后//</code>.注意体会一个for循环中有两对条件的方法。<br>3.B1031查验身份证。当出现有判断时，先考虑是否采用函数，方程更简单。学会string每一位校验的时候，出现特殊情况怎么处理，将它剔除来单独处理。<code>int tmp=(s[17]==&#39;X&#39;) ? 10 : (s[17]-&#39;0&#39;);return b[num%11]==tmp;</code>这个返回写的太棒了。cin输入结束是以空格结束的。用flag来标记是否已经输出的方法继续学习。<br>4.B1048数字加密。A的长度大于B时，加不加0需要商讨。学会用字符串反转，<code>reverse(a.begin(),a.end());</code>a为字符串。学会使用append用法。<code>b.append(lena-lenb,&#39;0&#39;);</code>表示在字符b的结尾添加lena-lena长度的字符‘0’。使用append()添加文本常用方法:直接添加另一个完整的字符串:如str1.appen(str2);<br>添加另一个字符串的某一段子串:如str1.append(str2, 11, 7);<br>添加几个相同的字符:如str1.append(5, ‘.’);。用字符串来存储加密之后的结果<code>c+=str[(a[i]-&#39;0&#39;+b[i]-&#39;0&#39;)%13];</code>。定义字符数组用<code>char str[14]={&quot;0123456789JQK&quot;};</code>访问时可以直接使用str[n]来访问。<br>5.B1052卖个萌。break只能跳出一层循环，只能用于do~while,for,while语句，不能用于if语句，continue语句表示本次循环体中余下尚未执行的语句，立即进行下一次的循环条件判定，可以理解为仅结束本次循环，continue语句并没有使整个循环终止。<code>vector&lt;vector&lt;string&gt; &gt;v</code>。相当于二维可变长度数组。\表示转义字符，当想输出时必须再加上\即\。一行内有空格时必须使用<code>string s;getline(cin,s);</code>来读入一行。注意变量的定义位置，当把<code>vector&lt;string&gt; row;</code>定义在三层循环外面的时候会出现答案错误。中间读取字符的时候多用while语句，类似于一个双指针的操作，十分精彩。贴上大神的代码：  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include &lt;algorithm&gt;
+#include&lt;vector&gt;
+using namespace std;
+int main(){
+vector&lt;vector&lt;string&gt; &gt; v;
+for(int i=0;i&lt;3;i++){
+    string s;
+    getline(cin,s);
+    int j=0,k=0;
+    vector&lt;string&gt; row;
+    while(j&lt;s.length()){
+        if(s[j]==&apos;[&apos;){
+            while(k++&lt;s.length()){
+                if(s[k]==&apos;]&apos;){
+                    row.push_back(s.substr(j+1,k-j-1));
+                    break;
+                }                    
+            }
+        }
+        j++;
+    }
+    v.push_back(row);    
+}
+int n,a,b,c,d,e;
+cin&gt;&gt;n;
+for(int i=0;i&lt;n;i++){
+    cin&gt;&gt;a&gt;&gt;b&gt;&gt;c&gt;&gt;d&gt;&gt;e;
+    if(a&gt;v[0].size()||b&gt;v[1].size()||c&gt;v[2].size()||d&gt;v[1].size()||e&gt;v[0].size()||a&lt;1||b&lt;1||c&lt;1||d&lt;1||e&lt;1){
+        cout&lt;&lt;&quot;Are you kidding me? @\\/@&quot;&lt;&lt;endl;
+        continue;
+    }    
+    cout&lt;&lt;v[0][a-1]&lt;&lt;&quot;(&quot;&lt;&lt;v[1][b-1]&lt;&lt;v[2][c-1]&lt;&lt;v[1][d-1]&lt;&lt;&quot;)&quot;&lt;&lt;v[0][e-1]&lt;&lt;endl;        
+}
+return 0;    
+}    </code></pre><p>6.B1054求平均值。当输入有不同字符时，可以采用sscanf和sprintf来实现不同格式的输入输出<code>scanf(&quot;%s&quot;, a);sscanf(a,&quot;%lf&quot;,&amp;temp);sprintf(b,&quot;%.2f&quot;,temp);</code>其中a和b为字符数组。scanf结束的几种方式，空格或跳格，超过指定宽度，当非法输入。判断是否是非法字符的方式如下，用读入两位小数的字符数组长度和原来的字符数组长度长度来计算：方法很巧妙。    </p>
+<pre><code>for(int j=0;j&lt;strlen(a);j++){
+        if(a[j]!=b[j]) flag=1;
+        if(flag||tmp&lt;-1000||tmp&gt;1000){
+            printf(&quot;ERROR: %s is not a legal number\n&quot;,a);
+            continue;
+        }
+        else{
+            sum+=tmp;
+            cnt++;
+        }
+    }  </code></pre><p>7.B1067试密码。PAToj中输入和输出可以一起输出，也可以单次输出。用getchar（）来吸收后面的换行”\n”。getline（cin，s)可以一次输入一整行。做好题目的分析，最后先打好流程图。<br>8.B1081检查密码。非空字符串也可以是空格，所以不能用cin来读入，需要使用<code>getline(cin,s)</code>来读入一行。第一行读入之后要求将最后回车键吸收掉<code>getchar()</code>.对于PAT考试，“对于有多组测试数据的输入，可以全部读入之后再输出，也可以处理一组测试数据就输出一组”，详见PAT运行说明。<br>9.B1084外观数列。当定义二维vector数组时，vector&lt;vector<int> &gt;v(45)后面尽量写上一个维的大小，否则容易容器下标越界。本题是采用双指针的方法，认真体会指针回溯的过程：  </int></p>
+<pre><code>for(int i=0;i&lt;s.length();**i=j**){
+        for(j=i;j&lt;s.length()&amp;&amp;s[j]==s[i];j++);
+        t+=s[i]+to_string(j-i);    
+    }  </code></pre><p>10.B1086就不告诉你。输出要是数字，使用stoi（）函数来实现。将数字反转的时候采用reverse（s.begin(),s.end())来实现。<br>11.B1058选择题。注意变量的命名方式一定要规范，绝对不能出现拼音。用vector&lt;set<char> &gt;rigtht(m)来存储每道题的正确答案可以保证一定是按照字母顺序输入的，同时使用st<char>来存储学生的答案。注意本题当中所使用的scanf（“ %c”，&amp;c）的用法，当以%c的形式来读入时是可以读入空格的。  </char></char></p>
+<p>##以下是PAT乙级的逻辑题<br>1.B1084三人行。<code>double c=2*1.0/5，cout&lt;&lt;c;</code>等于0.4。<code>double c=2/5，cout&lt;&lt;c;</code>等于0。<code>double(2/5)</code>表示先进行除法，再进行强制类型转换。注意输出格式是一行内还是多行。本题的输出可以用一个函数：<br>    void print(double t) {<br>    if (m == t) printf(“ Ping”);<br>    else if (m &lt; t) printf(“ Cong”);<br>    else printf(“ Gai”);<br>    }<br>  注意abs(a-b)的使用，返回的是int类型，fabs返回的是double类型。一个两位数的倒着输出可以用<code>= i % 10 * 10 + i / 10;</code>同样的三位数也适用。<br>2.B1082射击比赛。可以采用<algorithm>下的MAX()来取最大值。本题是一道先假设最大和最小之后依次替换的典型题目，注意当n=0时，即最大和最小都是一个人的时候。<br>3.B1079延迟的回文数。大整数计算的写法：  </algorithm></p>
+<pre><code>string add(string s1,string s2){
+string s=s1;
+int carry=0;
+for(int i=s1.length()-1;i&gt;=0;i--){
+    s[i]=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)%10+&apos;0&apos;;//字符串先变成数字进行运算再加上&apos;0&apos;变成字符。 
+    carry=(s1[i]-&apos;0&apos;+s2[i]-&apos;0&apos;+carry)/10;
+}
+if(carry&gt;0) s=&apos;1&apos;+s;
+return s;
+}  </code></pre><p>注意reverse是一个函数的过程，不能够赋值，string s=reverse(a.begin(),a.end())这样的写法会出现问题；判断是否是回文数字的时候采用的是函数内写reverse()的方法。主函数当中如果出现return 0；就表示直接退出主函数，程序结束运行。<br>4.B1078字符串的压缩与解压。当压缩的时候也可以不采用双指针的方式，也可以采用单指针加上while循环的形式。注意解压的时候数字不一定是一位数，也可能是多位数，认真体会下面的统计位数的函数。  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;cctype&gt;
+#include&lt;cmath&gt; 
+#include&lt;algorithm&gt;
+using namespace std;
+void c(string s){
+int j=0;
+for(int i=0;i&lt;s.length();i++){
+    int cnt=0;
+    while(s[i]==s[i+1])
+        i++,cnt++; 
+    if(cnt!=0) cout&lt;&lt;cnt+1;
+    cout&lt;&lt;s[i];  
+}    
+}
+void d(string s){
+for(int i=0;i&lt;s.length();i++){
+    int sum=0;
+    while(isdigit(s[i]))
+        sum=sum*10+s[i++]-&apos;0&apos;;
+    for(int j=0;j&lt;sum;j++)
+        cout&lt;&lt;s[i];
+    if(sum==0)
+        cout&lt;&lt;s[i];
+}
+}
+int main(){
+string s,s0;
+cin&gt;&gt;s0;
+getchar();
+getline(cin,s);
+if(s0==&quot;C&quot;) c(s);
+if(s0==&quot;D&quot;) d(s); 
+return 0;    
+}</code></pre><p>5.B1074宇宙无敌加法器。当从字符串最后一项是是s[s.length()-1]。注意“==”的书写。自定义函数当中变量的改变不会影响主函数中变量的改变。注意本道题中s（进制数字符）需要初始化，算法中直接赋值了。加法器定义的array必须定义在循环的外侧。加法器每一次只能够进1位。如何使用flag只标记一次，本题给出了if的方法。  </p>
+<pre><code>for(int i = 0; i &lt; ans.size(); i++) {
+if (ans[i] != &apos;0&apos; || flag == 1) {
+flag = 1;
+cout &lt;&lt; ans[i];
+}
+}</code></pre><p>当两个字符串需要补同样长的时候，除了使用，reverse（）反转再使用append（）在字符后加0之外，也可以采取本题的方式，很巧妙。  </p>
+<pre><code>string ss1(s.length() - s1.length(), &apos;0&apos;);
+ s1 = ss1 + s1;
+string ss2(s.length() - s2.length(), &apos;0&apos;);
+s2 = ss2 + s2;  </code></pre><p>6.B1060爱丁顿数。本题的大数组定义在了函数内部也没有超时，但是时间明显增加了很多，为了保险起见，大数组还是要开全局。数组的下标可以从1开始，不一定要从0开始，注意使用的时候也是从下标1开始的如sort。当书写sort的比较函数的时候，为了产生冲突，把比较函数定义为cmp1。本题有一个测试点没做出来，因为题意理解不明白…..<br>7.B1059C语言竞赛。注意模块化编程的思想，分步骤完成每一个功能。当出现要更改的时候，一定要把所有的地方都改到，本题就是把cout输出改为printf输出的时候有一个地方没改到导致测试点2通过不了。注意体会柳神代码中，使用set来标记是否输出的方法，set可以自动去掉查找的过程中重复的id插入：  </p>
+<pre><code>if(ss.find(id) == ss.end()) //表示没有找到id值就插入
+ss.insert(id);
+} else {
+printf(&quot;Checked\n&quot;);
+continue;
+}  </code></pre><p>8.B1063输出谱半径。注意printf函数中%md,%0md,%.mf这三种用法。<br>9.B1040有多少个PAT.本题如果暴力求解（就是使用三层for循环）会导致运算结果超时。本题的核心是先找A，找到A 就把结果更新，对于每一个A，它的左侧的P个数和右侧的T个数乘积就是这个A对应的PAT，所有结果相加就得到最后结果。这里有一个技巧是先遍历一遍字符串，求出T的个数，然后，每次判断如果为T 就把T个数减1.注意更新结果的时候每一次都对1000000007取余，结果更小。 </p>
 ]]></content>
       <categories>
         <category>PAT</category>
