@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT甲级数据结构相关 题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-02T12:46:34.867Z">
+<meta property="og:updated_time" content="2020-03-03T13:54:28.347Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -213,10 +213,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-02 20:41:57 / 修改时间：20:46:34" itemprop="dateCreated datePublished" datetime="2020-03-02T20:41:57+08:00">2020-03-02</time>
+              <time title="创建时间：2020-03-02 20:41:57" itemprop="dateCreated datePublished" datetime="2020-03-02T20:41:57+08:00">2020-03-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-03 21:54:28" itemprop="dateModified" datetime="2020-03-03T21:54:28+08:00">2020-03-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -277,7 +283,63 @@ int main(){
     }
     printf(&quot;-1&quot;);
     return 0;
-} </code></pre>
+}   </code></pre><p>2.B1097 Deduplication on a Linked List.这道题先输入链表，然后用flag进行标记，已经输出过的地址的flag标记为1，先输出统计没有重复的，然后把重复的赋值给ans，最后再输出。注意题目中的数组大小，避免如果ans数组开小了，会出现段错误  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node {
+    int data,next;
+}list[100005];
+
+struct node1{
+    int address, data;
+}ans[100005];
+
+int flag[10005] = {0};
+int main(){
+    int first, n;
+    scanf(&quot;%d %d&quot;, &amp;first, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        int temp;
+        scanf(&quot;%d&quot;, &amp;temp);
+        scanf(&quot;%d %d&quot;,&amp;list[temp].data, &amp;list[temp].next);
+    }
+    int sgn = 0, sum = 0;
+    for(int p = first; p != -1; p = list[p].next){
+        if(sgn == 0){
+            printf(&quot;%05d %d &quot;, p, list[p].data);
+            flag[abs(list[p].data)] = 1;
+            sgn = 1; 
+        }else{
+            if(flag[abs(list[p].data)] == 0){
+                printf(&quot;%05d\n&quot;, p);
+                printf(&quot;%05d %d &quot;, p, list[p].data);
+                flag[abs(list[p].data)] = 1;
+            }
+            else {
+                ans[sum].address = p;
+                ans[sum].data = list[p].data;
+                sum++;
+
+            }    
+        }
+    }
+    printf(&quot;-1\n&quot;);
+
+    int sgn1 = 0;
+    for(int i = 0; i &lt; sum ; i++){
+        if(sgn1 == 0){
+            printf(&quot;%05d %d&quot;, ans[i].address,ans[i].data);
+            sgn1 = 1; 
+        }else{
+            printf(&quot; %05d\n&quot;, ans[i].address);
+            printf(&quot;%05d %d&quot;, ans[i].address, ans[i].data);
+        }
+    }
+    if(sum != 0) printf(&quot; -1&quot;);
+    return 0;
+}  </code></pre><p>柳神的代码使用定义结构体中，增加一个num标记，不需要删除的结点num等于cnt1，需要删除的结点等于cnt2+max，然后按照num大小进行排序，再输出就会得到最后的结果。真的很巧妙。</p>
+
     </div>
 
     
