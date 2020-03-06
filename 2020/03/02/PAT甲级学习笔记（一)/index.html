@@ -52,15 +52,15 @@
   };
 </script>
 
-  <meta name="description" content="##以下PAT甲级数据结构相关 题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
+  <meta name="description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta name="keywords" content="算法笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT甲级学习笔记（一）">
 <meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2020&#x2F;03&#x2F;02&#x2F;PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="##以下PAT甲级数据结构相关 题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
+<meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-03T13:54:28.347Z">
+<meta property="og:updated_time" content="2020-03-06T14:08:21.647Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-03 21:54:28" itemprop="dateModified" datetime="2020-03-03T21:54:28+08:00">2020-03-03</time>
+                <time title="修改时间：2020-03-06 22:08:21" itemprop="dateModified" datetime="2020-03-06T22:08:21+08:00">2020-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>##以下PAT甲级数据结构相关 题目<br>1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口  </p><a id="more"></a>
+        <p>##以下PAT链表数据结构相关题目<br>1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口  </p><a id="more"></a>
 <pre><code>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 using namespace std;
@@ -283,7 +283,45 @@ int main(){
     }
     printf(&quot;-1&quot;);
     return 0;
-}   </code></pre><p>2.B1097 Deduplication on a Linked List.这道题先输入链表，然后用flag进行标记，已经输出过的地址的flag标记为1，先输出统计没有重复的，然后把重复的赋值给ans，最后再输出。注意题目中的数组大小，避免如果ans数组开小了，会出现段错误  </p>
+}   </code></pre><p>2.A10521052 Linked List Sorting。注意链表元素不在结构中的情况一定要考虑进去，这道题没做出来是因为不会链表的赋值操作，注意柳神代码中的<code>list[a] = {a, b, c, false}</code>的写法。本题的第四个测试点考察如果链表元素为0的时候应该输出0 -1，所以一定要考虑进去  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int address, key, next;
+    bool flag;
+}list[100005];
+bool cmp(node a, node b){
+    return !a.flag || !b.flag ? a.flag &gt; b.flag : a.key &lt; b.key;
+}
+int main(){
+    int n, first, a, b, c, sum = 0;
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;first);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);
+        list[a] = {a, b, c, false};
+    }
+    for(int p = first; p != -1; p = list[p].next ){
+        sum++;
+        list[p].flag = true;
+    }
+    sort(list, list + 100000, cmp);
+    if(sum == 0) printf(&quot;0 -1&quot;);
+    else{
+        printf(&quot;%d %05d\n&quot;, sum, list[0].address);
+        for(int i = 0; i &lt; sum; i++){
+            if(i == 0){
+                printf(&quot;%05d %d&quot;, list[i].address, list[i].key);
+            }else{
+                printf(&quot; %05d\n&quot;, list[i].address);
+                printf(&quot;%05d %d&quot;,list[i].address, list[i].key);
+            }
+        } 
+        printf(&quot; -1&quot;);
+    }
+
+    return 0;
+} </code></pre><p>3.A1097 Deduplication on a Linked List.这道题先输入链表，然后用flag进行标记，已经输出过的地址的flag标记为1，先输出统计没有重复的，然后把重复的赋值给ans，最后再输出。注意题目中的数组大小，避免如果ans数组开小了，会出现段错误  </p>
 <pre><code>#include &lt;iostream&gt;
 #include &lt;algorithm&gt;
 using namespace std;
