@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-06T14:08:21.647Z">
+<meta property="og:updated_time" content="2020-03-07T14:05:08.205Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-06 22:08:21" itemprop="dateModified" datetime="2020-03-06T22:08:21+08:00">2020-03-06</time>
+                <time title="修改时间：2020-03-07 22:05:08" itemprop="dateModified" datetime="2020-03-07T22:05:08+08:00">2020-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -376,8 +376,35 @@ int main(){
     }
     if(sum != 0) printf(&quot; -1&quot;);
     return 0;
-}  </code></pre><p>柳神的代码使用定义结构体中，增加一个num标记，不需要删除的结点num等于cnt1，需要删除的结点等于cnt2+max，然后按照num大小进行排序，再输出就会得到最后的结果。真的很巧妙。</p>
+}  </code></pre><p>柳神的代码使用定义结构体中，增加一个num标记，不需要删除的结点num等于cnt1，需要删除的结点等于cnt2+max，然后按照num大小进行排序，再输出就会得到最后的结果。真的很巧妙。<br>4.A1074Reversing Linked List。这道题有定义变量的时候，next可能是头文件的关键字，所有如果把next数组定义在main函数外边会出现编译不通过的现象。题目中说的是每k个元素反转一次，认真读题，使用数组的一个好处是可以使用sort函数，更加方便，柳神甲级和乙级的题解不太一样，甲级没有使用sort函数，比较麻烦。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int list[100000], data[100000], ans[100000];
+int next0[100000];
+int main(){
+    int first, n, k;
+    int temp;
 
+    scanf(&quot;%d %d %d&quot;, &amp;first, &amp;n, &amp;k);
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; temp;
+        cin &gt;&gt; data[temp] &gt;&gt; next0[temp];
+    }
+    int sum = 0;
+    while(first != -1){
+        list[sum++] = first;
+        first = next0[first];
+    }
+    for(int i = 0; i &lt; sum; i++) ans[i] = list[i];
+    for(int i = 0; i &lt; (sum - sum % k); i += k){//每k个结点一逆转 
+        reverse(begin(list) + i, begin(list) + i + k ); 
+    } 
+    for(int i = 0; i &lt; sum - 1; i++)
+        printf(&quot;%05d %d %05d\n&quot;, list[i], data[list[i]], list[i + 1]);
+    printf(&quot;%05d %d -1&quot;,list[sum - 1], data[list[sum - 1]]);    
+    return 0;
+} </code></pre>
     </div>
 
     
