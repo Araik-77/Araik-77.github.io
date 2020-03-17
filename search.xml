@@ -154,7 +154,42 @@ int main(){
         printf(&quot;%05d %d %05d\n&quot;, list[i], data[list[i]], list[i + 1]);
     printf(&quot;%05d %d -1&quot;,list[sum - 1], data[list[sum - 1]]);    
     return 0;
-} </code></pre>]]></content>
+}   </code></pre><p>##以下是PAT甲级dfs题目<br>1.A1013 Battle Over Cities.这道题注意理解dfstrave的部分直接放在了main（）函数当中。这是求连通分量的一个模板解法，要记下来  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int G[1010][1010];
+bool visit[1010];
+int n;
+void dfs(int u){
+    visit[u] = true;
+    for(int i = 1; i &lt;= n; i++){
+        if(visit[i] == false &amp;&amp; G[u][i] == 1)//结点没有被访问，并且结点到下一个结点有路径 
+            dfs(i);
+    } 
+}
+int main(){
+    int m, k, a, b;
+    scanf(&quot;%d%d%d&quot;,&amp;n, &amp;m, &amp;k);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d&quot;,&amp;a, &amp;b);
+        G[a][b] = G[b][a] = 1;
+    }
+    for(int i = 0; i &lt; k; i++){
+        fill(visit, visit + 1010, false);
+        scanf(&quot;%d&quot;, &amp;a);
+        int cnt = 0;
+        visit[a] = true;
+        for(int j = 1; j &lt;= n; j++){
+            if(visit[j] == false){
+                dfs(j);
+                cnt++;
+            }
+        }
+        printf(&quot;%d\n&quot;, cnt - 1);
+    }
+    return 0;
+}</code></pre>]]></content>
       <categories>
         <category>PAT</category>
       </categories>
@@ -597,7 +632,7 @@ int main(){
       </tags>
   </entry>
   <entry>
-    <title>PAT乙级学习笔记（四）</title>
+    <title>PAT甲级英语单词记录</title>
     <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式<br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的</p>]]></content>
       <categories>
