@@ -248,6 +248,53 @@ int main(){
             printf(&quot;%d\n&quot;, *it);
     } 
     return 0;
+}  </code></pre><p>3.A1103Integer Factorization 这道题要注意剪枝</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n, k, p, maxFacSum = -1;
+vector&lt;int&gt; v, ans, tempAns;
+void init(){
+    int temp = 0, index = 1;
+    while(temp &lt;= n){
+        v.push_back(temp);
+        temp = pow(index, p);
+        index++;
+    }
+}
+void dfs(int index, int tempSum, int tempK, int facSum){
+    if(tempK == k){
+        if(tempSum == n &amp;&amp; facSum &gt; maxFacSum){
+            ans = tempAns;//两个容器直接相等了
+            maxFacSum = facSum; 
+        }
+        return;//表明得到了结果直接退出dfs 
+    }
+    while(index &gt;= 1){
+        if(tempSum + v[index] &lt;= n){
+            tempAns[tempK] = index;
+            dfs(index, tempSum + v[index], tempK + 1, facSum + index);
+        }
+        if(index == 1) return;
+        index--;
+    } 
+}
+int main(){
+    scanf(&quot;%d%d%d&quot;,&amp;n, &amp;k, &amp;p);
+    init();
+    tempAns.resize(k);
+    dfs(v.size() - 1, 0, 0, 0);
+    if(maxFacSum == -1){
+        printf(&quot;Impossible&quot;);
+        return 0;
+    }
+    printf(&quot;%d = &quot;, n);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) printf(&quot; + &quot;);
+        printf(&quot;%d^%d&quot;, ans[i], p);
+    }
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>PAT</category>

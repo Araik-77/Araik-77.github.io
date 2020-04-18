@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T14:10:16.268Z">
+<meta property="og:updated_time" content="2020-04-18T13:11:47.154Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-19 22:10:16" itemprop="dateModified" datetime="2020-03-19T22:10:16+08:00">2020-03-19</time>
+                <time title="修改时间：2020-04-18 21:11:47" itemprop="dateModified" datetime="2020-04-18T21:11:47+08:00">2020-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -497,6 +497,53 @@ int main(){
         for(auto it = s.begin(); it != s.end(); it++)
             printf(&quot;%d\n&quot;, *it);
     } 
+    return 0;
+}  </code></pre><p>3.A1103Integer Factorization 这道题要注意剪枝</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n, k, p, maxFacSum = -1;
+vector&lt;int&gt; v, ans, tempAns;
+void init(){
+    int temp = 0, index = 1;
+    while(temp &lt;= n){
+        v.push_back(temp);
+        temp = pow(index, p);
+        index++;
+    }
+}
+void dfs(int index, int tempSum, int tempK, int facSum){
+    if(tempK == k){
+        if(tempSum == n &amp;&amp; facSum &gt; maxFacSum){
+            ans = tempAns;//两个容器直接相等了
+            maxFacSum = facSum; 
+        }
+        return;//表明得到了结果直接退出dfs 
+    }
+    while(index &gt;= 1){
+        if(tempSum + v[index] &lt;= n){
+            tempAns[tempK] = index;
+            dfs(index, tempSum + v[index], tempK + 1, facSum + index);
+        }
+        if(index == 1) return;
+        index--;
+    } 
+}
+int main(){
+    scanf(&quot;%d%d%d&quot;,&amp;n, &amp;k, &amp;p);
+    init();
+    tempAns.resize(k);
+    dfs(v.size() - 1, 0, 0, 0);
+    if(maxFacSum == -1){
+        printf(&quot;Impossible&quot;);
+        return 0;
+    }
+    printf(&quot;%d = &quot;, n);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) printf(&quot; + &quot;);
+        printf(&quot;%d^%d&quot;, ans[i], p);
+    }
     return 0;
 }</code></pre>
     </div>
