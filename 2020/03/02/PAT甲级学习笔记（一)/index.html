@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-18T13:11:47.154Z">
+<meta property="og:updated_time" content="2020-04-22T13:53:27.701Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-18 21:11:47" itemprop="dateModified" datetime="2020-04-18T21:11:47+08:00">2020-04-18</time>
+                <time title="修改时间：2020-04-22 21:53:27" itemprop="dateModified" datetime="2020-04-22T21:53:27+08:00">2020-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -543,6 +543,76 @@ int main(){
     for(int i = 0; i &lt; ans.size(); i++){
         if(i != 0) printf(&quot; + &quot;);
         printf(&quot;%d^%d&quot;, ans[i], p);
+    }
+    return 0;
+}</code></pre><p>4.A1131Subway Map 代码都看不懂  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_map&gt;
+using namespace std;
+vector&lt;vector&lt;int&gt; &gt; v(10000);
+int visit[10000], minCnt, minTransfer, start, end1;
+unordered_map&lt;int, int&gt; line;
+vector&lt;int&gt; path, tempPath;
+int transferCnt(vector&lt;int&gt; a){
+    int cnt = -1, preLine = 0;//两个站相邻也需要一次换乘，preLine为0 
+    for(int i = 1; i &lt; a.size(); i++){
+        if(line[a[i-1]*10000+a[i]] != preLine) cnt++;
+        preLine = line[a[i-1]*10000+a[i]];
+    }
+    return cnt;
+} 
+void dfs(int node, int cnt){
+    if(node == end1 &amp;&amp; (cnt &lt; minCnt || (cnt == minCnt &amp;&amp; transferCnt(tempPath) &lt; minTransfer))){
+        minCnt = cnt;
+        minTransfer = transferCnt(tempPath);
+        path = tempPath;
+    }
+    if(node == end1) return;//到了最后一个结点，直接退出
+    for(int i = 0; i &lt; v[node].size(); i++){
+        if(visit[v[node][i]] == 0){
+            visit[v[node][i]] = 1;
+            tempPath.push_back(v[node][i]);
+            dfs(v[node][i], cnt + 1);
+            visit[v[node][i]] = 0; 
+            tempPath.pop_back();
+        }
+    } 
+}
+int main(){
+    int n, m, k, pre, temp;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d%d&quot;, &amp;m, &amp;pre);
+        for(int j = 1; j &lt; m; j++){
+            scanf(&quot;%d&quot;, &amp;temp);
+            v[pre].push_back(temp);
+            v[temp].push_back(pre);
+            line[pre*10000+temp] = line[temp*10000+pre] = i+1;
+            pre = temp;
+        }
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        scanf(&quot;%d%d&quot;, &amp;start, &amp;end1);
+        minCnt = 99999, minTransfer = 99999;
+        tempPath.clear();
+        tempPath.push_back(start);
+        visit[start] = 1;//设置第一项为已经访问，之后要清空 
+        dfs(start, 0);
+        visit[start] = 0;
+        printf(&quot;%d\n&quot;, minCnt);
+        int preLine = 0, preTransfer = start;
+        for(int j = 1; j &lt; path.size(); j++){
+            if(line[path[j-1]*10000+path[j]] != preLine){
+                if(preLine != 0){
+                    printf(&quot;Take Line#%d from %04d to %04d.\n&quot;, preLine, preTransfer, path[j-1]);
+                }
+                preLine = line[path[j-1]*10000+path[j]];
+                preTransfer = path[j-1];
+            }
+        }
+         printf(&quot;Take Line#%d from %04d to %04d.\n&quot;, preLine, preTransfer,end1);
     }
     return 0;
 }</code></pre>
