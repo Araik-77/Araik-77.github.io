@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-22T13:53:27.701Z">
+<meta property="og:updated_time" content="2020-04-24T14:03:10.921Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 21:53:27" itemprop="dateModified" datetime="2020-04-22T21:53:27+08:00">2020-04-22</time>
+                <time title="修改时间：2020-04-24 22:03:10" itemprop="dateModified" datetime="2020-04-24T22:03:10+08:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -615,7 +615,36 @@ int main(){
          printf(&quot;Take Line#%d from %04d to %04d.\n&quot;, preLine, preTransfer,end1);
     }
     return 0;
-}</code></pre>
+}  </code></pre><p>5.1130 Infix Expression (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+struct node {
+    string data;
+    int l, r;
+}a[100];//任何一个结点都包括一个string数据，和两个int型孩子
+string dfs(int root){
+
+    if(a[root].l == -1 &amp;&amp; a[root].r != -1) return &quot;(&quot; + a[root].data + dfs(a[root].r) + &quot;)&quot;;
+
+    if(a[root].l != -1 &amp;&amp; a[root].r != -1) return &quot;(&quot; + dfs(a[root].l) + a[root].data + dfs(a[root].r) + &quot;)&quot;;
+    if(a[root].l == -1 &amp;&amp; a[root].r == -1) return a[root].data;//表示从叶子结点网上返回 
+}
+
+int main(){
+    int n, judge[100] = {0}, root = 1;
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++){
+        cin &gt;&gt; a[i].data &gt;&gt; a[i].l &gt;&gt; a[i].r;
+        if(a[i].l != -1) judge[a[i].l] = 1;
+        if(a[i].r != -1) judge[a[i].r] = 1;
+    }
+    while(judge[root] == 1) root++;//用来计算根节点的序号。即所有的孩子结点都没有它 
+    string ans = dfs(root);
+    if(ans[0] == &apos;(&apos;) ans = ans.substr(1, ans.size() - 2);
+    cout &lt;&lt; ans;
+
+    return 0;
+} </code></pre>
     </div>
 
     
@@ -631,8 +660,8 @@ int main(){
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/" rel="next" title="PAT甲级英语单词记录">
-                  <i class="fa fa-chevron-left"></i> PAT甲级英语单词记录
+                <a href="/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/" rel="next" title="PAT乙级学习笔记（四）">
+                  <i class="fa fa-chevron-left"></i> PAT乙级学习笔记（四）
                 </a>
             </div>
 
