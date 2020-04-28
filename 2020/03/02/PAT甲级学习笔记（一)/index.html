@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-24T14:03:10.921Z">
+<meta property="og:updated_time" content="2020-04-28T13:58:39.418Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-24 22:03:10" itemprop="dateModified" datetime="2020-04-24T22:03:10+08:00">2020-04-24</time>
+                <time title="修改时间：2020-04-28 21:58:39" itemprop="dateModified" datetime="2020-04-28T21:58:39+08:00">2020-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -644,6 +644,55 @@ int main(){
     cout &lt;&lt; ans;
 
     return 0;
+}   </code></pre><p>6.A1142 Maximal Clique (25分)</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int e[210][210];
+int main(){
+    int nv, ne, m, ta, tb, k;
+    scanf(&quot;%d%d&quot;,&amp;nv, &amp;ne);
+    for(int i = 0; i &lt; ne; i++){
+        scanf(&quot;%d%d&quot;, &amp;ta, &amp;tb);
+        e[ta][tb] = e[tb][ta] = 1; 
+    }
+    scanf(&quot;%d&quot;, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d&quot;, &amp;k);
+        vector&lt;int&gt; v(k);//注意学习这种存储方式,表示大小为k 
+        int hash[210] = {0}, isclique = 1, ismaximal = 1;
+        for(int j = 0; j &lt; k; j++){
+            scanf(&quot;%d&quot;,&amp;v[j]);//不需要设置临时变量，直接读入容器 
+            hash[v[j]] = 1;//相当于vis 
+        }
+
+        for(int j = 0; j &lt; k; j++){
+            if(isclique == 0) break;//再跳出来上一层循环 
+            for(int l = j + 1; l &lt; k; l++){
+                if(e[v[j]][v[l]] == 0){
+                    isclique = 0;
+                    printf(&quot;Not a Clique\n&quot;);
+                    break;//只能跳出一层循环 
+                }
+            }
+        } 
+
+        if(isclique == 0) continue;//表示判断结束了，直接下一组数据 
+        for(int j = 1; j &lt;= nv; j++){
+            if(hash[j] == 0){
+                for(int l = 0; l &lt; k; l++){
+                    if(e[v[l]][j] == 0) break;
+                    if(l == k - 1) ismaximal = 0;//表明里面的结点都选完了 
+                }
+            }
+            if(ismaximal == 0){
+                printf(&quot;Not Maximal\n&quot;);
+                break;
+            }
+        }
+        if(ismaximal == 1) printf(&quot;Yes\n&quot;);
+    }    
+    return 0;
 } </code></pre>
     </div>
 
@@ -660,8 +709,8 @@ int main(){
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/" rel="next" title="PAT乙级学习笔记（四）">
-                  <i class="fa fa-chevron-left"></i> PAT乙级学习笔记（四）
+                <a href="/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/" rel="next" title="PAT甲级英语单词记录">
+                  <i class="fa fa-chevron-left"></i> PAT甲级英语单词记录
                 </a>
             </div>
 
