@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-28T13:58:39.418Z">
+<meta property="og:updated_time" content="2020-05-01T13:58:28.857Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-28 21:58:39" itemprop="dateModified" datetime="2020-04-28T21:58:39+08:00">2020-04-28</time>
+                <time title="修改时间：2020-05-01 21:58:28" itemprop="dateModified" datetime="2020-05-01T21:58:28+08:00">2020-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -693,7 +693,98 @@ int main(){
         if(ismaximal == 1) printf(&quot;Yes\n&quot;);
     }    
     return 0;
-} </code></pre>
+}   </code></pre><p>7.1150 Travelling Salesman Problem (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int e[210][210], n, m, k, ans = 99999999, ansid;
+vector&lt;int&gt; v;
+void check(int index){
+    int sum = 0, cnt, flag = 1;
+    scanf(&quot;%d&quot;, &amp;cnt);
+    set&lt;int&gt; s;
+    vector &lt;int&gt; v(cnt);
+    for(int i = 0; i &lt; cnt; i++){
+        scanf(&quot;%d&quot;, &amp;v[i]);
+        s.insert(v[i]);
+    } 
+    for(int i = 0; i &lt; cnt - 1; i++){
+        if(e[v[i]][v[i+1]] == 0) flag =0;
+        sum += e[v[i]][v[i+1]];
+    }
+    if(flag == 0){
+        printf(&quot;Path %d: NA (Not a TS cycle)\n&quot;, index);    
+    }else if(v[0] != v[cnt-1] || s.size() != n){
+        printf(&quot;Path %d: %d (Not a TS cycle)\n&quot;, index, sum);
+    }else if(cnt != n+1){//真是巧妙 
+        printf(&quot;Path %d: %d (TS cycle)\n&quot;, index, sum);
+        if(sum &lt; ans){
+            ans = sum;
+            ansid = index;
+        }
+    }else{
+        printf(&quot;Path %d: %d (TS simple cycle)\n&quot;, index, sum);
+         if (sum &lt; ans) {
+             ans = sum;
+             ansid = index;
+         }
+    }
+}
+int main(){
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        int t1, t2, t;
+        scanf(&quot;%d%d%d&quot;, &amp;t1, &amp;t2, &amp;t);
+        e[t1][t2] = e[t2][t1] = t;
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 1; i&lt;= k; i++) check(i);
+    printf(&quot;Shortest Dist(%d) = %d\n&quot;, ansid, ans);
+    return 0;    
+}  </code></pre><p>上面使用set来计算访问结点的个数真是巧妙，要学会；本题明显适应于使用函数的方法来解决问题，要有分段处理的思想；对于是不是旅行图的判断要认真学会。  </p>
+<p>8.1122 Hamiltonian Cycle (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int G[210][210] = {0};
+vector&lt;int&gt; path;
+int main(){
+    int n, m, ta, tb;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d&quot;, &amp;ta, &amp;tb);
+        G[ta][tb] = G[tb][ta] = 1;
+    }
+    int k;
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        int n1, start, t;
+        path.clear();
+        set&lt;int&gt; s;
+        scanf(&quot;%d%d&quot;, &amp;n1, &amp;start);
+        path.push_back(start);
+        for(int j = 0; j &lt; n1-1; j++){
+            scanf(&quot;%d&quot;, &amp;t);
+            path.push_back(t);
+            s.insert(t);
+        }
+        int flag = 1;
+        for(int j = 0; j &lt; n1 - 1; j++){
+            if(G[path[j]][path[j+1]] == 0) flag = 0;
+        }
+//        cout &lt;&lt; flag &lt;&lt;&quot;$$&quot; &lt;&lt; endl;
+        if(flag == 0){
+            printf(&quot;NO\n&quot;);
+            continue;
+        }
+        if(start == path[n1-1] &amp;&amp; s.size() == n &amp;&amp; n == n1-1) printf(&quot;YES\n&quot;);
+        else printf(&quot;NO\n&quot;);
+    }
+    return 0;
+} </code></pre><p>这是第一道自己做出来的图的题。注意使用数组的时候，一定要注意会不会越界，尤其是path[n-2]这样的情况，否则会出现段错误；这道题需要考虑道路走不通的情况；按照柳神的代码，优化的地方有：1.只有计数功能的循环，可以直接使用while(cnt–)这样的形式。2.分析问题的时候可以画出顺序图，这道题，多走，少走，或者成环设置成flag1， 道路走不通设置成flag2，逻辑就十分清晰。</p>
+
     </div>
 
     
