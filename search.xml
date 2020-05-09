@@ -3,7 +3,8 @@
   <entry>
     <title>PAT甲级学习笔记（二）</title>
     <url>/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/</url>
-    <content><![CDATA[<p>##续接上一篇PAT甲级DFS相关题目<br>1.1030 Travel Plan (30分)  </p><pre><code>#include&lt;iostream&gt;
+    <content><![CDATA[<p>##续接上一篇PAT甲级DFS相关题目<br>1.1030 Travel Plan (30分)<a id="more"></a>   </p>
+<pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;vector&gt;
 #include&lt;algorithm&gt;
@@ -81,8 +82,103 @@ int main(){
     } 
     printf(&quot;%d %d\n&quot;, d[ed], minCost);
     return 0;
-}   </code></pre><a id="more"></a>
-<p>这是一道很经典的题目，要多看看，固定一下自己的书写方法。这道题需要注意1.一维数组和二维数组的初始化方式要记牢，否则会出现指针错误。2.Dijkstra时注意核心语句if的书写。3.输出路径的时候注意需要倒序输出，不要蒙，pre，tempPath，path不要写乱了。</p>
+}   </code></pre><p>这是一道很经典的题目，要多看看，固定一下自己的书写方法。这道题需要注意1.一维数组和二维数组的初始化方式要记牢，否则会出现指针错误。2.Dijkstra时注意核心语句if的书写。3.输出路径的时候注意需要倒序输出，不要蒙，pre，tempPath，path不要写乱了。<br>2.1018 Public Bike Management (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int INF = 99999999;
+const int MAXN = 510;
+int G[MAXN][MAXN], d[MAXN], w[MAXN];
+bool vis[MAXN] = {false};
+vector&lt;int&gt; path, tempPath;
+vector&lt;int&gt; pre[MAXN];
+int cmax, n, sp, m, at, bt, ct;
+int minNeed = INF, minRemain = INF;
+void Dijkstra(int s){
+    fill(d, d + MAXN, INF);
+    d[s] = 0;
+    for(int i = 0; i &lt;= n; i++){
+        int u = -1, MIN = INF;
+        for(int j = 0; j &lt;= n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; MIN){
+                u = j;
+                MIN = d[j];
+            }
+        }
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt;= n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != INF){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+}
+void DFS(int u){
+    if(u == 0){
+        tempPath.push_back(u);
+        int need = 0, remain = 0;
+        for(int i = tempPath.size() - 1; i &gt;= 0; i--){
+            int id = tempPath[i];
+            if(w[id] &gt; 0){
+                remain += w[id];
+            }else{
+                if(remain &gt; abs(w[id])){
+                    remain -= abs(w[id]);
+                }else{
+                    need += abs(w[id]) - remain;
+                    remain = 0;
+                }
+            }
+//            tempw += w[tempPath[i]];
+        }
+        if(need &lt; minNeed){
+            minNeed = need;
+            minRemain = remain;
+            path = tempPath;
+        }else if(need == minNeed &amp;&amp; remain &lt; minRemain){
+            minRemain = remain;
+            path = tempPath;
+        }
+        tempPath.pop_back();
+        return;
+    }
+    tempPath.push_back(u);
+    for(int i = 0; i &lt; pre[u].size(); i++){
+        DFS(pre[u][i]);
+    }
+    tempPath.pop_back();
+}
+int main(){
+    scanf(&quot;%d%d%d%d&quot;, &amp;cmax, &amp;n, &amp;sp, &amp;m);
+    fill(G[0], G[0] + MAXN*MAXN, INF);
+//    fill(w, w + MAXN, INF);
+    for(int i = 1; i &lt;= n; i++){
+        scanf(&quot;%d&quot;, &amp;w[i]);
+        w[i] = w[i] - cmax/2;
+    }
+//    w[0] = 0;
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d&quot;, &amp;at, &amp;bt, &amp;ct);
+        G[at][bt] = G[bt][at] = ct;
+    }
+    Dijkstra(0);
+    DFS(sp);
+    printf(&quot;%d &quot;, minNeed);
+    for(int i = path.size()-1; i &gt;= 0; i--){
+        printf(&quot;%d&quot;,path[i]);
+        if(i &gt; 0) printf(&quot;-&gt;&quot;);
+    }
+    printf(&quot; %d&quot;, minRemain);
+    return 0;
+}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。</p>
 ]]></content>
       <categories>
         <category>PAT</category>
@@ -636,7 +732,8 @@ int main(){
   <entry>
     <title>PAT甲级英语单词记录</title>
     <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式<br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示</p>]]></content>
+    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
+]]></content>
       <categories>
         <category>PAT</category>
       </categories>
