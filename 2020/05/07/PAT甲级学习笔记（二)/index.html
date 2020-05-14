@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-09T13:29:29.659Z">
+<meta property="og:updated_time" content="2020-05-14T14:09:50.077Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-09 21:29:29" itemprop="dateModified" datetime="2020-05-09T21:29:29+08:00">2020-05-09</time>
+                <time title="修改时间：2020-05-14 22:09:50" itemprop="dateModified" datetime="2020-05-14T22:09:50+08:00">2020-05-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -428,7 +428,144 @@ int main(){
     }
     printf(&quot; %d&quot;, minRemain);
     return 0;
-}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。</p>
+}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。<br>3.1087 All Roads Lead to Rome (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int inf =  99999999;
+const int maxn = 210; 
+map &lt;string, int&gt; m1;
+map &lt;int, string&gt; m2;
+int G[maxn][maxn], d[maxn], weight[maxn];
+vector &lt;int&gt; path, temppath, pre[maxn];
+
+bool vis[maxn] = {false}; 
+int n, k, st;
+int numpath = 0, maxw = 0;
+double maxavg = 0;
+
+void dijks(int s){
+//    cout &lt;&lt;&quot;*&quot;;
+    fill(d, d + maxn, inf);
+    d[s] = 0;
+    for(int i = 0; i &lt; n; i++){
+        int u = -1, min = inf;
+        for(int j = 0; j &lt; n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; min ){
+                u = j;
+                min = d[j];
+            }
+        } 
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt; n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != inf){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }    
+}
+void dfs(int v){
+    if(v == st){
+        temppath.push_back(v);
+        numpath++;
+        int tempw = 0;
+        for(int i = temppath.size() - 2; i &gt;= 0; i--){
+            int id = temppath[i];
+            tempw += weight[id];
+//            cout &lt;&lt; &quot;tempw = &quot; &lt;&lt; tempw &lt;&lt; endl;
+        }
+        double tempavg = 1.0*tempw/(temppath.size()-1);
+        if(tempw &gt; maxw){
+//            tempw = maxw;
+            maxw = tempw;
+            maxavg = tempavg;
+            path = temppath;
+        }else if(tempw == maxw &amp;&amp; tempavg &gt; maxavg){
+            maxavg = tempavg;
+            path = temppath;
+        }
+        temppath.pop_back();
+        return;
+    }
+    temppath.push_back(v);
+    for(int i = 0; i &lt; pre[v].size(); i++){
+        dfs(pre[v][i]);
+    }
+    temppath.pop_back();
+}
+int main(){
+    string c1, c2, start;
+    cin &gt;&gt; n &gt;&gt; k &gt;&gt; start;
+    m1[start] = 0;
+    m2[0] = start;
+    for(int i = 1; i &lt;= n-1; i++){
+        cin &gt;&gt; c1 &gt;&gt; weight[i];
+        m1[c1] = i;
+        m2[i] = c1;
+    }
+    fill(G[0], G[0] + maxn*maxn, inf);
+    for(int i = 0 ; i &lt; k; i++){
+        int cost;
+        cin &gt;&gt; c1 &gt;&gt; c2 &gt;&gt; cost;
+        int city1 = m1[c1], city2 = m1[c2];
+        G[city1][city2] = G[city2][city1] = cost; 
+    }
+    dijks(0);
+    int rom = m1[&quot;ROM&quot;];
+    dfs(rom);
+//    cout &lt;&lt; rom &lt;&lt;&quot;*&quot; &lt;&lt; endl;
+    printf(&quot;%d %d %d %d\n&quot;,numpath, d[rom], maxw, (int)maxavg);
+    for(int i = path.size() - 1; i &gt;= 0; i--){
+        cout &lt;&lt; m2[path[i]];
+        if(i &gt; 0) cout &lt;&lt; &quot;-&gt;&quot;;
+//        cout &lt;&lt;&quot;%&quot;;
+    }   
+    return 0;
+}  </code></pre><p>4.1146 Topological Order (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int main(){
+    int n, m, a, b, k, flag = 0, in[1010];
+    vector&lt;int&gt; v[1010]; 
+    scanf(&quot;%d %d&quot;,&amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].push_back(b);
+        in[b]++;
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        int judge = 1;
+        vector&lt;int&gt; tin(in, in+n+1);
+        //用in来初始化tin，起点表示从in[0]开始，一直到in[n],中间是两个指针迭代器
+        //只包括左边，不包括右边，所以应该是n+1而不是n 
+        for(int j = 0; j &lt; n; j++){
+            scanf(&quot;%d&quot;,&amp;a);
+            if(tin[a] != 0) judge = 0;
+//            for(int it : v[a]) tin[it]--;//遍历v[a]的每一个数,相当于下面的语句 
+            for(int l = 0; l &lt; v[a].size(); l++){
+                tin[v[a][l]]--;
+            } 
+        }
+        if(judge == 1) continue;
+        printf(&quot;%s%d&quot;, flag == 1 ? &quot; &quot; : &quot;&quot;, i);
+        flag = 1;
+    }
+    return 0;
+}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。</p>
 
     </div>
 
