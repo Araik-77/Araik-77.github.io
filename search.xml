@@ -315,7 +315,63 @@ int main(){
         flag = 1;
     }
     return 0;
-}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。</p>
+}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。<br>5.1020 Tree Traversals (25分)  </p>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 50;
+struct node{
+    int data;
+    node* lchild;
+    node* rchild;
+}; 
+int pre[maxn], in[maxn], post[maxn];
+int n; 
+node* create(int postl, int postr, int inl, int inr){
+    if(postl &gt; postr){
+        return NULL;
+    }
+    node* root = new node;
+    root-&gt;data = post[postr];//用来赋值的语句 
+    int k;
+    for(k = inl; k &lt;= inr; k++){
+        if(in[k] == post[postr]){
+            break;
+        }
+    }
+    int numleft = k - inl;
+    root-&gt;lchild = create(postl, postl+numleft-1, inl, k-1);
+    root-&gt;rchild = create(postl+numleft, postr-1, k+1,inr);
+    return root;
+}
+int num = 0;
+void bfs(node* root){
+    queue&lt;node*&gt; q;
+    q.push(root);
+    while(!q.empty()){
+        node* now = q.front();
+        q.pop();
+        printf(&quot;%d&quot;, now-&gt;data);
+        num++;
+        if(num &lt; n) printf(&quot; &quot;);
+        if(now-&gt;lchild != NULL) q.push(now-&gt;lchild);
+        if(now-&gt;rchild != NULL) q.push(now-&gt;rchild);
+    } 
+}
+int main(){
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;post[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;,&amp;in[i]);
+    }
+    node* root = create(0, n-1, 0, n-1);
+    bfs(root);
+    return 0;
+}  </code></pre><p>这是一道关于树给定前序遍历和中序遍历，输出层序遍历的题，简单的思路就是先建立二叉树，然后使用bfs搜索算法求解。当然也可以采用柳神的方法，代码如下：</p>
 ]]></content>
       <categories>
         <category>PAT</category>
