@@ -371,7 +371,90 @@ int main(){
     node* root = create(0, n-1, 0, n-1);
     bfs(root);
     return 0;
-}  </code></pre><p>这是一道关于树给定前序遍历和中序遍历，输出层序遍历的题，简单的思路就是先建立二叉树，然后使用bfs搜索算法求解。当然也可以采用柳神的方法，代码如下：</p>
+}  </code></pre><p>这是一道关于树给定前序遍历和中序遍历，输出层序遍历的题，简单的思路就是先建立二叉树，然后使用bfs搜索算法求解。当然也可以采用柳神的方法，代码如下：  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int index, value;
+};
+bool cmp(node a, node b){
+    return a.index &lt; b.index;
+}
+vector&lt;int&gt; post, in;
+vector&lt;node&gt; ans;
+void pre(int root, int start, int end, int index){
+    if(start &gt; end) return;//表示递归边界 
+    //下面两行代码表示寻找根节点在后序中的位置 
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != post[root]) i++;
+    //i,start, end都是中序遍历中的，root是后序遍历中的 
+    ans.push_back({index, post[root]});
+    pre(root - (end - i) - 1, start, i - 1, 2*index + 1);
+    pre(root - 1, i + 1, end, 2 * index + 2); 
+}
+int main(){
+    int n;
+    scanf(&quot;%d&quot;, &amp;n);
+    post.resize(n);
+    in.resize(n);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;post[i]);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;in[i]);
+    pre(n - 1, 0, n - 1, 0);
+    sort(ans.begin(), ans.end(), cmp);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) cout &lt;&lt;  &quot; &quot;;
+        cout &lt;&lt; ans[i].value;
+    }
+    return 0;
+}   </code></pre><p>6.1053 Path of Equal Weight (30分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+int target;
+vector&lt;int&gt; path;
+vector&lt;node&gt; v;
+int cmp1(int a, int b){
+    return v[a].w &gt; v[b].w;
+}
+void dfs(int index, int nodenum, int sum){
+    if(sum &gt; target) return;
+    if(sum == target){
+        if(v[index].child.size() != 0) return;
+        for(int i = 0; i &lt; nodenum; i++){
+            printf(&quot;%d%c&quot;, v[path[i]].w, i != nodenum - 1 ? &apos; &apos; : &apos;\n&apos;);
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        int node1 = v[index].child[i];
+        path[nodenum] = node1;
+        dfs(node1, nodenum+1, sum + v[node1].w);
+    }
+}
+int main(){
+    int n, m, a, b;
+    scanf(&quot;%d %d %d&quot;, &amp;n, &amp;m, &amp;target);
+    path.resize(n);
+    v.resize(n); 
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;v[i].w);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].child.resize(b);
+        for(int j = 0; j &lt; b; j++){
+            scanf(&quot;%d&quot;,&amp;v[a].child[j]);
+        }
+        sort(v[a].child.begin(), v[a].child.end(), cmp1);
+    }
+    dfs(0, 1, v[0].w);
+    return 0;
+}  </code></pre><p>这道题给出了如何存储非二叉树，实际上和图的存储类似，甚至比图的存储简单些，这里面给出的非叶子结点只是为了遍历的时候，用作判断边界。注意初始化容器的时候，如果开始没有给出大小，后面输入的时候需要resize();</p>
 ]]></content>
       <categories>
         <category>PAT</category>
