@@ -178,7 +178,8 @@ int main(){
     }
     printf(&quot; %d&quot;, minRemain);
     return 0;
-}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。<br>3.1087 All Roads Lead to Rome (30分)  </p>
+}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。  </p>
+<p>3.1087 All Roads Lead to Rome (30分)  </p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;vector&gt;
@@ -315,7 +316,8 @@ int main(){
         flag = 1;
     }
     return 0;
-}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。<br>5.1020 Tree Traversals (25分)  </p>
+}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。  </p>
+<p>5.1020 Tree Traversals (25分)  </p>
 <pre><code>#include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 #include &lt;queue&gt;
@@ -454,8 +456,48 @@ int main(){
     }
     dfs(0, 1, v[0].w);
     return 0;
-}  </code></pre><p>这道题给出了如何存储非二叉树，实际上和图的存储类似，甚至比图的存储简单些，这里面给出的非叶子结点只是为了遍历的时候，用作判断边界。注意初始化容器的时候，如果开始没有给出大小，后面输入的时候需要resize();</p>
-]]></content>
+}  </code></pre><p>这道题给出了如何存储非二叉树，实际上和图的存储类似，甚至比图的存储简单些，这里面给出的非叶子结点只是为了遍历的时候，用作判断边界。注意初始化容器的时候，如果开始没有给出大小，后面输入的时候需要resize();  </p>
+<p>7.1086 Tree Traversals Again (25分)<br>这道题需要注意， 递归遍历搜索的时候，缺谁就使用哪种遍历，这道题使用的是后序遍历。注意根节点都是相对于前序遍历而言的，start， end，i都是相对中序遍历而言的。寻找i的时候，注意while中判断时i &lt; end。起始条件是从n-1开始的，不是从n开始，需要注意，这道题也是一个模板，需要好好理解记忆；  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+using namespace std;
+stack &lt;int&gt; st;
+int pre[35], in[35];
+vector&lt;int&gt; ans;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != pre[root]) i++;
+    post(root + 1, start, i - 1);
+    post(root + i + 1 - start,  i + 1, end);
+    ans.push_back(pre[root]);
+//    printf(&quot;%d &quot;, pre[root]);
+}
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    string s;
+    int a, i = 0, j = 0;
+    for(int k = 0; k &lt; 2 * n; k++){
+        cin &gt;&gt; s;
+        if(s == &quot;Push&quot;){
+            cin &gt;&gt; a;
+            pre[i++] = a;
+            st.push(a);
+        }else{
+            in[j++] = st.top();
+            st.pop();
+        }
+//        cout &lt;&lt; &quot;popnum = &quot; &lt;&lt; popnum &lt;&lt; endl;
+    }
+    post(0, 0, n - 1);
+    for(int k = 0; k &lt; ans.size(); k++){
+        printf(&quot;%d&quot;, ans[k]);
+        if(k != ans.size() - 1) printf(&quot; &quot;);
+    }
+    return 0;
+} </code></pre>]]></content>
       <categories>
         <category>PAT</category>
       </categories>
@@ -1006,6 +1048,18 @@ int main(){
       </tags>
   </entry>
   <entry>
+    <title>PAT甲级英语单词记录</title>
+    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（四）</title>
     <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码<a id="more"></a>  </p>
@@ -1432,18 +1486,6 @@ int main(){
     printf(&quot; -1&quot;);    
     return 0;
 }</code></pre>]]></content>
-      <categories>
-        <category>PAT</category>
-      </categories>
-      <tags>
-        <tag>算法笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PAT甲级英语单词记录</title>
-    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
-]]></content>
       <categories>
         <category>PAT</category>
       </categories>
