@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-21T14:18:54.387Z">
+<meta property="og:updated_time" content="2020-05-23T14:01:49.917Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-21 22:18:54" itemprop="dateModified" datetime="2020-05-21T22:18:54+08:00">2020-05-21</time>
+                <time title="修改时间：2020-05-23 22:01:49" itemprop="dateModified" datetime="2020-05-23T22:01:49+08:00">2020-05-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -746,6 +746,62 @@ int main(){
         printf(&quot;%d&quot;, ans[k]);
         if(k != ans.size() - 1) printf(&quot; &quot;);
     }
+    return 0;
+}   </code></pre><p>8.1102 Invert a Binary Tree (25分)<br>dfs一遍（就相当于中序遍历）将所有的点都标记上下标，和层数，然后按照排序后输出就是层序遍历，直接输出就是中序遍历，所有关于二叉树给定前序后序中序层序的写法都可这样做，如果不是二叉树怎么办呢？就只能建立树然后遍历了。注意树遍历的形式可能是数组，也可能是这道题这样的vector<node>类型。注意两个容器如何相等的写法，使用一个数组去初试另一个数组。  </node></p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int id, l, r, index, level;
+}a[100];//用来存储树 
+vector&lt;node&gt; v1;
+void inorder(int root, int index, int level){
+    if(a[root].r != -1) inorder(a[root].r, index * 2 + 2, level + 1);
+    v1.push_back({root, 0, 0, index, level});
+    if(a[root].l != -1) inorder(a[root].l, index * 2 + 1, level + 1);
+} 
+bool cmp1(node a, node b){
+    if(a.level != b.level) return a.level &lt; b.level;
+    return a.index &gt; b.index;
+}
+int main(){
+    int n, have[100] = {0}, root = 0;
+    //have数组是用来判断根节点是谁的，最开始假设为0
+    //根节点也先设置为0 
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        a[i].id = i;
+        string l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        if(l != &quot;-&quot;){
+            a[i].l = stoi(l);
+            have[stoi(l)] = 1;
+        }else{
+            a[i].l = -1;
+        }
+        if(r != &quot;-&quot;){
+            a[i].r = stoi(r);
+            have[stoi(r)] = 1;
+        }else{
+            a[i].r = -1;
+        }
+    }
+    while(have[root] == 1) root++;//所有点之中没有出现的就是根节点
+    //上面这种方法真的很巧妙 
+//    cout &lt;&lt; root &lt;&lt; endl;
+    inorder(root, 0, 0);
+    vector&lt;node&gt; v2(v1);//这种使用v1来初始化v2的方式之前学过；
+    sort(v2.begin(), v2.end(), cmp1);
+    for(int i = 0; i &lt; v2.size(); i++){
+        cout &lt;&lt; v2[i].id;
+        if(i != v2.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
+    cout &lt;&lt; endl;
+    for(int i = 0; i &lt; v1.size(); i++){
+        cout &lt;&lt; v1[i].id;
+        if(i != v1.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
     return 0;
 } </code></pre>
     </div>
