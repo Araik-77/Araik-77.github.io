@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-23T14:01:49.917Z">
+<meta property="og:updated_time" content="2020-05-25T14:35:51.468Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-23 22:01:49" itemprop="dateModified" datetime="2020-05-23T22:01:49+08:00">2020-05-23</time>
+                <time title="修改时间：2020-05-25 22:35:51" itemprop="dateModified" datetime="2020-05-25T22:35:51+08:00">2020-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -802,6 +802,57 @@ int main(){
         cout &lt;&lt; v1[i].id;
         if(i != v1.size() - 1) cout &lt;&lt;&quot; &quot;;
     } 
+    return 0;
+} </code></pre><p>9.1079 Total Sales of Supply Chain (25分)<br>这道题注意dfs的时候尽量维护更少的变量，变量越多出错的概率越高。当对于vector容器想使用[i]这样的形式进行访问或输入的时候，需要确认大小，不然只能push_back。pow使用的时候level是int类型的也可以，因为，C/C++有约定，当一个“短”型值度赋给一个“长”型值时，自动将“短”型值提升为“长”型值。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r, sum = 0.0;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+vector&lt;node&gt; v;
+void dfs(int node, int level){
+    if(v[node].child.size() == 0){
+        sum += pow(1+r, level) * v[node].w;
+        return;
+    }
+//    cout &lt;&lt; &quot;$$&quot;; 
+//    if(num == n){
+//        printf(&quot;%.1f&quot;, sum);
+//        return;
+//    }
+    for(int i = 0; i &lt; v[node].child.size(); i++){
+        int node1 = v[node].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    r /= 100;
+    v.resize(n);//必须要定义大小，不然输出不了 
+    for(int i = 0; i &lt; n; i++){
+        int t, c;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; endl;
+        v[i].child.resize(t);
+//        cout &lt;&lt; &quot;&amp;&amp;&quot;;
+        if(t == 0) scanf(&quot;%d&quot;, &amp;v[i].w);
+        else{
+            for(int j = 0; j &lt; t; j++){
+//                scanf(&quot;%d&quot;, &amp;c);
+//                v[i].child.push_back(c);
+                scanf(&quot;%d&quot;, &amp;v[i].child[j]);
+            }
+        }
+    }
+
+    dfs(0, 0);
+    printf(&quot;%.1f&quot;, sum * p);
+//    cout &lt;&lt; &quot;*&quot;;
     return 0;
 } </code></pre>
     </div>
