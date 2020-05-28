@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-25T14:35:51.468Z">
+<meta property="og:updated_time" content="2020-05-28T13:20:06.671Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-25 22:35:51" itemprop="dateModified" datetime="2020-05-25T22:35:51+08:00">2020-05-25</time>
+                <time title="修改时间：2020-05-28 21:20:06" itemprop="dateModified" datetime="2020-05-28T21:20:06+08:00">2020-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -853,6 +853,99 @@ int main(){
     dfs(0, 0);
     printf(&quot;%.1f&quot;, sum * p);
 //    cout &lt;&lt; &quot;*&quot;;
+    return 0;
+}   </code></pre><p>10.1090 Highest Price in Supply Chain (25分)<br>这道题注意使用过node结点存储的时候一定是v[root].child.size()。一定要遍历到叶子结点再去处理相关的内容。注意输入错误，是i &lt; n, 不是i&lt; 9!!!  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+struct node{
+//    int isleaf = 1;
+    vector&lt;int&gt; child;
+}; 
+int n, root0;
+double p, r;
+vector&lt;node&gt; v;
+int maxlevel = 0, sum = 0;
+void dfs(int root, int level){
+//        cout &lt;&lt; root &lt;&lt; &quot;&amp;&amp;&quot; &lt;&lt; endl;
+//    cout &lt;&lt; &quot;maxlevel = &quot; &lt;&lt; maxlevel &lt;&lt; endl;
+    if(v[root].child.size() == 0){
+        if(level &gt; maxlevel){
+            maxlevel = level;
+            sum = 0;
+            sum ++;
+        }else if(level == maxlevel){
+            sum++;
+        }
+        return;    
+    }
+    for(int i = 0; i &lt; v[root].child.size(); i++){
+        int node1 = v[root].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    r = r / 100;
+//    cout &lt;&lt; r &lt;&lt; &quot;*&quot; &lt;&lt; endl;
+    for(int i = 0; i &lt; n; i++){
+        int a;
+        scanf(&quot;%d&quot;, &amp;a);
+        if(a != -1){
+            v[a].child.push_back(i);
+//            v[a].isleaf = 0;
+        }else{
+            root0 = i;
+//            v[a].isleaf = 0;
+        }
+    }
+    dfs(root0, 0);
+    printf(&quot;%.2f %d&quot;, p * pow(1 + r, maxlevel), sum);
+    return 0;
+}  </code></pre><p>1106 Lowest Price in Supply Chain (25分)<br>这道题和前面的三道题类似，比较简单，注意读入树的时候不能使用scanf(“%d”,&amp;v[i].child[j])这种形式，会出现错误，需要采用题目中的方式。设置最小高度的时候需要大一些，别少一个0就会出现错误。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r;
+struct node{
+    vector&lt;int&gt; child;
+};
+vector&lt;node&gt; v;
+int minlevel = 100005, minsum = 0;
+void dfs(int index, int level){
+    if(v[index].child.size() == 0){
+        if(level &lt; minlevel){
+            minlevel = level;
+            minsum = 1;
+        }else if(level == minlevel){
+            minsum++;
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        dfs(v[index].child[i], level+1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    for(int i = 0; i &lt; n; i++){
+        int t;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;t = &quot; &lt;&lt; t &lt;&lt; endl;
+        for(int j = 0; j &lt; t; j++){
+            int temp;
+             scanf(&quot;%d&quot;, &amp;temp);
+             v[i].child.push_back(temp);
+        }
+    } 
+    dfs(0, 0);
+    printf(&quot;%.4f %d&quot;, p * pow(1 + r / 100, minlevel), minsum);
+
     return 0;
 } </code></pre>
     </div>
