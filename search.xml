@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南2.1枚举</title>
+    <url>/2021/01/02/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.1/</url>
+    <content><![CDATA[<p>例题2.1  abc（清华大学复试上机题）  </p><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+int main(){
+for (int i = 0; i &lt; 10; i++){
+    for ( int j = 0; j &lt; 10; j++){
+        for(int k = 0; k &lt; 10; k++){
+            int m = i * 100 + j * 10 + k;
+            int n = j * 100 + k * 10 + k;
+            if(m + n == 532){
+                printf(&quot;%d %d %d\n&quot;,i, j, k);
+            }
+        }
+    }
+}
+}</code></pre><a id="more"></a>
+<p>例题2.2  反序数(清华大学复试上机题）  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+
+using namespace std;
+
+int main(){
+    for(int i = 1000; i &lt;= 9999; i++){
+        int a = i / 1000;
+        int b = (i - 1000 * a) / 100;
+        int c = (i - 1000 * a - b * 10) / 10;
+        int d = (i - 1000 * a - b * 100 - c * 10);
+        int m = d * 1000 + c * 100 + b * 10 + a;
+        if( i * 9 == m) printf(&quot;%d \n&quot;, i);
+    }
+}  </code></pre><p>例题2.3  对称平方数1（清华大学复试上机题）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+ using namespace std;
+int reverse( int x){
+    int revx = 0;
+    while(x != 0){
+        revx *= 10;
+        revx += x % 10;
+        x /= 10;
+    }
+    return revx;
+}
+ int main(){
+     for(int i = 0; i &lt;= 256; i++){
+         int m = i * i;
+         int n = reverse(m);
+         if(m == n) printf(&quot;%d\n&quot;, i);
+     }
+ }  </code></pre><p>习题2.1  与7无关的数（北京大学复试上机题）  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+bool is_relate_7(int m){
+    if(m % 7 == 0) return true;
+    while(m != 0){
+        if(m % 10 == 7) return true;
+        m /= 10;
+    }
+    return false;
+}
+int main(){
+    int n, sum = 0;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt;= n; i++){
+        if(!is_relate_7(i)){
+            sum += i * i;
+        }
+    }
+    printf(&quot;%d&quot;, sum);
+    return 0;
+}  </code></pre><p>习题2.2  百鸡问题（哈尔滨工业大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+
+int main(){
+    int n; 
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt;= 100; i++){
+        for(int j = 0; j &lt;= 100; j++){
+            for(int k = 0; k &lt;= 100; k++){ 
+                if(n * 3 &gt;= 15 * i + 9 * j + k &amp;&amp; i + j + k == 100){
+                    printf(&quot;x = %d,y = %d,z = %d\n&quot;, i, j, k);
+                } 
+            }
+        }
+    }
+    return 0;
+}  </code></pre><p>习题2.3 Old bill（上海交通大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int main(){
+    int n, x, y, z;
+    scanf(&quot;%d&quot;, &amp;n);
+    scanf(&quot;%d %d %d&quot;, &amp;x, &amp;y, &amp;z);
+    int i, flag = 0;
+    for(i = 99999; i &gt;= 10000; i--){
+        if(i % n == 0 &amp;&amp; (i % 10000) / 10 == 100 * x + 10 * y + z){
+            flag = 1;
+            break;
+        }
+    }
+    if(flag == 1){
+        printf(&quot;%d %d %d\n&quot;, i / 10000, i %10, i / n);
+    }
+    else printf(&quot;0\n&quot;);
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT甲级学习笔记（二）</title>
     <url>/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/</url>
     <content><![CDATA[<p>##续接上一篇PAT甲级DFS相关题目<br>1.1030 Travel Plan (30分)<a id="more"></a>   </p>
@@ -654,7 +777,7 @@ int main(){
     dfs(root0, 0);
     printf(&quot;%.2f %d&quot;, p * pow(1 + r, maxlevel), sum);
     return 0;
-}  </code></pre><p>1106 Lowest Price in Supply Chain (25分)<br>这道题和前面的三道题类似，比较简单，注意读入树的时候不能使用scanf(“%d”,&amp;v[i].child[j])这种形式，会出现错误，需要采用题目中的方式。设置最小高度的时候需要大一些，别少一个0就会出现错误。  </p>
+}  </code></pre><p>11.1106 Lowest Price in Supply Chain (25分)<br>这道题和前面的三道题类似，比较简单，注意读入树的时候不能使用scanf(“%d”,&amp;v[i].child[j])这种形式，会出现错误，需要采用题目中的方式。设置最小高度的时候需要大一些，别少一个0就会出现错误。  </p>
 <pre><code>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;cmath&gt;
@@ -697,6 +820,38 @@ int main(){
     printf(&quot;%.4f %d&quot;, p * pow(1 + r / 100, minlevel), minsum);
 
     return 0;
+}   </code></pre><p>12.1138 Postorder Traversal (25分)<br>简单的一道前序中序转后序，注意这道题就是模板  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int pre[50005], in[50005];
+int f = 0;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; pre[root] != in[i]) i++;
+    post(root + 1, start , i-1);
+    post(root + 1 + i - start,i+1, end);
+    if(f == 0){
+        printf(&quot;%d&quot;, pre[root]);
+        f = 1;
+    }
+}
+int main(){
+    int n, a;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;pre[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;in[i]);
+//        cout &lt;&lt; &quot;8&quot;;
+    }
+    post(0, 0, n-1);
+//    for(int i = 0; i &lt; n; i++){
+//        printf(&quot;%d \n&quot;, ans[i]);
+//    }
+//    printf(&quot;%d&quot;,ans[0]);
 } </code></pre>]]></content>
       <categories>
         <category>PAT</category>
