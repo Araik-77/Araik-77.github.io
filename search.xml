@@ -1,6 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南2.2暴力求解</title>
+    <url>/2021/01/03/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.2/</url>
+    <content><![CDATA[<p>例题2.6  今年的第几天（清华大学复试上机题）  </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int day1[2][13]={
+    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+};
+bool isLeapYear(int year){
+    if(year % 100 == 0 &amp;&amp; year % 400 == 0) return true;
+    if(year % 100 != 0 &amp;&amp; year % 4 == 0) return true;
+    return false;
+}
+int main(){
+    int year, month, day, sum = 0;
+    scanf(&quot;%d%d%d&quot;, &amp;year, &amp;month, &amp;day);
+    if(isLeapYear(year)){
+        for(int i = 0; i &lt; month; i++){
+            sum += day1[1][i];
+        }
+    }
+    else{
+        for(int i = 0; i &lt; month; i++){
+            sum += day1[0][i];
+        }
+    }
+    printf(&quot;%d\n&quot;, sum + day);
+}  </code></pre><a id="more"></a>
+<p>例题2.7打印日期（华中科技复试上机）</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int monthday[2][13]={
+    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+};
+bool isLeapYear(int year){
+    if(year % 100 == 0 &amp;&amp; year % 400 == 0) return true;
+    if(year % 100 != 0 &amp;&amp; year % 4 == 0) return true;
+    return false;
+}
+int main(){
+    int year, month = 0, sum = 0, row;
+    scanf(&quot;%d %d&quot;, &amp;year, &amp;sum);
+    if(isLeapYear(year)){
+        row = 0;
+    }
+    else row = 1;
+    for(int i = 0; i &lt; 13; i++){
+           if(sum - monthday[row][i] &gt; 0){
+               month++;
+               sum -= monthday[row][i];
+        }else{
+            break;
+        }
+    }
+    printf(&quot;%d-%02d-%02d\n&quot;, year, month, sum);
+}  </code></pre><p>例题2.8 日期累加（北京理工复试上机）</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int monthday[2][13]={
+    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+};
+bool isLeapYear(int year){
+    if(year % 100 == 0 &amp;&amp; year % 400 == 0) return true;
+    if(year % 100 != 0 &amp;&amp; year % 4 == 0) return true;
+    return false;
+}
+int numberOfyear(int year){
+    if(isLeapYear(year)) return 366;
+    else return 365;
+}
+int main(){
+    int m, year, month, day, n, row;
+    int number;
+    scanf(&quot;%d&quot;,&amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d%d&quot;, &amp;year, &amp;month, &amp;day, &amp;number);
+        int row = isLeapYear(year);
+
+        //计算总的天数 
+        for(int j = 0; j &lt; month; j++){
+            number += monthday[row][j];
+        }
+        number += day;
+
+        //确定年 
+        while(number &gt; numberOfyear(year)){
+            number -= numberOfyear(year);
+            year++;
+        }
+
+        //约定月份 
+        row = isLeapYear(year);
+        month = 0; 
+        while(number &gt; monthday[row][month]){
+            number -= monthday[row][month];
+            month++;
+        }
+        day = number;
+        printf(&quot;%d-%02d-%02d&quot;, year, month, day);
+    }
+
+    return 0;
+}  </code></pre><p>习题2.6日期差值（上海交通大学上机题）</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int monthday[2][13]={
+    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+};
+bool isLeapYear(int year){
+    if(year % 100 == 0 &amp;&amp; year % 400 == 0) return true;
+    if(year % 100 != 0 &amp;&amp; year % 4 == 0) return true;
+    return false;
+}
+int numberOfyear(int year){
+    if(isLeapYear(year)) return 366;
+    else return 365;
+}
+int sumday(int year, int month, int day){
+    int sum = day;
+    int row = isLeapYear(year);
+    while(month &gt; 0){
+        month--;
+        sum += monthday[row][month];
+    }
+    while(year &gt; 0){
+        year--;
+        sum += numberOfyear(year);
+    }
+    return sum;
+}
+int main(){
+    int a, b;
+    int year1, year2, month1, month2, day1, day2;
+    scanf(&quot;%4d%2d%2d&quot;, &amp;year1, &amp;month1, &amp;day1);
+    scanf(&quot;%4d%2d%2d&quot;, &amp;year2, &amp;month2, &amp;day2);
+    int sum1 = sumday(year1, month1, day1);
+    int sum2 = sumday(year2, month2, day2);
+//    printf(&quot;%d %d\n&quot;,sum1, sum2);
+    int result;
+//    printf(&quot;%d %d\n&quot;,sum1 - sum2);
+    if(sum1 &gt; sum2) result = sum1 - sum2 + 1;
+    if(sum1 == sum2) result = 0;
+    if(sum1 &lt; sum2) result = sum2 - sum1 + 1;
+    printf(&quot;%d&quot;, result);
+    return 0;
+}  </code></pre><p>例题2.9剩下的树（清华大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string.h&gt;
+using namespace std;
+int main(){
+    int l, m, num;
+    scanf(&quot;%d %d&quot;, &amp;l, &amp;m);
+    int flag[l+1];
+    memset(flag, 0, sizeof(flag));
+    for(int i = 0; i &lt; m; i++){
+        int a, b;
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        for(int j = a; j &lt;= b; j++){
+            flag[j] = 1;
+        }
+    }
+    for(int i = 0; i &lt; l + 1; i++){
+        if(flag[i] != 1) num++;
+//        printf(&quot;%d \n&quot;, flag[i]);
+    }
+    printf(&quot;%d&quot;,num);
+    return 0;
+}  </code></pre><p>例题2.10手机键盘（清华大学复试上机题）  </p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+int keyTab[26]={1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 1, 2, 3, 4};
+int main(){
+    string s;
+    cin &gt;&gt; s;
+    int sum = s[0], wait = 0, press = 0;
+    for(int i = 1; i &lt; s.length(); i++){
+        if(s[i] - s[i-1] == keyTab[s[i] - &apos;a&apos;] - keyTab[s[i - 1] - &apos;a&apos;]) wait++;
+        press += keyTab[s[i] - &apos;a&apos;];
+    }
+//    printf(&quot;%d %d\n&quot;, wait, press);
+    printf(&quot;%d\n&quot;, press + keyTab[s[0] - &apos;a&apos;] + 2 * wait);
+
+    return 0;
+}  </code></pre><p>习题2.9 Grading（浙江大学复试上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+using namespace std;
+int main(){
+    double p, t, g1, g2, g3, gj;
+    double average;
+    scanf(&quot;%lf %lf %lf %lf %lf %lf&quot;, &amp;p, &amp;t, &amp;g1, &amp;g2, &amp;g3, &amp;gj);
+//    printf(&quot;%f\n&quot;, g1);
+    if(fabs(g1 - g2) &lt;= t){
+        average = ( g1 + g2 ) / 2;
+//        printf(&quot;%fppppp\n&quot;,average );
+    }
+    else{
+        if( (fabs(g1 - g3) &lt; t &amp;&amp; fabs(g2 - g3) &gt; t) || (fabs(g1 - g3) &gt; t &amp;&amp; fabs(g2 - g3) &lt; t)){
+            int temp = fabs(g1 - g3) &gt; fabs(g2 - g3) ? fabs(g2 - g3) : fabs(g1 - g3);
+//            printf(&quot;temp = %f\n&quot;, temp);
+            average = ( g3 + temp ) / 2;
+        }
+        if(fabs(g1 - g3) &lt; t &amp;&amp; fabs(g2 - g3) &lt; t){
+            if(g1 &gt; g2 &amp;&amp; g1 &gt; g3) average = g1;
+            if(g2 &gt; g3 &amp;&amp; g2 &gt; g1) average = g2;
+            if(g3 &gt; g2 &amp;&amp; g3 &gt; g1) average = g3;
+        }
+        if(fabs(g1 - g3) &gt; t &amp;&amp; fabs(g2 - g3) &gt; t) average = gj;
+    }
+    printf(&quot;%.1f&quot;, average);
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.暴力求解</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>王道机试指南2.1枚举</title>
     <url>/2021/01/02/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.1/</url>
     <content><![CDATA[<p>例题2.1  abc（清华大学复试上机题）  </p><pre><code>#include &lt;iostream&gt;
