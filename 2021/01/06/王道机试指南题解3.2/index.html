@@ -52,16 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="越努力，越幸运">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晨阳 の blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;tags&#x2F;%E5%BF%83%E5%BE%97&#x2F;index.html">
+  <meta name="description" content="例题3.4找x（哈尔滨工业大学上机题）#include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, x, flag = -1;     cin &amp;gt;&amp;gt; n;     int a[n];     for(int i = 0; i &amp;lt; n; i++){">
+<meta name="keywords" content="王道.查找">
+<meta property="og:type" content="article">
+<meta property="og:title" content="王道机试指南3.2查找">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2021&#x2F;01&#x2F;06&#x2F;%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A33.2&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="越努力，越幸运">
+<meta property="og:description" content="例题3.4找x（哈尔滨工业大学上机题）#include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, x, flag = -1;     cin &amp;gt;&amp;gt; n;     int a[n];     for(int i = 0; i &amp;lt; n; i++){">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-06T04:56:55.631Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://araik-77.github.io/tags/%E5%BF%83%E5%BE%97/">
+<link rel="canonical" href="https://araik-77.github.io/2021/01/06/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A33.2/">
 
 
 <script id="page-configurations">
@@ -69,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 心得 | 晨阳 の blog</title>
+  <title>王道机试指南3.2查找 | 晨阳 の blog</title>
   
 
 
@@ -184,50 +186,198 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">心得
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/06/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A33.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          王道机试指南3.2查找
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-06 09:37:07 / 修改时间：12:56:55" itemprop="dateCreated datePublished" datetime="2021-01-06T09:37:07+08:00">2021-01-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">考研复试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
+        <p>例题3.4找x（哈尔滨工业大学上机题）</p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int main(){
+    int n, x, flag = -1;
+    cin &gt;&gt; n;
+    int a[n];
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; a[i];
+    }
+    cin &gt;&gt; x;
+    for(int i = 0; i &lt; n; i++){
+        if(a[i] == x) flag = i;
+    }
+    cout &lt;&lt; flag;
+    return 0;
+}</code></pre><a id="more"></a>
+<p>例题3.5查找（北京邮电大学上机题）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int main(){
+    int n, m;
+    cin &gt;&gt; n;
+    int a[n];
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; a[i];
+    }
+    cin &gt;&gt; m;
+    for(int i = 0; i &lt; m; i++){
+        int temp, flag = 0;
+        cin &gt;&gt; temp;
+        for(int j = 0; j &lt; n; j++){
+            if(a[j] == temp) flag = 1;
+        }
+        if(flag == 1) printf(&quot;YES\n&quot;);
+        else printf(&quot;NO\n&quot;);
+    }
+    return 0;
+}  </code></pre><p>习题3.5找最小数（北京邮电大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+struct node{
+    int x, y;
+}a[500];
+bool cmp1(node a, node b){
+    if(a.x != b.x) return a.x &lt; b.x;
+    else return a.y &lt; b.y;
+}
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; a[i].x &gt;&gt; a[i].y;
+    }
+    sort(a, a + n, cmp1);
+    cout &lt;&lt; a[0].x &lt;&lt; &quot; &quot;&lt;&lt; a[0].y;
+    return 0;
+}  </code></pre><p>习题3.6找位置（华中科技大学上机题）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;string.h&gt;
+using namespace std;
+int main(){
+    string s;
+    cin &gt;&gt; s;
+    int flag[s.length()];//用于标记是否访问过 
+    char c = &apos;*&apos;;//用于记录是否是当前输出字符 
+    int firstrow = 1;//标记第一个输出字符 
+    memset(flag, 0, sizeof(flag));
+    //从第一个字符开始遍历，如果后面出现与当前字符相同的字符则输出 
+       for(int i = 0; i &lt; s.length(); i++){
+           if(flag[i] == 0){
+            flag[i] = 1;
+            int first = 1;
+            //从当前字符的下一个字符开始寻找，相同字符 
+            for(int j = i+1; j &lt; s.length(); j++){
+                if(s[i] == s[j]){
+                    flag[j] = 1;
+                    // 判断是否是第一行
+                    if(s[i] != c &amp;&amp; firstrow == 0) printf(&quot;\n&quot;);
+                    //判断是否是第一个输出字符 
+                    if(first == 1){
+                        printf(&quot;%c:%d&quot;, s[i], i);
+                    }
+                    printf(&quot;,%c:%d&quot;, s[j], j);
+                    first = 0;
+                    c = s[i];
+                    firstrow = 0;
+                }
+            }
+        }    
+    }
+    return 0;
+}</code></pre>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T02:49:52+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%8B%E9%81%93-%E6%9F%A5%E6%89%BE/" rel="tag"># 王道.查找</a>
+          </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/MyFirstArticle/" itemprop="url">
-            <span itemprop="name">MyFirstArticle</span>
-          </a>
-      </h3>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/01/05/%E5%88%B7%E9%A2%98%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9/" rel="next" title="刷题常犯错误总结">
+                  <i class="fa fa-chevron-left"></i> 刷题常犯错误总结
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
