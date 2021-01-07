@@ -52,16 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="越努力，越幸运">
-<meta property="og:type" content="website">
-<meta property="og:title" content="晨阳 の blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;tags&#x2F;%E5%BF%83%E5%BE%97&#x2F;index.html">
+  <meta name="description" content="例题4.1特殊乘法（清华大学上机题）#include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; #include&amp;lt;string&amp;gt; using namespace std; int main(){     string s1, s2;     cin &amp;gt;&amp;gt; s1 &amp;gt;&amp;gt; s2;     int sum = 0;     for(i">
+<meta name="keywords" content="王道.字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="王道机试指南4.1~4.2字符串">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2021&#x2F;01&#x2F;07&#x2F;%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A34.1~4.2&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="越努力，越幸运">
+<meta property="og:description" content="例题4.1特殊乘法（清华大学上机题）#include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; #include&amp;lt;string&amp;gt; using namespace std; int main(){     string s1, s2;     cin &amp;gt;&amp;gt; s1 &amp;gt;&amp;gt; s2;     int sum = 0;     for(i">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-07T05:31:53.793Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://araik-77.github.io/tags/%E5%BF%83%E5%BE%97/">
+<link rel="canonical" href="https://araik-77.github.io/2021/01/07/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A34.1~4.2/">
 
 
 <script id="page-configurations">
@@ -69,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 心得 | 晨阳 の blog</title>
+  <title>王道机试指南4.1~4.2字符串 | 晨阳 の blog</title>
   
 
 
@@ -184,50 +186,254 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">心得
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/07/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A34.1~4.2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          王道机试指南4.1~4.2字符串
         </h2>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-07 09:45:49 / 修改时间：13:31:53" itemprop="dateCreated datePublished" datetime="2021-01-07T09:45:49+08:00">2021-01-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">考研复试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h2 class="collection-header">2019</h2>
+        <p>例题4.1特殊乘法（清华大学上机题）</p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s1, s2;
+    cin &gt;&gt; s1 &gt;&gt; s2;
+    int sum = 0;
+    for(int i = 0; i &lt; s1.length(); i++){
+        for(int j = 0; j &lt; s2.length(); j++){
+            int a = s1[i] - &apos;1&apos; + 1;
+//            cout &lt;&lt; a &lt;&lt; endl;
+            int b = s2[j] - &apos;1&apos; + 1;
+            sum += a * b;
+        }
+    }
+    printf(&quot;%d&quot;, sum);
+    return 0;
+}  </code></pre><a id="more"></a>
+<p>例题4.2密码翻译（北京大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s;
+    while(getline(cin ,s)){
+        for(int i = 0; i &lt; s.length(); i++){
+            if(s[i] == &apos;z&apos; || s[i] == &apos;Z&apos;){
+                s[i] -= 25;
+            }
+            else if(isalpha(s[i])){
+                s[i]++;
+            }
+        }
+        cout &lt;&lt; s &lt;&lt; endl;
+        return 0;
+    }
+}  </code></pre><p>例题4.3简单密码（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s;
+    while(getline(cin, s)){
+        if(s == &quot;ENDOFINPUT&quot;){
+            break;
+        }
+        if(s == &quot;START&quot;){
+            getline(cin, s);
+            for(int i = 0; i &lt; s.length(); i++){
+                if(isupper(s[i])){
+                    s[i] = (s[i] - &apos;A&apos; - 5 + 26) % 26 + &apos;A&apos; ; 
+                }
+            }
+            cout &lt;&lt; s &lt;&lt; endl;
+            getline(cin, s);
+        }
+        return 0;
+    }
+}  </code></pre><p>例题4.4统计字符（浙江大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string c, s;
+    while(getline(cin, c)){
+        if(c == &quot;#&quot;)break;
+        getline(cin, s);
+        for(int i = 0; i &lt; c.length(); i++){
+            int sum = 0;
+            for(int j = 0; j &lt; s.length(); j++){
+                if(c[i] == s[j]) sum++;
+            }
+            cout &lt;&lt; c[i] &lt;&lt; &quot; &quot; &lt;&lt; sum &lt;&lt; endl;
+        }
+    }
+}  </code></pre><p>例题4.5字母统计（上海交通大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s;
+    int alpha[26] = {0};
+    char c = &apos;A&apos;;
+    while(getline(cin, s)){
+        for(int i = 0; i &lt; s.length(); i++){
+            if(isupper(s[i])){
+                alpha[s[i] - &apos;A&apos;]++;
+            }
+        }
+        for(int i = 0; i &lt; 26; i++){
+            cout &lt;&lt; c++ &lt;&lt; &quot;:&quot; &lt;&lt; alpha[i] &lt;&lt; endl;
+        } 
+
+        return 0;
+    }
+}  </code></pre><p>习题4.1skew数（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+using namespace std;
+int main(){
+    string s;
+    while(cin &gt;&gt; s){
+        int sum = 0;
+        for(int i = 0; i &lt; s.length(); i++){
+            sum += (s[i] - &apos;0&apos;)*(pow(2.0, double(s.length() - i)) - 1);
+        }
+        cout &lt;&lt; sum &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题4.3首字母大写（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s;
+    while(getline(cin, s)){
+        if(islower(s[0])) s[0] = s[0] + &apos;A&apos; - &apos;a&apos;;
+        cout &lt;&lt; s[0];
+        for(int i = 1; i &lt; s.length(); i++){
+            if((s[i] == &apos; &apos; || s[i] ==&apos;\t&apos; ||s[i] == &apos;\r&apos;||s[i] == &apos;\n&apos;) &amp;&amp; islower(s[i+1])){
+                s[i+1] = s[i+1] + &apos;A&apos; - &apos;a&apos;;
+            }
+            cout &lt;&lt; s[i];
+        }
+    }
+    return 0;
+}  </code></pre><p>习题4.4后缀子串排序（上海交通大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;algorithm&gt;
+#include&lt;vector&gt;
+using namespace std;
+int main(){
+    string s;
+    cin &gt;&gt; s;
+    vector&lt;string&gt; v;
+    for(int i = 0; i &lt; s.length(); i++){
+        v.push_back(s.substr(i, s.length() - i));
+    }
+    sort(v.begin(), v.end());
+    for(int i = 0; i &lt; v.size(); i++){
+        cout &lt;&lt; v[i] &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-11T02:49:52+08:00"
-              content="2019-11-11">
-          11-11
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%8B%E9%81%93-%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 王道.字符串</a>
+          </div>
 
-      <h3 class="post-title">
-          <a class="post-title-link" href="/2019/11/11/MyFirstArticle/" itemprop="url">
-            <span itemprop="name">MyFirstArticle</span>
-          </a>
-      </h3>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/01/06/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A33.2/" rel="next" title="王道机试指南3.2查找">
+                  <i class="fa fa-chevron-left"></i> 王道机试指南3.2查找
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
