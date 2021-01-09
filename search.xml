@@ -1,6 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南5.1~5.3向量，队列，栈</title>
+    <url>/2021/01/09/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A35.1~5.3/</url>
+    <content><![CDATA[<p>例题5.1完数和盈数（清华大学复试上机）  </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+int sum(int n){
+    int sum0 = 0;
+    for(int i = 1; i &lt; n; i++){
+        if(n % i == 0) sum0 += i;
+    }
+    return sum0;
+}
+int main(){
+    vector&lt;int&gt; a, b;
+    for(int i = 2; i &lt; 61; i++){
+        if(sum(i) == i) a.push_back(i);
+        if(sum(i) &gt; i) b.push_back(i);
+    }
+    cout &lt;&lt; &quot;E :&quot;;
+    for(int i = 0; i &lt; a.size(); i++)
+        cout &lt;&lt; a[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; &quot;G :&quot;;
+    for(int i = 0; i &lt; b.size(); i++)
+        cout &lt;&lt; b[i] &lt;&lt; &quot; &quot;;
+}  </code></pre><a id="more"></a>
+<p>例题5.4 Zero-complexity Transposition(上海交通大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int n;
+    cin &gt;&gt; n; 
+    stack&lt;long long&gt; s;
+    for(int i = 0; i &lt; n; i++){
+        int temp;
+        cin &gt;&gt; temp;
+        s.push(temp);
+    }
+    for(int i = 0; i &lt; n; i++){
+        cout &lt;&lt; s.top() &lt;&lt; &quot; &quot;;
+        s.pop();
+    }
+    return 0;
+}  </code></pre><p>例题5.6简单计算器（浙江大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;stack&gt;
+#include&lt;cctype&gt;
+using namespace std;
+int priority(char c){
+    if(c == &apos;#&apos;) {
+        return 0;
+    }else if(c == &apos;$&apos;){
+        return 1;
+    } else if(c == &apos;+&apos; || c == &apos;-&apos;){
+        return 2;
+    }else{
+        return 3;
+    }
+}
+double getnumber(string s, int&amp; index){
+    double number = 0;
+    while(isdigit(s[index])){
+        number = number * 10 + s[index] - &apos;0&apos;;
+        index ++;
+    }
+    return number;
+}
+double cal(double x, double y, char op){
+    double result = 0;
+    if(op == &apos;+&apos;) result =  x + y;
+    if(op == &apos;-&apos;) result =  x - y;
+    if(op == &apos;*&apos;) result =  x * y;
+    if(op == &apos;/&apos;) result =  x / y;
+    return result;
+}
+int main(){
+    string s;
+    while(getline(cin, s)){
+        if(s == &quot;0&quot;) break;
+        int index = 0;
+        stack&lt;double&gt; data;
+        stack&lt;char&gt; oper;
+        s += &apos;$&apos;;
+        oper.push(&apos;#&apos;);
+        while(index &lt; s.size() ){
+            if(s[index] == &apos; &apos;){
+                index ++;
+            }else if(isdigit(s[index])){
+                data.push(getnumber(s, index));
+            }else{
+                if(priority(oper.top()) &lt; priority(s[index])){
+                    oper.push(s[index]);
+                    index ++;
+                }else{
+                    double y = data.top();
+                    data.pop();
+                    double x = data.top();
+                    data.pop();
+                    data.push(cal(x, y, oper.top()));
+                    oper.pop();
+                }
+            }
+        }
+        printf(&quot;%.2f\n&quot;, data.top());
+    }
+    return 0;
+}  </code></pre><p>习题5.1堆栈的使用（吉林大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        if(n == 0) break;
+        stack &lt;int&gt; s;
+        while(n){
+            char op;
+            cin &gt;&gt; op;
+            if(op == &apos;P&apos;){
+                int data;
+                cin &gt;&gt; data;
+                s.push(data);
+            }else if(op ==&apos;O&apos;){
+                if(!s.empty()){
+                    s.pop();
+                }
+            }else if(op == &apos;A&apos;){
+                if(!s.empty()){
+                    cout &lt;&lt; s.top() &lt;&lt; endl;
+                }else{
+                    cout &lt;&lt; &quot;E&quot; &lt;&lt; endl;
+                }
+            }
+            n--;
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.向量，栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>王道机试指南4.1~4.2字符串</title>
     <url>/2021/01/07/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A34.1~4.2/</url>
     <content><![CDATA[<p>例题4.1特殊乘法（清华大学上机题）</p><pre><code>#include&lt;iostream&gt;
@@ -283,6 +435,7 @@ int main(){
 
 <p>7.使用while（getline(cin, s))循环读入数据的时候，int主函数的return 0要放在while的{}内和放在while{}外是不同的情况，要特别注意。</p>
 <p>8.string s; s[i]为char类型，++之后相当于向后移动一位。  </p>
+<p>9.对于自定义的函数，有返回值时，一定要返回返回值，使用多个if时最后一个一定是else，否则可能编译不通过。</p>
 ]]></content>
       <categories>
         <category>考研复试</category>
@@ -3318,249 +3471,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>数据结构之栈</title>
-    <url>/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88/</url>
-    <content><![CDATA[<p>栈是一种后进先出（LIFO)的数据结构，下面是栈的顺序存储方式<a id="more"></a>  </p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;io.h&gt;
-#include&lt;math.h&gt;
-#include&lt;time.h&gt;
-
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-#define MAXSIZE 20
-
-typedef int Status;
-typedef int SElemType; 
-
-//顺序栈结构
-typedef struct{
-SElemType data[MAXSIZE];
-int top;
-}SqStack; 
-
-Status visit(SElemType c){
-printf(&quot;%d &quot;,c);
-return OK;
-}
-
-//构造一个空栈 
-Status InitStack(SqStack *S){
-S-&gt;top=-1;
-return OK;
-} 
-
-//把S置为空栈
-Status ClearStack(SqStack *S){
-S-&gt;top=-1;
-return OK;
-} 
-
-//判断是否为空栈
-Status StackEmpty(SqStack S){
-if(S.top==-1)
-    return TRUE;
-else 
-    return FALSE;
-} 
-
-//返回栈的长度
-int StackLength(SqStack S){
-return S.top+1;
-} 
-
-//若栈不空，用e返回栈顶元素，并返回OK,否则返回ERROR
-Status GetTop(SqStack S,SElemType *e){
-if(S.top==-1)
-    return ERROR;
-else
-    *e=S.data[S.top];
-return OK; 
-} 
-
-//插入元素e为新的栈顶元素
-Status Push(SqStack *S,SElemType e){
-if(S-&gt;top==MAXSIZE-1)
-{
-    return ERROR;
-}
-S-&gt;top++;
-S-&gt;data[S-&gt;top]=e;
-return OK;
-} 
-
-//删除栈顶元素
-Status Pop(SqStack *S,SElemType *e){
-if(S-&gt;top==-1)
-    return ERROR;
-else{
-    *e=S-&gt;data[S-&gt;top];
-    S-&gt;top--;
-return OK;     
-} 
-} 
-
-//从栈底到栈顶以此对每一个元素进行显示
-Status StackTraverse(SqStack S){
-int i;
-i=0;
-while(i&lt;=S.top){
-    visit(S.data[i++]);
-}
-printf(&quot;\n&quot;);
-return OK; 
-} 
-
-int main(){
-int j;
-SqStack s;
-int e;
-if(InitStack(&amp;s)==OK)//判断一下更把握 
-    for(j=1;j&lt;=10;j++)
-        Push(&amp;s,j);
-printf(&quot;栈中元素以此为： &quot;);
-StackTraverse(s);
-Pop(&amp;s,&amp;e);//e用来返回弹出的值
-printf(&quot;弹出的栈顶元素为e=%d\n&quot;,e);
-printf(&quot;栈是否空：%d(1:空 0:不空)\n&quot;,StackEmpty(s));
-GetTop(s,&amp;e);
-printf(&quot;栈顶元素为e=%d 栈的长度为%d\n&quot;,e,StackLength(s));
-ClearStack(&amp;s);
-printf(&quot;栈清空后，栈是否空：%d(:空 0:不空)&quot;,StackEmpty(s));
-}</code></pre><p>下面是两个栈共享空间的情况：  </p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;io.h&gt;
-#include&lt;math.h&gt;
-#include&lt;time.h&gt;
-
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-#define MAXSIZE 20
-
-typedef int Status;
-typedef int SElemType; 
-
-//两栈共享空间
-typedef struct{
-SElemType data[MAXSIZE];
-int top1;
-int top2;
-}SqDoubleStack;
-
-Status visit(SElemType c){
-printf(&quot;%d &quot;,c);
-return OK; 
-}
-//构造一个空栈
-Status InitStack(SqDoubleStack *S){
-S-&gt;top1=-1;
-S-&gt;top2=MAXSIZE;
-return OK; 
-} 
-
-//把S置为空栈；和上面的构造一个空栈代码是一样的 
-Status ClearStack(SqDoubleStack *S){
-S-&gt;top1=-1;
-S-&gt;top2=MAXSIZE;
-return OK;
-} 
-
-//判断是否为空栈;两个要都为空 
-Status StackEmpty(SqDoubleStack S){
-if(S.top1==-1&amp;&amp;S.top2==MAXSIZE)
-    return TRUE;
-else
-    return FALSE;
-} 
-
-//返回元素个数，即栈长
-int StackLength(SqDoubleStack S){
-return (S.top1+1)+(MAXSIZE-S.top2);
-} 
-
-//插入元素，需要标记是往哪个里面push,只需要判断总的栈是否满 
-Status Push(SqDoubleStack *S,SElemType e,int stackNumber){
-if(S-&gt;top1+1==S-&gt;top2)
-    return ERROR;
-if(stackNumber==1)
-    S-&gt;data[++S-&gt;top1]=e;
-else if(stackNumber==2)
-    S-&gt;data[--S-&gt;top2]=e;
-return OK;
-} 
-
-//删除栈顶的元素，需要分别判断每个是否为空 
-Status Pop(SqDoubleStack *S,SElemType *e,int stackNumber){
-if(stackNumber==1){
-    if(S-&gt;top1==-1)
-        return ERROR;
-    *e=S-&gt;data[S-&gt;top1--];//相当于两个语句，一个是把栈顶元素返回，一个是指针指向前一个 
-} 
-else if(stackNumber==2){
-    if(S-&gt;top2==MAXSIZE)
-        return ERROR;
-    *e=S-&gt;data[S-&gt;top2++];
-} 
-return OK;
-} 
-
-//从左往右输出每一个元素
-Status StackTraverse(SqDoubleStack S){
-int i;
-i=0;
-while(i&lt;=S.top1){
-    visit(S.data[i++]);
-}
-i=S.top2;//中间空余部分不输出 
-while(i&lt;MAXSIZE){//MAXSIZE实际上是最大的下标加1 
-    visit(S.data[i++]);
-}
-printf(&quot;\n&quot;);
-return OK; 
-} 
-
-int main(){
-int j,e;
-SqDoubleStack s;
-if(InitStack(&amp;s)==OK){
-    for(j=1;j&lt;=5;j++)
-        Push(&amp;s,j,1);
-    for(j=MAXSIZE;j&gt;=MAXSIZE-2;j--)
-        Push(&amp;s,j,2);
-}
-printf(&quot;栈中的元素依次为：&quot;);
-StackTraverse(s);
-printf(&quot;当前栈中元素有：%d\n&quot;,StackLength(s));
-
-Pop(&amp;s,&amp;e,2);
-printf(&quot;弹出的栈顶元素 e=%d\n&quot;,e);
-printf(&quot;栈空否：%d(1:空 0:否)\n&quot;,StackEmpty(s));
-
-for(j=6;j&lt;=MAXSIZE-2;j++)
-    Push(&amp;s,j,1);
-
-printf(&quot;栈中的元素依次为：&quot;);
-StackTraverse(s);
-
-printf(&quot;栈满否: %d(1:否 0:满)\n&quot;,Push(&amp;s,100,1));
-
-ClearStack(&amp;s);
-printf(&quot;清空栈后，栈空否：%d(1:空 0:否)\n&quot;,StackEmpty(s));        
-}</code></pre>]]></content>
-      <categories>
-        <category>数据结构</category>
-      </categories>
-      <tags>
-        <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据结构之线性表</title>
     <url>/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<p>线性表是一种最基本的数据结构，下面是线性表的顺序存储方式（以下代码均参考《大话数据结构》，运行环境dev c++5.11）<a id="more"></a>  </p>
@@ -3955,6 +3865,249 @@ return 0;
       </categories>
       <tags>
         <tag>线性表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构之栈</title>
+    <url>/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88/</url>
+    <content><![CDATA[<p>栈是一种后进先出（LIFO)的数据结构，下面是栈的顺序存储方式<a id="more"></a>  </p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;io.h&gt;
+#include&lt;math.h&gt;
+#include&lt;time.h&gt;
+
+#define OK 1
+#define ERROR 0
+#define TRUE 1
+#define FALSE 0
+#define MAXSIZE 20
+
+typedef int Status;
+typedef int SElemType; 
+
+//顺序栈结构
+typedef struct{
+SElemType data[MAXSIZE];
+int top;
+}SqStack; 
+
+Status visit(SElemType c){
+printf(&quot;%d &quot;,c);
+return OK;
+}
+
+//构造一个空栈 
+Status InitStack(SqStack *S){
+S-&gt;top=-1;
+return OK;
+} 
+
+//把S置为空栈
+Status ClearStack(SqStack *S){
+S-&gt;top=-1;
+return OK;
+} 
+
+//判断是否为空栈
+Status StackEmpty(SqStack S){
+if(S.top==-1)
+    return TRUE;
+else 
+    return FALSE;
+} 
+
+//返回栈的长度
+int StackLength(SqStack S){
+return S.top+1;
+} 
+
+//若栈不空，用e返回栈顶元素，并返回OK,否则返回ERROR
+Status GetTop(SqStack S,SElemType *e){
+if(S.top==-1)
+    return ERROR;
+else
+    *e=S.data[S.top];
+return OK; 
+} 
+
+//插入元素e为新的栈顶元素
+Status Push(SqStack *S,SElemType e){
+if(S-&gt;top==MAXSIZE-1)
+{
+    return ERROR;
+}
+S-&gt;top++;
+S-&gt;data[S-&gt;top]=e;
+return OK;
+} 
+
+//删除栈顶元素
+Status Pop(SqStack *S,SElemType *e){
+if(S-&gt;top==-1)
+    return ERROR;
+else{
+    *e=S-&gt;data[S-&gt;top];
+    S-&gt;top--;
+return OK;     
+} 
+} 
+
+//从栈底到栈顶以此对每一个元素进行显示
+Status StackTraverse(SqStack S){
+int i;
+i=0;
+while(i&lt;=S.top){
+    visit(S.data[i++]);
+}
+printf(&quot;\n&quot;);
+return OK; 
+} 
+
+int main(){
+int j;
+SqStack s;
+int e;
+if(InitStack(&amp;s)==OK)//判断一下更把握 
+    for(j=1;j&lt;=10;j++)
+        Push(&amp;s,j);
+printf(&quot;栈中元素以此为： &quot;);
+StackTraverse(s);
+Pop(&amp;s,&amp;e);//e用来返回弹出的值
+printf(&quot;弹出的栈顶元素为e=%d\n&quot;,e);
+printf(&quot;栈是否空：%d(1:空 0:不空)\n&quot;,StackEmpty(s));
+GetTop(s,&amp;e);
+printf(&quot;栈顶元素为e=%d 栈的长度为%d\n&quot;,e,StackLength(s));
+ClearStack(&amp;s);
+printf(&quot;栈清空后，栈是否空：%d(:空 0:不空)&quot;,StackEmpty(s));
+}</code></pre><p>下面是两个栈共享空间的情况：  </p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;io.h&gt;
+#include&lt;math.h&gt;
+#include&lt;time.h&gt;
+
+#define OK 1
+#define ERROR 0
+#define TRUE 1
+#define FALSE 0
+#define MAXSIZE 20
+
+typedef int Status;
+typedef int SElemType; 
+
+//两栈共享空间
+typedef struct{
+SElemType data[MAXSIZE];
+int top1;
+int top2;
+}SqDoubleStack;
+
+Status visit(SElemType c){
+printf(&quot;%d &quot;,c);
+return OK; 
+}
+//构造一个空栈
+Status InitStack(SqDoubleStack *S){
+S-&gt;top1=-1;
+S-&gt;top2=MAXSIZE;
+return OK; 
+} 
+
+//把S置为空栈；和上面的构造一个空栈代码是一样的 
+Status ClearStack(SqDoubleStack *S){
+S-&gt;top1=-1;
+S-&gt;top2=MAXSIZE;
+return OK;
+} 
+
+//判断是否为空栈;两个要都为空 
+Status StackEmpty(SqDoubleStack S){
+if(S.top1==-1&amp;&amp;S.top2==MAXSIZE)
+    return TRUE;
+else
+    return FALSE;
+} 
+
+//返回元素个数，即栈长
+int StackLength(SqDoubleStack S){
+return (S.top1+1)+(MAXSIZE-S.top2);
+} 
+
+//插入元素，需要标记是往哪个里面push,只需要判断总的栈是否满 
+Status Push(SqDoubleStack *S,SElemType e,int stackNumber){
+if(S-&gt;top1+1==S-&gt;top2)
+    return ERROR;
+if(stackNumber==1)
+    S-&gt;data[++S-&gt;top1]=e;
+else if(stackNumber==2)
+    S-&gt;data[--S-&gt;top2]=e;
+return OK;
+} 
+
+//删除栈顶的元素，需要分别判断每个是否为空 
+Status Pop(SqDoubleStack *S,SElemType *e,int stackNumber){
+if(stackNumber==1){
+    if(S-&gt;top1==-1)
+        return ERROR;
+    *e=S-&gt;data[S-&gt;top1--];//相当于两个语句，一个是把栈顶元素返回，一个是指针指向前一个 
+} 
+else if(stackNumber==2){
+    if(S-&gt;top2==MAXSIZE)
+        return ERROR;
+    *e=S-&gt;data[S-&gt;top2++];
+} 
+return OK;
+} 
+
+//从左往右输出每一个元素
+Status StackTraverse(SqDoubleStack S){
+int i;
+i=0;
+while(i&lt;=S.top1){
+    visit(S.data[i++]);
+}
+i=S.top2;//中间空余部分不输出 
+while(i&lt;MAXSIZE){//MAXSIZE实际上是最大的下标加1 
+    visit(S.data[i++]);
+}
+printf(&quot;\n&quot;);
+return OK; 
+} 
+
+int main(){
+int j,e;
+SqDoubleStack s;
+if(InitStack(&amp;s)==OK){
+    for(j=1;j&lt;=5;j++)
+        Push(&amp;s,j,1);
+    for(j=MAXSIZE;j&gt;=MAXSIZE-2;j--)
+        Push(&amp;s,j,2);
+}
+printf(&quot;栈中的元素依次为：&quot;);
+StackTraverse(s);
+printf(&quot;当前栈中元素有：%d\n&quot;,StackLength(s));
+
+Pop(&amp;s,&amp;e,2);
+printf(&quot;弹出的栈顶元素 e=%d\n&quot;,e);
+printf(&quot;栈空否：%d(1:空 0:否)\n&quot;,StackEmpty(s));
+
+for(j=6;j&lt;=MAXSIZE-2;j++)
+    Push(&amp;s,j,1);
+
+printf(&quot;栈中的元素依次为：&quot;);
+StackTraverse(s);
+
+printf(&quot;栈满否: %d(1:否 0:满)\n&quot;,Push(&amp;s,100,1));
+
+ClearStack(&amp;s);
+printf(&quot;清空栈后，栈空否：%d(1:空 0:否)\n&quot;,StackEmpty(s));        
+}</code></pre>]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
