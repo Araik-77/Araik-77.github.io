@@ -133,6 +133,161 @@ int main(){
         cout &lt;&lt; ans &lt;&lt; endl;
     }
     return 0;
+}  </code></pre><p>例题6.4进制转换2（清华大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;cctype&gt;
+using namespace std;
+long long toten(string x, int m){
+    long long sum = 0, a;
+    for(int i = 0; i &lt; x.size(); i++){
+        if(isalpha(x[i])){
+            a = x[i] - &apos;A&apos; + 10;
+        }else {
+            a = x[i] - &apos;0&apos;;
+        }
+        sum *= m;
+        sum += a;
+    }
+    return sum;
+}
+void ton(long long x, int n){
+    stack&lt;int&gt; st;
+    while(x != 0){
+        st.push(x % n);
+        x /= n;
+    }
+    while(!st.empty()){
+        cout &lt;&lt; st.top();
+        st.pop();
+    }
+}
+int main(){
+    int m, n;
+    string x;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; x;
+    long long ten = toten(x, m);
+    ton(ten, n);
+    return 0;
+}  </code></pre><p>习题6.1八进制（华中科技大学)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        stack &lt;int&gt; st;
+        while(n != 0){
+            st.push(n % 8);
+            n /= 8;
+        }
+        while(!st.empty()){
+            cout &lt;&lt; st.top();
+            st.pop();
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题6.2有一版A+B  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int m, a, b;
+    while(cin &gt;&gt; m){
+        if(m == 0) break;
+        cin &gt;&gt; a &gt;&gt; b;
+        long long sum = a + b;
+        if(sum == 0){
+            cout &lt;&lt; 0;
+            continue;
+        }
+        stack&lt;int&gt; st;
+        while(sum != 0){
+            st.push(sum % m);
+            sum /= m;
+        }
+        while(!st.empty()){
+            cout &lt;&lt; st.top();
+            st.pop();
+        }
+    }
+    return 0;
+}  </code></pre><p>习题6.3进制转换（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;string&gt;
+#include&lt;cctype&gt;
+using namespace std;
+int chartoint(char c){
+    if(isalpha(c)){
+        return c - &apos;A&apos; + 10;
+    }else{
+        return c - &apos;0&apos;;
+    }
+}
+int main(){
+    string s;
+    while(cin &gt;&gt; s){
+        int sum = 0;
+        for(int i = 2; i &lt; s.size(); i++){
+            sum *= 16;
+            sum += chartoint(s[i]);
+        }
+        cout &lt;&lt; sum &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题6.4数制转换（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;string&gt;
+#include&lt;cctype&gt;
+using namespace std;
+
+string delete0(string s){
+    int flag = 0;
+    for(int i = 0; i &lt; s.size(); i++){
+        if(s[i] == &apos;0&apos;){
+            flag++;
+            continue;
+        } else break;
+    }
+    return s.substr(flag, s.size() - flag);
+}
+int chartoint(char c){
+    if(islower(c)) return c - &apos;a&apos; + 10;
+    else if(isupper(c)) return c - &apos;A&apos; + 10;
+    else return c - &apos;0&apos;;
+}
+int main(){
+    long  a, b;
+    string n;
+    stack&lt;char&gt; st;
+    cin &gt;&gt; a &gt;&gt; n &gt;&gt; b;
+    n = delete0(n);
+    long temp = 0;
+    for(int i = 0; i &lt; n.size(); i++){
+        temp *= a;
+        temp += chartoint(n[i]);
+    }
+    while(temp != 0){
+        if(temp % b &gt;= 10){
+            st.push(temp % b - 10 + &apos;A&apos;);
+        }else{
+            st.push(temp % b  + &apos;0&apos;);
+        }
+        temp /= b;
+    }
+    while(!st.empty()){
+        cout &lt;&lt; st.top();
+        st.pop();
+    }
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>考研复试</category>
@@ -576,7 +731,8 @@ int main(){
 
 <p>7.使用while（getline(cin, s))循环读入数据的时候，int主函数的return 0要放在while的{}内和放在while{}外是不同的情况，要特别注意。</p>
 <p>8.string s; s[i]为char类型，++之后相当于向后移动一位。  </p>
-<p>9.对于自定义的函数，有返回值时，一定要返回返回值，使用多个if时最后一个一定是else，否则可能编译不通过。</p>
+<p>9.对于自定义的函数，有返回值时，一定要返回返回值，使用多个if时最后一个一定是else，否则可能编译不通过。  </p>
+<p>10.做题时注意数据范围，如果出现了负数，则应该考虑是否出现了溢出。</p>
 ]]></content>
       <categories>
         <category>考研复试</category>

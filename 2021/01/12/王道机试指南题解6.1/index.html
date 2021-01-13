@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="例题6.1二进制数（北京邮电大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; #include&amp;lt;stack&amp;gt; using namespace std; int main(){     int a;     stack&amp;lt;int&amp;gt; result;     while(cin &amp;gt;&amp;gt; a){         w">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-12T03:59:49.566Z">
+<meta property="og:updated_time" content="2021-01-13T04:11:27.777Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2021/01/12/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.1/">
@@ -213,10 +213,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-12 09:47:12 / 修改时间：11:59:49" itemprop="dateCreated datePublished" datetime="2021-01-12T09:47:12+08:00">2021-01-12</time>
+              <time title="创建时间：2021-01-12 09:47:12" itemprop="dateCreated datePublished" datetime="2021-01-12T09:47:12+08:00">2021-01-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-13 12:11:27" itemprop="dateModified" datetime="2021-01-13T12:11:27+08:00">2021-01-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -375,6 +381,161 @@ int main(){
             ans = add1(ans, binary[i]);
         }
         cout &lt;&lt; ans &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>例题6.4进制转换2（清华大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;cctype&gt;
+using namespace std;
+long long toten(string x, int m){
+    long long sum = 0, a;
+    for(int i = 0; i &lt; x.size(); i++){
+        if(isalpha(x[i])){
+            a = x[i] - &apos;A&apos; + 10;
+        }else {
+            a = x[i] - &apos;0&apos;;
+        }
+        sum *= m;
+        sum += a;
+    }
+    return sum;
+}
+void ton(long long x, int n){
+    stack&lt;int&gt; st;
+    while(x != 0){
+        st.push(x % n);
+        x /= n;
+    }
+    while(!st.empty()){
+        cout &lt;&lt; st.top();
+        st.pop();
+    }
+}
+int main(){
+    int m, n;
+    string x;
+    cin &gt;&gt; m &gt;&gt; n &gt;&gt; x;
+    long long ten = toten(x, m);
+    ton(ten, n);
+    return 0;
+}  </code></pre><p>习题6.1八进制（华中科技大学)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        stack &lt;int&gt; st;
+        while(n != 0){
+            st.push(n % 8);
+            n /= 8;
+        }
+        while(!st.empty()){
+            cout &lt;&lt; st.top();
+            st.pop();
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题6.2有一版A+B  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+using namespace std;
+int main(){
+    int m, a, b;
+    while(cin &gt;&gt; m){
+        if(m == 0) break;
+        cin &gt;&gt; a &gt;&gt; b;
+        long long sum = a + b;
+        if(sum == 0){
+            cout &lt;&lt; 0;
+            continue;
+        }
+        stack&lt;int&gt; st;
+        while(sum != 0){
+            st.push(sum % m);
+            sum /= m;
+        }
+        while(!st.empty()){
+            cout &lt;&lt; st.top();
+            st.pop();
+        }
+    }
+    return 0;
+}  </code></pre><p>习题6.3进制转换（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;string&gt;
+#include&lt;cctype&gt;
+using namespace std;
+int chartoint(char c){
+    if(isalpha(c)){
+        return c - &apos;A&apos; + 10;
+    }else{
+        return c - &apos;0&apos;;
+    }
+}
+int main(){
+    string s;
+    while(cin &gt;&gt; s){
+        int sum = 0;
+        for(int i = 2; i &lt; s.size(); i++){
+            sum *= 16;
+            sum += chartoint(s[i]);
+        }
+        cout &lt;&lt; sum &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题6.4数制转换（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;stack&gt;
+#include&lt;string&gt;
+#include&lt;cctype&gt;
+using namespace std;
+
+string delete0(string s){
+    int flag = 0;
+    for(int i = 0; i &lt; s.size(); i++){
+        if(s[i] == &apos;0&apos;){
+            flag++;
+            continue;
+        } else break;
+    }
+    return s.substr(flag, s.size() - flag);
+}
+int chartoint(char c){
+    if(islower(c)) return c - &apos;a&apos; + 10;
+    else if(isupper(c)) return c - &apos;A&apos; + 10;
+    else return c - &apos;0&apos;;
+}
+int main(){
+    long  a, b;
+    string n;
+    stack&lt;char&gt; st;
+    cin &gt;&gt; a &gt;&gt; n &gt;&gt; b;
+    n = delete0(n);
+    long temp = 0;
+    for(int i = 0; i &lt; n.size(); i++){
+        temp *= a;
+        temp += chartoint(n[i]);
+    }
+    while(temp != 0){
+        if(temp % b &gt;= 10){
+            st.push(temp % b - 10 + &apos;A&apos;);
+        }else{
+            st.push(temp % b  + &apos;0&apos;);
+        }
+        temp /= b;
+    }
+    while(!st.empty()){
+        cout &lt;&lt; st.top();
+        st.pop();
     }
     return 0;
 }</code></pre>
