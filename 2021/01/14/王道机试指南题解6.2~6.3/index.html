@@ -52,18 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="队列是一种先进先出（FIFO)的数据结构，下面是循环队列顺序存储方式">
-<meta name="keywords" content="栈">
+  <meta name="description" content="例题6.7素数判定（哈尔滨工业大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, flag = 0;     while(cin &amp;gt;&amp;gt; n){         if(n == 1 || n == 0 || n &amp;lt; 0){">
+<meta name="keywords" content="王道.素数.分解质因数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构之队列">
-<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2020&#x2F;02&#x2F;17&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%98%9F%E5%88%97&#x2F;index.html">
+<meta property="og:title" content="王道机试指南6.2素数6.3分解质因数">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2021&#x2F;01&#x2F;14&#x2F;%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.2~6.3&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="队列是一种先进先出（FIFO)的数据结构，下面是循环队列顺序存储方式">
+<meta property="og:description" content="例题6.7素数判定（哈尔滨工业大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, flag = 0;     while(cin &amp;gt;&amp;gt; n){         if(n == 1 || n == 0 || n &amp;lt; 0){">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-17T14:59:32.677Z">
+<meta property="og:updated_time" content="2021-01-14T02:37:52.292Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://araik-77.github.io/2020/02/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%98%9F%E5%88%97/">
+<link rel="canonical" href="https://araik-77.github.io/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.2~6.3/">
 
 
 <script id="page-configurations">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>数据结构之队列 | 晨阳 の blog</title>
+  <title>王道机试指南6.2素数6.3分解质因数 | 晨阳 の blog</title>
   
 
 
@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2020/02/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E9%98%9F%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.2~6.3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -204,7 +204,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          数据结构之队列
+          王道机试指南6.2素数6.3分解质因数
         </h2>
 
         <div class="post-meta">
@@ -215,7 +215,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-17 21:44:24 / 修改时间：22:59:32" itemprop="dateCreated datePublished" datetime="2020-02-17T21:44:24+08:00">2020-02-17</time>
+              <time title="创建时间：2021-01-14 09:45:40 / 修改时间：10:37:52" itemprop="dateCreated datePublished" datetime="2021-01-14T09:45:40+08:00">2021-01-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,8 +223,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
+                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">考研复试</span>
                   </a>
                 </span>
             </span>
@@ -247,321 +247,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>队列是一种先进先出（FIFO)的数据结构，下面是循环队列顺序存储方式<a id="more"></a>  </p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;io.h&gt;
-#include&lt;math.h&gt;
-#include&lt;time.h&gt;
-
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-#define MAXSIZE 20
-
-typedef int Status;
-typedef int QElemType;
-
-// 循环队列的顺序结构
-typedef struct{
-QElemType data[MAXSIZE];
-int front;
-int rear; 
-}SqQueue;
-
-Status visit(QElemType c){
-printf(&quot;%d &quot;, c);
-return OK;
-}
-//初始化一个空队列
-Status InitQueue(SqQueue *Q){
-Q-&gt;front = 0;
-Q-&gt;rear = 0;
-return OK; 
-} 
-
-//将Q清空
-Status ClearQueue(SqQueue *Q){
-Q-&gt;front = Q-&gt;rear = 0;
-return OK;
-} 
-
-//判断是否为空 
-Status QueueEmpty(SqQueue Q){
-if(Q.front == Q.rear)
-    return TRUE;
-else
-    return FALSE;
-} 
-
-//返回Q元素的个数
-int QueueLength(SqQueue Q){
-return (Q.rear - Q.front + MAXSIZE) % MAXSIZE;
-} 
-
-//用e返回队列的队头元素
-Status GetHead(SqQueue Q, QElemType *e){
-if(Q.front == Q.rear)
-    return ERROR;
-*e = Q.data[Q.front];
-return OK;
-} 
-
-//插入新的元素e
-Status EnQueue(SqQueue *Q, QElemType e){
-if((Q-&gt;rear + 1) % MAXSIZE == Q-&gt;front)
-    return ERROR;
-    Q-&gt;data[Q-&gt;rear] = e;
-    Q-&gt;rear = (Q-&gt;rear + 1)%MAXSIZE;
-    return OK;
-} 
-
-//删除队头元素，用e返回
-Status DeQueue(SqQueue *Q, QElemType *e){
-if(Q-&gt;front == Q-&gt;rear)
-    return ERROR;
-*e = Q-&gt;data[Q-&gt;front];
-Q-&gt;front = (Q-&gt;front + 1) % MAXSIZE;
-return OK;
-} 
-
-//从队头到队尾依次输出
-Status QueueTraverse(SqQueue Q){
-int i;
-i = Q.front;
-while((i + Q.front) != Q.rear){
-    visit(Q.data[i]);
-    i = (i + 1) % MAXSIZE;
-}
-printf(&quot;\n&quot;);
-return OK;
-} 
+        <p>例题6.7素数判定（哈尔滨工业大学上机）  </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
 int main(){
-Status j;
-int i = 0, l;
-QElemType d;
-SqQueue Q;
-InitQueue(&amp;Q);
-//%u表示无符号的十进制整数 
-printf(&quot;初始化队列后，队列空否？%u(1:空 0:否)\n&quot;,QueueEmpty(Q));
-printf(&quot;请输入整型队列元素(不超过%d个),-1为提前结束符: &quot;,MAXSIZE-1);
-do{
-    d = i + 100;
-    if(d == -1)
-        break;
-    i++;
-    EnQueue(&amp;Q,d); 
-}while(i &lt; MAXSIZE - 1);
-printf(&quot;队列长度为: %d\n&quot;,QueueLength(Q));
-printf(&quot;现在队列空否？%u(1:空 0:否)\n&quot;,QueueEmpty(Q));
-printf(&quot;连续%d次由队头删除元素,队尾插入元素:\n&quot;,MAXSIZE);
-for(l = 1; l &lt;= MAXSIZE; l++){
-    DeQueue(&amp;Q,&amp;d);
-    printf(&quot;删除的元素是%d，插入的元素是：%d\n&quot;,d,l+1000);
-    d = l + 1000;
-    EnQueue(&amp;Q, d);
-}
-l = QueueLength(Q);
-printf(&quot;现在的队列元素为：\n&quot;);
-QueueTraverse(Q);
-printf(&quot;共向队尾插入了%d个元素\n&quot;,i+MAXSIZE);
-if(l - 2 &gt; 0)
-    printf(&quot;现在由队头删除了%d个元素\n&quot;,l - 2);
-while(QueueLength(Q)&gt;2){
-    DeQueue(&amp;Q,&amp;d);
-    printf(&quot;删除的元素为%d\n&quot;,d);
-}
-j = GetHead(Q,&amp;d);
-if(j)
-    printf(&quot;现在队头元素为：%d\n&quot;,d);
-    ClearQueue(&amp;Q);
-    printf(&quot;清空队列后，队列空否？%u(1:空 0：否)\n&quot;,QueueEmpty(Q));
+    int n, flag = 0;
+    while(cin &gt;&gt; n){
+        if(n == 1 || n == 0 || n &lt; 0){
+            flag =1;
+        }
+        for(int i = 2; i * i &lt;= n; i++){
+            if(n % i == 0){
+                flag = 1;
+                break;
+            } 
+        }
+        if(flag == 1) cout &lt;&lt; &quot;no&quot; &lt;&lt; endl;
+        else cout &lt;&lt; &quot;yes&quot; &lt;&lt; endl;
+    }
     return 0;
-}   </code></pre><p>下面是链队列的代码方式</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;io.h&gt;
-#include&lt;math.h&gt;
-#include&lt;time.h&gt;
-
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-#define MAXSIZE 20
-
-typedef int Status;
-typedef int QElemType;
-
-typedef struct QNode //用于定义链的结点 
-{
-   QElemType data;//定义结点的数据域 
-   struct QNode *next;//定义 结点的指针域 
-}QNode,*QueuePtr;//定义一个可以定义结点的名称，定义一个指    向结点的指针 
-
-typedef struct        //定义链表的结构，包含两个结点指针    
-{
- QueuePtr front,rear; 
-}LinkQueue;
-
-Status visit(QElemType c)//用于访问结点的数据域 
-{
-printf(&quot;%d &quot;,c);
-return OK;
-}
-
-/* 构造一个空队列Q */
-Status InitQueue(LinkQueue *Q)
-{ 
-Q-&gt;front=Q-&gt;rear=(QueuePtr)malloc(sizeof(QNode));
-//申请大小为结点结构的动态空间，第一个括号为指向结点指针，第二个括号为结点大小 
-if(!Q-&gt;front)
-    exit(OVERFLOW);
-//xit(OVERFLOW)的含义就是，退出程序，并返回OVERFLOW的值给主调进程。
-//其标准的使用范围为，当程序运算出现上溢时，退出程序并报错给主调进程。
-Q-&gt;front-&gt;next=NULL;//头指针为栈顶 
-return OK;
-}
-
-/* 销毁队列Q，就是什么都没有了 ，头结点都释放掉了*/
-Status DestroyQueue(LinkQueue *Q)
-{
-while(Q-&gt;front)
-{
-     Q-&gt;rear=Q-&gt;front-&gt;next;
-     //这里的Q-&gt;rear当一个临时指针使用取出一个头指针指向的结点free一个 
-     free(Q-&gt;front);
-     Q-&gt;front=Q-&gt;rear;
-}
-return OK;
-}
-
-/* 将Q清为空队列，头指针尾指针还在，都指向头结点 */
-Status ClearQueue(LinkQueue *Q)
-{
-QueuePtr p,q;
-Q-&gt;rear=Q-&gt;front;//先把尾结点提上来指向头结点 
-p=Q-&gt;front-&gt;next;//把要删除的头结点的下一个给p 
-Q-&gt;front-&gt;next=NULL;//把要头结点指向下一个的指针删除掉 
-while(p)//一直到最后一个结点都释放掉 
-{
-     q=p;
-     p=p-&gt;next;
-     free(q);
-}
-return OK;
-}
-
-/* 若Q为空队列,则返回TRUE,否则返回FALSE */
-Status QueueEmpty(LinkQueue Q)
-{ 
-if(Q.front==Q.rear)//指针相等就是空队列 ，也就是都指向头结点，注意头结点不放数据 
-    return TRUE;
-else
-    return FALSE;
-}
-
-/* 求队列的长度 */
-int QueueLength(LinkQueue Q)
-{ 
-int i=0;
-QueuePtr p;
-p=Q.front;
-while(Q.rear!=p)
-{
-     i++;//用于计数 
-     p=p-&gt;next;//指针向后 
-}
-return i;
-}
-
-/* 若队列不空,则用e返回Q的队头元素,并返回OK,否则返回ERROR */
-Status GetHead(LinkQueue Q,QElemType *e)
-{ 
-QueuePtr p;
-if(Q.front==Q.rear)//先判断 
-    return ERROR;
-p=Q.front-&gt;next;
-*e=p-&gt;data;
-return OK;
-}
-
-
-/* 插入元素e为Q的新的队尾元素 */
-Status EnQueue(LinkQueue *Q,QElemType e)
-{ 
-QueuePtr s=(QueuePtr)malloc(sizeof(QNode));
-if(!s) /* 存储分配失败 */
-    exit(OVERFLOW);
-s-&gt;data=e;//先设置要插入的结点的数据域 
-s-&gt;next=NULL;//把这个结点的指针置为空 
-Q-&gt;rear-&gt;next=s;    /* 把拥有元素e的新结点s赋值给原队尾结点的后继，见图中① */
-Q-&gt;rear=s;        /* 把当前的s设置为队尾结点，rear指向s，见图中② */
-return OK;
-}
-
-/* 若队列不空,删除Q的队头元素,用e返回其值,并返回OK,否则返回    ERROR */
-Status DeQueue(LinkQueue *Q,QElemType *e)//实际上删除的    队头元素是头结点的下一个！！！ 
-{
-QueuePtr p;
-if(Q-&gt;front==Q-&gt;rear)
-    return ERROR;
-p=Q-&gt;front-&gt;next;        /* 将欲删除的队头结点暂存给p，见图中① */
-*e=p-&gt;data;                /* 将欲删除的队头结点的值赋值给e */
-Q-&gt;front-&gt;next=p-&gt;next;/* 将原队头结点的后继p-&gt;next赋值给头结点后继，见图中② */
-//上面的语句相当于指针跳过去了 
-if(Q-&gt;rear==p)        /* 若队头就是队尾，则删除后将rear指向头结点，见图中③ */
-    Q-&gt;rear=Q-&gt;front;
-free(p);
-return OK;
-}
-
-/* 从队头到队尾依次对队列Q中每个元素输出 */
-Status QueueTraverse(LinkQueue Q)
-{
-QueuePtr p;
-p=Q.front-&gt;next;
-while(p)
-{
-     visit(p-&gt;data);
-     p=p-&gt;next;
-}
-printf(&quot;\n&quot;);
-return OK;
-}
-
-int main()
-{
-int i;
-QElemType d;
-LinkQueue q;
-i=InitQueue(&amp;q);
-if(i)
-    printf(&quot;成功地构造了一个空队列!\n&quot;);
-printf(&quot;是否空队列？%d(1:空 0:否)  &quot;,QueueEmpty(q));
-printf(&quot;队列的长度为%d\n&quot;,QueueLength(q));
-EnQueue(&amp;q,-5);
-EnQueue(&amp;q,5);
-EnQueue(&amp;q,10);
-printf(&quot;插入3个元素(-5,5,10)后,队列的长度为%d\n&quot;,QueueLength(q));
-printf(&quot;是否空队列？%d(1:空 0:否)  &quot;,QueueEmpty(q));
-printf(&quot;队列的元素依次为：&quot;);
-QueueTraverse(q);
-i=GetHead(q,&amp;d);
-if(i==OK)
- printf(&quot;队头元素是：%d\n&quot;,d);
-DeQueue(&amp;q,&amp;d);
-printf(&quot;删除了队头元素%d\n&quot;,d);
-i=GetHead(q,&amp;d);
-if(i==OK)
-    printf(&quot;新的队头元素是：%d\n&quot;,d);
-ClearQueue(&amp;q);
-printf(&quot;清空队列后,q.front=%u q.rear=%u q.front-&gt;next=%u\n&quot;,q.front,q.rear,q.front-&gt;next);
-DestroyQueue(&amp;q);
-printf(&quot;销毁队列后,q.front=%u q.rear=%u\n&quot;,q.front, q.rear);
-
-return 0;
+}  </code></pre><a id="more"></a>
+<p>例题6.8素数（北京航空航天大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int flag[10001] = {0};
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        for(int i = 2; i &lt;= n; i++){
+            if(flag[i] == 0){
+                for(int j = 2; j * i &lt;= n; j++){
+                    flag[i * j] = 1;
+                }
+            }
+        }
+        int space = 0;
+        int none = 0;
+        for(int i = 2; i &lt;= n; i++){
+            if(i % 10 == 1 &amp;&amp; flag[i] == 0){
+                if(space == 1){
+                    cout &lt;&lt; &quot; &quot; ;
+                }
+                cout &lt;&lt; i;
+                space = 1;
+                none = 1;
+            }
+        }
+        if(none == 0) cout &lt;&lt; -1;
+    }
+    return 0;
 }</code></pre>
     </div>
 
@@ -571,24 +306,21 @@ return 0;
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%A0%88/" rel="tag"># 栈</a>
+              <a href="/tags/%E7%8E%8B%E9%81%93-%E7%B4%A0%E6%95%B0-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0/" rel="tag"># 王道.素数.分解质因数</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/02/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E6%A0%88/" rel="next" title="数据结构之栈">
-                  <i class="fa fa-chevron-left"></i> 数据结构之栈
+                <a href="/2021/01/12/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.1/" rel="next" title="王道机试指南6.1进制转换">
+                  <i class="fa fa-chevron-left"></i> 王道机试指南6.1进制转换
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/02/19/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/" rel="prev" title="PAT乙级学习笔记（三）">
-                  PAT乙级学习笔记（三） <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
