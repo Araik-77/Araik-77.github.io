@@ -52,21 +52,18 @@
   };
 </script>
 
-  <meta name="description" content="最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是SSH连接）：   1查看配置SSH 秘钥是否有效先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署">
-<meta name="keywords" content="hexo github">
+  <meta name="description" content="例题6.7素数判定（哈尔滨工业大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, flag = 0;     while(cin &amp;gt;&amp;gt; n){         if(n == 1 || n == 0 || n &amp;lt; 0){">
+<meta name="keywords" content="王道.素数.分解质因数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="delay需要重复输入github密码的解决">
-<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;index.html">
+<meta property="og:title" content="王道机试指南6.2素数6.3分解质因数">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2021&#x2F;01&#x2F;14&#x2F;%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是SSH连接）：   1查看配置SSH 秘钥是否有效先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署">
+<meta property="og:description" content="例题6.7素数判定（哈尔滨工业大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int n, flag = 0;     while(cin &amp;gt;&amp;gt; n){         if(n == 1 || n == 0 || n &amp;lt; 0){">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh1%E6%88%AA%E5%9B%BE.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2019-11-25T21:44:00.300Z">
+<meta property="og:updated_time" content="2021-01-15T04:16:18.123Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2019&#x2F;11&#x2F;24&#x2F;delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3&#x2F;ssh1%E6%88%AA%E5%9B%BE.png">
 
-<link rel="canonical" href="https://araik-77.github.io/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/">
+<link rel="canonical" href="https://araik-77.github.io/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1/">
 
 
 <script id="page-configurations">
@@ -80,7 +77,7 @@
   };
 </script>
 
-  <title>delay需要重复输入github密码的解决 | 晨阳 の blog</title>
+  <title>王道机试指南6.2素数6.3分解质因数 | 晨阳 の blog</title>
   
 
 
@@ -194,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.jpg">
@@ -207,7 +204,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          delay需要重复输入github密码的解决
+          王道机试指南6.2素数6.3分解质因数
         </h2>
 
         <div class="post-meta">
@@ -217,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-11-24 03:18:49" itemprop="dateCreated datePublished" datetime="2019-11-24T03:18:49+08:00">2019-11-24</time>
+              <time title="创建时间：2021-01-14 09:45:40" itemprop="dateCreated datePublished" datetime="2021-01-14T09:45:40+08:00">2021-01-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-26 05:44:00" itemprop="dateModified" datetime="2019-11-26T05:44:00+08:00">2019-11-26</time>
+                <time title="修改时间：2021-01-15 12:16:18" itemprop="dateModified" datetime="2021-01-15T12:16:18+08:00">2021-01-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,8 +229,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
+                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">考研复试</span>
                   </a>
                 </span>
             </span>
@@ -256,15 +253,135 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近开始更新博客时，发现每一次hexo d都需要重新输入密码，对照参考网上的解决办法，应该是本地库与远程库的连接为https（github支持SSH连接和https连接，免密码连接应该是<strong>SSH连接</strong>）：  </p>
-<h4 id="1查看配置SSH-秘钥是否有效"><a href="#1查看配置SSH-秘钥是否有效" class="headerlink" title="1查看配置SSH 秘钥是否有效"></a>1查看配置SSH 秘钥是否有效</h4><p>先登录你的github，在setting目录下点击是否有公钥如下图，如果没有，需要重新生成新的公钥进行部署  <a id="more"></a></p>
-<p><img src="/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/ssh1%E6%88%AA%E5%9B%BE.png" alt></p>
-<h4 id="2查看你的github博客仓库连接方式"><a href="#2查看你的github博客仓库连接方式" class="headerlink" title="2查看你的github博客仓库连接方式"></a>2查看你的github博客仓库连接方式</h4><p>在博客仓库的download下查看是否为SSH连接方式，如下图应该显示clone with ssh  </p>
-<p><img src="/2019/11/24/delay%E9%9C%80%E8%A6%81%E9%87%8D%E5%A4%8D%E8%BE%93%E5%85%A5github%E5%AF%86%E7%A0%81%E7%9A%84%E8%A7%A3%E5%86%B3/ssh%E6%88%AA%E5%9B%BE.png" alt></p>
-<h4 id="3查看hexo框架下的配置文件"><a href="#3查看hexo框架下的配置文件" class="headerlink" title="3查看hexo框架下的配置文件"></a>3查看hexo框架下的配置文件</h4><p>在hexo框架下查看配置文件config.yml，你的url应该从https改为ssh模式  </p>
-<p><code>repo: www.github.com/Araik-77/Araik-77.github.io.git</code><br>应该改为下面这个<br><code>repo: git@github.com/Araik-77/Araik-77.github.io.git</code>  </p>
-<p>至此，问题已经解决</p>
-
+        <p>例题6.7素数判定（哈尔滨工业大学上机）  </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int main(){
+    int n, flag = 0;
+    while(cin &gt;&gt; n){
+        if(n == 1 || n == 0 || n &lt; 0){
+            flag =1;
+        }
+        for(int i = 2; i * i &lt;= n; i++){
+            if(n % i == 0){
+                flag = 1;
+                break;
+            } 
+        }
+        if(flag == 1) cout &lt;&lt; &quot;no&quot; &lt;&lt; endl;
+        else cout &lt;&lt; &quot;yes&quot; &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><a id="more"></a>
+<p>例题6.8素数（北京航空航天大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int flag[10001] = {0};
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        for(int i = 2; i &lt;= n; i++){
+            if(flag[i] == 0){
+                for(int j = 2; j * i &lt;= n; j++){
+                    flag[i * j] = 1;
+                }
+            }
+        }
+        int space = 0;
+        int none = 0;
+        for(int i = 2; i &lt;= n; i++){
+            if(i % 10 == 1 &amp;&amp; flag[i] == 0){
+                if(space == 1){
+                    cout &lt;&lt; &quot; &quot; ;
+                }
+                cout &lt;&lt; i;
+                space = 1;
+                none = 1;
+            }
+        }
+        if(none == 0) cout &lt;&lt; -1;
+    }
+    return 0;
+}  </code></pre><p>例题6.9质因数个数（清华大学复试上机）<br>    下面的代码本地通过了，但是没有AC提示段错误，不调用函数不显示段错误，应该是调用层数太多了，需要重构</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+int flag[1000] = {0};
+vector&lt;int&gt; v;
+void primnum(int n){
+    for(int i = 2; i * i &lt;= n; i++){
+        if(flag[i] == 0){
+           for(int j = 2; j * i &lt;= n; j++){
+                flag[j * i] = 1;
+            }
+        }
+     }
+     for(int i = 2; i &lt; n; i++){
+         if(flag[i] == 0){
+             v.push_back(i);
+        }
+    }
+}
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        int sum = 0;
+        v.clear();
+        primnum(n);
+        for(int i = 0; i &lt; v.size(); i++){
+            while(n % v[i] == 0){
+                n /= v[i];
+                sum++;
+            }
+        }
+        cout &lt;&lt; sum &lt;&lt; endl; 
+    }
+    return 0;
+}  </code></pre><p>参考了别人代码后，进行了重构  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        int sum = 0;
+        for(int i = 2; i * i&lt; n; i++){
+            while(n % i == 0){
+                n /= i;
+                sum++;
+            }
+        }
+        if(n &gt; 1) sum++;//
+        cout &lt;&lt; sum &lt;&lt; endl; 
+    }
+    return 0;
+}    </code></pre><p>习题6.7约数个数（清华大学复试上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cmath&gt;
+using namespace std;
+int main(){
+   int n;
+    while(scanf(&quot;%d&quot;,&amp;n) != EOF){
+        for(int i = 0; i &lt; n; i++){
+            int temp, count = 0;
+            scanf(&quot;%d&quot;, &amp;temp);
+            int bound = (int)sqrt((double)temp) + 1;
+            for(int j = 1; j &lt;= bound; j++){
+                if(temp % j == 0){
+                    count++;
+                    if(temp / j &gt; bound) count++;
+                }
+            }
+            printf(&quot;%d\n&quot;, count);
+        }
+        n--;
+    }
+    return 0;
+}</code></pre>
     </div>
 
     
@@ -273,23 +390,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/hexo-github/" rel="tag"># hexo github</a>
+              <a href="/tags/%E7%8E%8B%E9%81%93-%E7%B4%A0%E6%95%B0-%E5%88%86%E8%A7%A3%E8%B4%A8%E5%9B%A0%E6%95%B0/" rel="tag"># 王道.素数.分解质因数</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/11/11/MyFirstArticle/" rel="next" title="MyFirstArticle">
-                  <i class="fa fa-chevron-left"></i> MyFirstArticle
+                <a href="/2021/01/12/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.1/" rel="next" title="王道机试指南6.1进制转换">
+                  <i class="fa fa-chevron-left"></i> 王道机试指南6.1进制转换
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/12/23/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="prev" title="PAT乙级学习笔记（二）">
-                  PAT乙级学习笔记（二） <i class="fa fa-chevron-right"></i>
+                <a href="/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.2~6.3/" rel="prev" title="王道机试指南6.2素数6.3分解质因数">
+                  王道机试指南6.2素数6.3分解质因数 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -329,7 +446,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1查看配置SSH-秘钥是否有效"><span class="nav-text">1查看配置SSH 秘钥是否有效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2查看你的github博客仓库连接方式"><span class="nav-text">2查看你的github博客仓库连接方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3查看hexo框架下的配置文件"><span class="nav-text">3查看hexo框架下的配置文件</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
