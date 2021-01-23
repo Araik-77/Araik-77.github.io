@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南8递归分治</title>
+    <url>/2021/01/23/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A38/</url>
+    <content><![CDATA[<p>例题8.1n的阶乘（清华复试上机）    </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+long long func(int n){
+    if(n == 0) return 1;
+    else{
+        return n * func(n - 1);
+    }
+}
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        cout &lt;&lt; func(n) &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><a id="more"></a>
+<p>习题8.1杨辉三角（西北工业大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int YangHui(int i, int j){
+    if(j == 1) return 1;
+    else if(i == j) return 1;
+    else return YangHui(i-1, j-1) + YangHui(i-1, j);
+}
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        int a[n][n];
+        for(int i = 2;i &lt;= n; i++){
+            for(int j = 1; j &lt;= n; j++){
+                if(j &lt;= i) cout &lt;&lt; YangHui(i, j) &lt;&lt; &quot; &quot;;
+            }
+            cout &lt;&lt; endl;
+        }
+    }
+
+    return 0;
+}  </code></pre><p>习题8.2全排列（北京大学上机）  </p>
+<p>使用dfs来进行全排列    </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+string str;
+string res;
+bool used[6];
+
+void Dfs(int cur)
+{
+    if (cur == str.length())
+    {
+        cout &lt;&lt; res &lt;&lt; endl;
+        return;
+    }
+    for (int i = 0; i &lt; str.length(); ++i)
+    {
+        if (!used[i])
+        {
+            //放入
+            used[i] = true;
+            res[cur] = str[i];
+            Dfs(cur + 1);
+            used[i] = false;
+        }
+    }
+}
+
+int main()
+{
+    while (cin &gt;&gt; str)
+    {
+        sort(str.begin(), str.end());
+        res = str;
+        memset(used, false, sizeof(used));
+        Dfs(0);
+        cout &lt;&lt; endl;
+    }
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.递归与分治</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>王道机试指南7贪心策略</title>
     <url>/2021/01/18/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1/</url>
     <content><![CDATA[<p>例题7.1鸡兔同笼（北京大学上机）  </p><pre><code>#include&lt;iostream&gt;
@@ -2725,6 +2816,18 @@ int main(){
       </tags>
   </entry>
   <entry>
+    <title>PAT甲级英语单词记录</title>
+    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（四）</title>
     <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码<a id="more"></a>  </p>
@@ -3151,18 +3254,6 @@ int main(){
     printf(&quot; -1&quot;);    
     return 0;
 }</code></pre>]]></content>
-      <categories>
-        <category>PAT</category>
-      </categories>
-      <tags>
-        <tag>算法笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PAT甲级英语单词记录</title>
-    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
-]]></content>
       <categories>
         <category>PAT</category>
       </categories>
