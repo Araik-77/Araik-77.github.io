@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="例题8.1n的阶乘（清华复试上机）    #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; long long func(int n){     if(n == 0) return 1;     else{         return n * func(n - 1);     } } int main(){">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-23T04:27:24.778Z">
+<meta property="og:updated_time" content="2021-01-24T03:24:26.926Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2021/01/23/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A38/">
@@ -213,10 +213,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-23 10:07:11 / 修改时间：12:27:24" itemprop="dateCreated datePublished" datetime="2021-01-23T10:07:11+08:00">2021-01-23</time>
+              <time title="创建时间：2021-01-23 10:07:11" itemprop="dateCreated datePublished" datetime="2021-01-23T10:07:11+08:00">2021-01-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-24 11:24:26" itemprop="dateModified" datetime="2021-01-24T11:24:26+08:00">2021-01-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -327,6 +333,86 @@ int main()
         Dfs(0);
         cout &lt;&lt; endl;
     }
+}</code></pre><p>例题8.3Fibonacci（上海交通大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int fib(int n){
+    if(n == 0) return 0;
+    if(n == 1) return 1;
+    return fib(n - 1) + fib(n - 2);
+}
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        cout &lt;&lt; fib(n) &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>例题8.4（北京大学复试上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+using namespace std;
+int m, n;
+int count = 0;
+int func(int m, int n){
+    if(m &gt; n){
+        return 0;
+    }else{
+        return 1 + func(2 * m, n) + func(2 * m + 1, n);
+    }
+
+}
+int main(){
+    while(cin &gt;&gt; m &gt;&gt; n){
+        cout &lt;&lt; func(m, n) &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题8.3 2的幂次方（上海交通大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;stack&gt;
+#include&lt;vector&gt; 
+#include&lt;cmath&gt;
+using namespace std;
+
+void func(int n){
+    vector&lt;int&gt; v;
+    //转换为二进制
+    while(n != 0){
+        v.push_back(n % 2 );
+        n /= 2;
+    }
+    bool first = true;//判断是不是输出“+”，除了第一个外，其他输出前都要输出“+”
+    for(int i = v.size() - 1; i &gt;= 0; i--){//循环内隐含了递归边界
+        if(v[i] == 1){
+            if(!first){
+                cout &lt;&lt; &quot;+&quot;;
+            }
+            first = false;
+            //如果是0或1位直接输出，不是0或1则递归调用
+            if(i == 0){
+                cout &lt;&lt; &quot;2(0)&quot;;
+            }
+            else if(i == 1){
+                cout &lt;&lt; &quot;2&quot;;
+            }
+            else{
+                cout &lt;&lt; &quot;2(&quot;;
+                func(i);
+                cout &lt;&lt; &quot;)&quot;;
+            }
+        }
+
+    }
+}
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        func(n);
+        cout &lt;&lt; endl;
+    }
+    return 0;
 }</code></pre>
     </div>
 
