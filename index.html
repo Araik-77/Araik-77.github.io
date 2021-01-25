@@ -189,6 +189,126 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/25/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/25/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A39/" class="post-title-link" itemprop="url">王道机试指南搜索</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-25 12:49:23 / 修改时间：12:53:48" itemprop="dateCreated datePublished" datetime="2021-01-25T12:49:23+08:00">2021-01-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">考研复试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>例题9.1玛雅人的密码（清华大学上机）<br>利用一个mp来标记是否出现过，之后进行BFS，且每一次shift之后mp都将加1</p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;map&gt; 
+using namespace std;
+map&lt;string, int&gt; mp;//记录每一个字符的交换次数 
+queue&lt;string&gt; que;//用于bfs的队列 
+int n;
+string s;
+bool has_2012(string s){ //判断是否含有2012 
+    for(int i = 0; i &lt; n - 3; i++){
+        if(s[i] == &apos;2&apos; &amp;&amp; s[i+1] == &apos;0&apos; &amp;&amp; s[i+2] == &apos;1&apos; &amp;&amp; s[i+3] == &apos;2&apos;)
+            return true;
+    }
+    return false;
+}
+string shift(string s, int i){//用来转换字符串 , i位与i+1交换 
+        char temp = s[i];
+        s[i] = s[i+1];
+        s[i+1] = temp;
+        return s;
+}
+int bfs(string s){
+    string newstr;
+    mp.clear();
+    while(!que.empty()) que.pop();//清空队列，队列没有clear（）函数 
+    que.push(s);//初始字符串入队 
+    mp[s] = 0;//初始字符串交换次数为0 
+    while(!que.empty()){
+        s = que.front();
+        que.pop();//取出队首 
+        for(int i = 0; i &lt; n - 1; i++){
+            newstr = shift(s, i);
+            if(mp.find(newstr) == mp.end()){//字符没有出现过 
+                mp[newstr] = mp[s] + 1;//出现了且交换次数多于他爹的交换次数 
+                if(has_2012(newstr)) return mp[newstr];
+                else que.push(newstr);
+            }
+        }
+    }
+    return -1;
+}
+
+int main(){
+    while(cin &gt;&gt; n &gt;&gt; s){
+        if(has_2012(s)) cout &lt;&lt; 0 &lt;&lt; endl;
+        else cout &lt;&lt; bfs(s) &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/23/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A38/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -901,7 +1021,7 @@ int main(){
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-14 10:42:06" itemprop="dateModified" datetime="2021-01-14T10:42:06+08:00">2021-01-14</time>
+                <time title="修改时间：2021-01-25 11:40:03" itemprop="dateModified" datetime="2021-01-25T11:40:03+08:00">2021-01-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1042,115 +1162,6 @@ int main(){
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/03/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Araik">
-      <meta itemprop="description" content="越努力，越幸运">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨阳 の blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/03/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.2/" class="post-title-link" itemprop="url">王道机试指南2.2暴力求解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-03 10:44:25" itemprop="dateCreated datePublished" datetime="2021-01-03T10:44:25+08:00">2021-01-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-04 17:03:09" itemprop="dateModified" datetime="2021-01-04T17:03:09+08:00">2021-01-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">考研复试</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>例题2.6  今年的第几天（清华大学复试上机题）  </p><pre><code>#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-using namespace std;
-int day1[2][13]={
-    {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
-    {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
-};
-bool isLeapYear(int year){
-    if(year % 100 == 0 &amp;&amp; year % 400 == 0) return true;
-    if(year % 100 != 0 &amp;&amp; year % 4 == 0) return true;
-    return false;
-}
-int main(){
-    int year, month, day, sum = 0;
-    scanf(&quot;%d%d%d&quot;, &amp;year, &amp;month, &amp;day);
-    if(isLeapYear(year)){
-        for(int i = 0; i &lt; month; i++){
-            sum += day1[1][i];
-        }
-    }
-    else{
-        for(int i = 0; i &lt; month; i++){
-            sum += day1[0][i];
-        }
-    }
-    printf(&quot;%d\n&quot;, sum + day);
-}  </code></pre>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/03/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1201,7 +1212,7 @@ int main(){
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1214,7 +1225,7 @@ int main(){
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

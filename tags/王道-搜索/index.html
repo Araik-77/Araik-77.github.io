@@ -52,18 +52,16 @@
   };
 </script>
 
-  <meta name="description" content="例题7.1鸡兔同笼（北京大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int a;     while(scanf(&amp;quot;%d&amp;quot;, &amp;amp;a) != EOF){         if(a % 2 != 0 || a &amp;lt; 2){">
-<meta name="keywords" content="王道.贪心">
-<meta property="og:type" content="article">
-<meta property="og:title" content="王道机试指南7贪心策略">
-<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2021&#x2F;01&#x2F;18&#x2F;%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1&#x2F;index.html">
+  <meta name="description" content="越努力，越幸运">
+<meta property="og:type" content="website">
+<meta property="og:title" content="晨阳 の blog">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;tags&#x2F;%E7%8E%8B%E9%81%93-%E6%90%9C%E7%B4%A2&#x2F;index.html">
 <meta property="og:site_name" content="晨阳 の blog">
-<meta property="og:description" content="例题7.1鸡兔同笼（北京大学上机）  #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; using namespace std; int main(){     int a;     while(scanf(&amp;quot;%d&amp;quot;, &amp;amp;a) != EOF){         if(a % 2 != 0 || a &amp;lt; 2){">
+<meta property="og:description" content="越努力，越幸运">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-18T05:42:29.330Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://araik-77.github.io/2021/01/18/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1/">
+<link rel="canonical" href="https://araik-77.github.io/tags/%E7%8E%8B%E9%81%93-%E6%90%9C%E7%B4%A2/">
 
 
 <script id="page-configurations">
@@ -71,13 +69,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: true,
+    isPost: false,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>王道机试指南7贪心策略 | 晨阳 の blog</title>
+  <title>标签: 王道.搜索 | 晨阳 の blog</title>
   
 
 
@@ -186,164 +184,50 @@
           <div class="content">
             
 
-  <div class="posts-expand">
-      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2021/01/18/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A37.1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-      <meta itemprop="name" content="Araik">
-      <meta itemprop="description" content="越努力，越幸运">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晨阳 の blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          王道机试指南7贪心策略
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <h2 class="collection-header">王道.搜索
+          <small>标签</small>
         </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-18 09:52:11 / 修改时间：13:42:29" itemprop="dateCreated datePublished" datetime="2021-01-18T09:52:11+08:00">2021-01-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">考研复试</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+      </div>
 
       
-        <p>例题7.1鸡兔同笼（北京大学上机）  </p><pre><code>#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-using namespace std;
-int main(){
-    int a;
-    while(scanf(&quot;%d&quot;, &amp;a) != EOF){
-        if(a % 2 != 0 || a &lt; 2){
-            printf(&quot;0 0&quot;);
-        }else{
-                printf(&quot;%d %d\n&quot;, a/4 + (a%4)/2, a/2);
-        }
-    }
-    return 0;
-}  </code></pre><a id="more"></a>
-<p>例题7.2代理服务器（清华上机）  </p>
-<pre><code>#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-int n, m;
-string angency[1005], server[5005];
-int ans;
-//int now;
-
-int find(int num){
-    int max = -1;
-    for(int i = 0; i &lt; n; i++){
-//        if(i == now) continue;
-        for(int j = num;; j++){
-            if(j == m) return -1;
-            if(angency[i] == server[j]){
-                if(j &gt; max){
-                    max = j;
-//                    now = i;
-                }
-                break;
-            }
-        }
-    }
-    ans++;
-    return max;
-}
-int main(){
-    while(cin &gt;&gt; n){
-//        now = -1;
-        ans = 0;
-        for(int i = 0; i &lt; n; i++) cin &gt;&gt; angency[i];
-        cin &gt;&gt; m;
-        for(int i = 0; i &lt; m; i++) cin &gt;&gt; server[i];
-        int flag = find(0);
-        if(n == 1 &amp;&amp; flag != -1){
-            cout &lt;&lt; -1 &lt;&lt; endl;
-            continue;
-        }
-        while(true){
-            flag = find(flag);
-            if(flag == -1) break;
-        }
-        cout &lt;&lt; ans &lt;&lt; endl;
-    }
-    return 0;
-}</code></pre>
+    <div class="collection-year">
+      <h2 class="collection-header">2021</h2>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E7%8E%8B%E9%81%93-%E8%B4%AA%E5%BF%83/" rel="tag"># 王道.贪心</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2021-01-25T12:49:23+08:00"
+              content="2021-01-25">
+          01-25
+        </time>
+      </div>
 
-        
+      <h3 class="post-title">
+          <a class="post-title-link" href="/2021/01/25/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A39/" itemprop="url">
+            <span itemprop="name">王道机试指南搜索</span>
+          </a>
+      </h3>
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-                <a href="/2021/01/14/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A36.2~6.3/" rel="next" title="王道机试指南6.2素数6.3分解质因数">
-                  <i class="fa fa-chevron-left"></i> 王道机试指南6.2素数6.3分解质因数
-                </a>
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-                <a href="/2021/01/23/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A38/" rel="prev" title="王道机试指南8递归分治">
-                  王道机试指南8递归分治 <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-      </footer>
-    
+    </header>
   </article>
+
+    </div>
+  </div>
   
   
   
 
-  </div>
+  
+
 
 
           </div>

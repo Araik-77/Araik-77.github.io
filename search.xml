@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南搜索</title>
+    <url>/2021/01/25/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A39/</url>
+    <content><![CDATA[<p>例题9.1玛雅人的密码（清华大学上机）<br>利用一个mp来标记是否出现过，之后进行BFS，且每一次shift之后mp都将加1</p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#include&lt;string&gt;
+#include&lt;vector&gt;
+#include&lt;map&gt; 
+using namespace std;
+map&lt;string, int&gt; mp;//记录每一个字符的交换次数 
+queue&lt;string&gt; que;//用于bfs的队列 
+int n;
+string s;
+bool has_2012(string s){ //判断是否含有2012 
+    for(int i = 0; i &lt; n - 3; i++){
+        if(s[i] == &apos;2&apos; &amp;&amp; s[i+1] == &apos;0&apos; &amp;&amp; s[i+2] == &apos;1&apos; &amp;&amp; s[i+3] == &apos;2&apos;)
+            return true;
+    }
+    return false;
+}
+string shift(string s, int i){//用来转换字符串 , i位与i+1交换 
+        char temp = s[i];
+        s[i] = s[i+1];
+        s[i+1] = temp;
+        return s;
+}
+int bfs(string s){
+    string newstr;
+    mp.clear();
+    while(!que.empty()) que.pop();//清空队列，队列没有clear（）函数 
+    que.push(s);//初始字符串入队 
+    mp[s] = 0;//初始字符串交换次数为0 
+    while(!que.empty()){
+        s = que.front();
+        que.pop();//取出队首 
+        for(int i = 0; i &lt; n - 1; i++){
+            newstr = shift(s, i);
+            if(mp.find(newstr) == mp.end()){//字符没有出现过 
+                mp[newstr] = mp[s] + 1;//出现了且交换次数多于他爹的交换次数 
+                if(has_2012(newstr)) return mp[newstr];
+                else que.push(newstr);
+            }
+        }
+    }
+    return -1;
+}
+
+int main(){
+    while(cin &gt;&gt; n &gt;&gt; s){
+        if(has_2012(s)) cout &lt;&lt; 0 &lt;&lt; endl;
+        else cout &lt;&lt; bfs(s) &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.搜索</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>王道机试指南8递归分治</title>
     <url>/2021/01/23/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A38/</url>
     <content><![CDATA[<p>例题8.1n的阶乘（清华复试上机）    </p><pre><code>#include&lt;iostream&gt;
@@ -1114,7 +1176,8 @@ int main(){
 <p>8.string s; s[i]为char类型，++之后相当于向后移动一位。  </p>
 <p>9.对于自定义的函数，有返回值时，一定要返回返回值，使用多个if时最后一个一定是else，否则可能编译不通过。  </p>
 <p>10.做题时注意数据范围，如果出现了负数，则应该考虑是否出现了溢出。    </p>
-<p>11.memset函数在头文件&lt;string.h&gt;中，使用memset时格式为memset(a, 0, sizeof(a))第二项为赋的值，一般只为0或-1.定义一位数组时，只有定义了其中的一项，其他项才默认为0，如果没有初始化，所有相不一定是多少。</p>
+<p>11.memset函数在头文件&lt;string.h&gt;中，使用memset时格式为memset(a, 0, sizeof(a))第二项为赋的值，一般只为0或-1.定义一位数组时，只有定义了其中的一项，其他项才默认为0，如果没有初始化，所有相不一定是多少。  </p>
+<p>12.队列queue使用front（）和back（）来访问头和尾结点，栈stack使用top（）来访问栈顶。queue没有clear（）函数</p>
 ]]></content>
       <categories>
         <category>考研复试</category>
