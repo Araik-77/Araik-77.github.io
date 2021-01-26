@@ -54,6 +54,88 @@ int main(){
         else cout &lt;&lt; bfs(s) &lt;&lt; endl;
     }
     return 0;
+}  </code></pre><a id="more"></a>
+<p>习题9.2神奇的口袋（北京大学上机）<br>因为不可以重复，所以可以不用visit数组，直接使用pos来进行遍历，递归就可以得到结果。    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+int n;
+vector&lt;int&gt; v;
+int kind;
+void dfs(int sum, int pos){
+    if(sum == 40){
+        kind++;
+        return;
+    }
+    if(sum &gt; 40) return;
+    for(int i = pos; i &lt; n; i++){
+            dfs(v[i] + sum, i+1);
+    }
+} 
+int main(){
+    while(cin &gt;&gt; n){
+        kind = 0;
+        v.clear();
+        for(int i = 0; i &lt; n; i++){//输入n个数到v 
+            int temp;
+            cin &gt;&gt; temp;
+            v.push_back(temp);
+        }
+        dfs(0, 0);
+        cout &lt;&lt; kind &lt;&lt; endl;
+    }
+    return 0;
+}  </code></pre><p>习题9.2八皇后（北京大学上机）<br>注意理解题目中的递归思想，剪枝的技巧   </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;string&gt;
+#include&lt;cmath&gt;
+#include&lt;stdlib.h&gt;
+using namespace std;
+int p[9];
+vector&lt;int&gt; vi;
+bool hashtable[9];//用来标记列是否放入 
+void generatep(int row){//从第index行开始填入 
+    if(row == 9){//表示找到一个结果，将其转化为整数存入vi
+        int sum = 0;
+        for(int i = 1; i &lt;= 8; i++){
+            sum += p[i] * pow(10, 8 - i);
+        }
+        vi.push_back(sum);
+        return;
+    }
+
+    for(int x = 1; x &lt;= 8; x++){//遍历第x列 
+        if(hashtable[x] == false){
+            bool flag = true;
+            /*for循环用来剪枝*/ 
+            for(int pre = 1; pre &lt; row; pre++){//遍历之前填入的结点
+            //x为index的列，p[pre]为pre的列 
+                if(abs(row - pre) == abs(x - p[pre])){//对角线上的结点相同 
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){//可以填入，直接向下填入，递归访问 
+                p[row] = x;
+                hashtable[x] = true;
+                generatep(row+1);
+                hashtable[x] = false;//回溯还原 
+            }
+        }
+    }
+}
+int main(){
+    int b;//根本就没有case个数的输入 
+    while(cin &gt;&gt; b){
+        generatep(1); 
+        sort(vi.begin(), vi.end());
+        cout &lt;&lt; vi[b - 1]&lt;&lt; endl;
+    }
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>考研复试</category>
