@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>王道机试指南数据结构二</title>
+    <url>/2021/01/27/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A310/</url>
+    <content><![CDATA[<p>例题10.2（二叉树遍历）    </p><pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+struct node{//定义结点
+    char data;
+    node* lchild;
+    node* rchild;
+    node(char(c)) : data(c), lchild(NULL), rchild(NULL){}//可以简化写法
+};
+node* create(int&amp; pos, string str){//创建一课树
+    char c = str[pos++];
+    if(c == &apos;#&apos;) return NULL;
+    node* root = new node(c);//创建一个新的结点
+    root-&gt;lchild = create(pos, str);//创建左子树 
+    root-&gt;rchild = create(pos, str);//创建右子树 
+    return root;//递归回溯之后，返回根一定是最开始 定义的第一个根节点 
+}
+void inorder(node* root){//都是通过根节点进行第一个访问 
+    if(root == NULL) return;
+    inorder(root-&gt;lchild);
+    cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;
+    inorder(root-&gt;rchild);
+}
+int main(){
+    string s;
+    while(cin &gt;&gt; s){
+        int pos = 0;
+        node* root = create(pos, s);//定义一个node类型的名字叫root的指针 
+        inorder(root);//进行中序遍历 
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}    </code></pre><a id="more"></a>
+<p>例题10.2二叉树的遍历（华中科技大学上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+char pre[28], in[28];
+void post(int root, int start, int end){//root为前序中当前根节点的下标
+    if(start &gt; end) return;//表示递归出口 
+    int i = start;//i表示当前的根在中序的位置，从start开始找 
+    while(i &lt; end &amp;&amp; in[i] != pre[root]) i++;//找到先序的根在中序遍历的位置
+    post(root + 1, start, i - 1);//相当于从前序中依次遍历
+    post(root + 1 + i - start, i + 1, end);
+    cout &lt;&lt; pre[root];
+}
+int main(){
+    string pres, ins;
+    int n;
+    while(cin &gt;&gt; pres &gt;&gt; ins){
+        n = pres.size();//n为用例的长度 
+        for(int i = 0; i &lt; n; i++) pre[i] = pres[i];//将字符转换为char类型的数组来存储 
+        for(int i = 0; i &lt; n; i++) in[i] = ins[i];
+        post(0, 0, n - 1); //end为下标，所以应该从n - 1开始 
+        cout &lt;&lt; endl; 
+    }
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>考研复试</category>
+      </categories>
+      <tags>
+        <tag>王道.数据结构二</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>王道机试指南搜索</title>
     <url>/2021/01/25/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A39/</url>
     <content><![CDATA[<p>例题9.1玛雅人的密码（清华大学上机）<br>利用一个mp来标记是否出现过，之后进行BFS，且每一次shift之后mp都将加1</p><pre><code>#include&lt;iostream&gt;
