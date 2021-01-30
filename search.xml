@@ -3,7 +3,7 @@
   <entry>
     <title>王道机试指南数据结构二</title>
     <url>/2021/01/27/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A310/</url>
-    <content><![CDATA[<p>例题10.2（二叉树遍历）    </p><pre><code>#include&lt;iostream&gt;
+    <content><![CDATA[<p>例题10.1二叉树遍历（清华大学上机）    </p><pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;string&gt;
 using namespace std;
@@ -91,7 +91,68 @@ int main(){
         }
     }
     return 0;
-}  </code></pre><p>习题10.1二叉搜索树（浙江大学复试上机）    </p>
+}  </code></pre><p>例题10.4 二叉排序树（华中科技上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string.h&gt;
+#include&lt;map&gt;
+using namespace std;
+map&lt;int, int&gt; flag;
+struct node{
+    int data;
+    node* lchild;
+    node* rchild;
+    node(int x) : data(x), lchild(NULL), rchild(NULL){}
+};
+void create(node* &amp;root, int x){
+    if(root == NULL){
+        root = new node(x);
+        return;
+    }
+    if(x &lt; root-&gt;data) create(root-&gt;lchild, x);
+    else create(root-&gt;rchild, x);
+}
+void preorder(node* root){
+    if(root == NULL) return;
+    cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;
+    preorder(root-&gt;lchild);
+    preorder(root-&gt;rchild);
+}
+void inorder(node* root){
+    if(root == NULL) return;
+    inorder(root-&gt;lchild);
+    cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;
+    inorder(root-&gt;rchild);
+}
+void postorder(node* root){
+    if(root == NULL) return;
+    postorder(root-&gt;lchild);
+    postorder(root-&gt;rchild);
+    cout &lt;&lt; root-&gt;data &lt;&lt; &quot; &quot;;
+}
+int main(){
+    int n, x;
+    while(cin &gt;&gt; n){
+        node* root = NULL;
+        for(int i = 0; i &lt; n ;i++){
+            cin &gt;&gt; x;
+            if(flag[x] != 1){
+                flag[x] = 1;
+                create(root, x);
+            } 
+        }
+        flag.clear();
+        preorder(root);
+        cout &lt;&lt; endl;
+        flag.clear();
+        inorder(root);
+        cout &lt;&lt; endl;
+        flag.clear();
+        postorder(root);
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre><p>习题10.1二叉搜索树（浙江大学复试上机）    </p>
 <pre><code>#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;string&gt;
@@ -157,6 +218,120 @@ int main(){
         }
     }
     return 0;
+}    </code></pre><p>例题10.5 复数集合（北京邮电大学）    </p>
+<pre><code>#include&lt;cstdio&gt;
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include&lt;queue&gt;
+using namespace std;
+struct complex{
+    int real, imag;
+    complex(int a, int b) : real(a), imag(b){}
+    friend bool operator &lt; (complex c1, complex c2){
+        if(c1.imag*c1.imag + c1.real*c1.real== c2.imag*c2.imag + c2.real*c2.real){
+            return c1.real &lt; c2.real;
+        }else{
+            return c1.imag*c1.imag + c1.real*c1.real &lt; c2.imag*c2.imag + c2.real*c2.real;
+        }
+    }
+};
+int main(){
+    int n;
+    string str;
+    while(cin &gt;&gt; n){
+        priority_queue&lt;complex&gt; q;
+        for(int i = 0; i &lt; n; i++){
+            cin &gt;&gt; str;
+            if(str == &quot;Pop&quot;){
+                if(!q.empty()){
+                    cout &lt;&lt; q.top().real &lt;&lt;&quot;+i&quot; &lt;&lt; q.top().imag &lt;&lt; endl;
+                    q.pop();
+                    cout &lt;&lt; &quot;SIZE = &quot; &lt;&lt; q.size() &lt;&lt; endl; 
+                }else cout &lt;&lt; &quot;empty&quot; &lt;&lt; endl;
+            }else if(str == &quot;Insert&quot;){
+                int ta, tb;
+                scanf(&quot;%d+i%d&quot;, &amp;ta, &amp;tb);
+                q.push(complex(ta, tb));
+                cout &lt;&lt; &quot;SIZE = &quot; &lt;&lt; q.size() &lt;&lt; endl;
+            } 
+        }   
+    }
+    return 0;
+}    </code></pre><p>例题10.6 哈夫曼树（北京邮电大学）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;queue&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n){
+        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; q;
+        int ans = 0;
+        for(int i = 0; i &lt; n; i++){
+            int temp;
+            cin &gt;&gt; temp;
+            q.push(temp);
+        }
+        while(q.size() &gt; 1){
+            int x = q.top();
+            q.pop();
+            int y = q.top();
+            q.pop();
+            q.push(x + y);
+            ans += x + y;
+        }
+        cout &lt;&lt; ans &lt;&lt; endl;
+    }
+    return 0;
+}    </code></pre><p>习题10.2 查找第K小的数（北京邮电大学上机）  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n, k;
+    while(cin &gt;&gt; n){
+        map&lt;int, int&gt; flag;
+        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; q;
+        for(int i = 0; i &lt; n; i++){
+            int temp; 
+            cin &gt;&gt; temp;
+            if(flag[temp] != 1){
+                flag[temp] = 1;
+                q.push(temp);
+            }
+        }
+        cin &gt;&gt; k;
+        for(int i = 0 ; i &lt; k - 1; i++){
+            q.pop();
+        }
+        cout &lt;&lt; q.top() &lt;&lt; endl;
+    }
+}   </code></pre><p>习题10.3 搬水果（吉林大学上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n, k;
+    while(cin &gt;&gt; n){
+        map&lt;int, int&gt; flag;
+        priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt; &gt; q;
+        for(int i = 0; i &lt; n; i++){
+            int temp; 
+            cin &gt;&gt; temp;
+            if(flag[temp] != 1){
+                flag[temp] = 1;
+                q.push(temp);
+            }
+        }
+        cin &gt;&gt; k;
+        for(int i = 0 ; i &lt; k - 1; i++){
+            q.pop();
+        }
+        cout &lt;&lt; q.top() &lt;&lt; endl;
+    }
 }</code></pre>]]></content>
       <categories>
         <category>考研复试</category>
