@@ -332,6 +332,90 @@ int main(){
         }
         cout &lt;&lt; q.top() &lt;&lt; endl;
     }
+}  </code></pre><p>例题10.7查找学生信息    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;map&gt;
+using namespace std;
+struct inf{
+    string name, sex;
+    int age;
+};
+int main(){
+    int n, m;
+    map&lt;string, inf&gt; mp;//建立学号和信息之间的映射
+    cin &gt;&gt; n;
+    for(int  i = 0; i &lt; n; i++){
+        string num, name, sex;
+        int age;
+        cin &gt;&gt; num &gt;&gt; name &gt;&gt; sex &gt;&gt; age;
+        mp[num].name = name;
+        mp[num].sex = sex;
+        mp[num].age = age;
+    }
+    cin &gt;&gt; m;
+     while(m &gt; 0){
+         m--;
+         string tempnum;
+         cin &gt;&gt; tempnum;
+         if(mp[tempnum].name == &quot;&quot;) cout &lt;&lt; &quot;No Answer!&quot; &lt;&lt; endl;
+         else cout &lt;&lt; tempnum &lt;&lt; &quot; &quot; &lt;&lt; mp[tempnum].name &lt;&lt; &quot; &quot; &lt;&lt; mp[tempnum].sex &lt;&lt; &quot; &quot; &lt;&lt; mp[tempnum].age &lt;&lt; &quot; &quot;&lt;&lt; endl;
+     }
+    return 0;
+}  </code></pre><p>例题10.8 魔咒词典（浙江大学）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;map&gt;
+#include&lt;string&gt;
+using namespace std;
+int main(){
+    string s, s1, s2;
+    map&lt;string, string&gt; mp0;
+    map&lt;string, string&gt; mp1;
+    while(getline(cin, s) &amp;&amp; s != &quot;@END@&quot;){
+        auto it = s.find(&apos;]&apos;);
+        s1 = s.substr(0, it+1);
+        s2 = s.substr(it + 2, s.size() - s1.size() - 1);
+        mp0[s1] = s2;
+        mp1[s2] = s1;
+    }
+    int n;
+    cin &gt;&gt; n;
+    getchar();
+    for(int i = 0; i &lt; n; i++){
+        string temp;
+        getline(cin, temp); 
+        if(mp0[temp] != &quot;&quot;) cout &lt;&lt; mp0[temp] &lt;&lt; endl;
+        else if(mp1[temp] != &quot;&quot;){//去掉 【  】
+            string s00;
+            s00 = mp1[temp].substr(1, mp1[temp].size() - 2);
+            cout &lt;&lt; s00 &lt;&lt; endl;
+        }
+        else cout &lt;&lt; &quot;what?&quot; &lt;&lt; endl;
+    }
+    return 0;
+}    </code></pre><p>例题10.9子串计算（北京大学复试上机）    </p>
+<p>注意这里面如何截取一个字符串的所有子串    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    string str;
+    while(cin &gt;&gt; str){
+        map&lt;string, int&gt; mp;
+        for(int i = 0; i &lt;= str.size(); i++){
+            for(int j = 0; j &lt; i; j++){
+                string s = str.substr(j, i - j);
+                mp[s]++;
+            }
+        }
+        for(auto it = mp.begin(); it != mp.end(); it++){
+            if(it-&gt;second &gt; 1) cout &lt;&lt; it-&gt;first &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second &lt;&lt; endl;
+        }
+    }
+    return 0;
 }</code></pre>]]></content>
       <categories>
         <category>考研复试</category>
@@ -1599,7 +1683,9 @@ int main(){
 <p>9.对于自定义的函数，有返回值时，一定要返回返回值，使用多个if时最后一个一定是else，否则可能编译不通过。  </p>
 <p>10.做题时注意数据范围，如果出现了负数，则应该考虑是否出现了溢出。    </p>
 <p>11.memset函数在头文件&lt;string.h&gt;中，使用memset时格式为memset(a, 0, sizeof(a))第二项为赋的值，一般只为0或-1.定义一位数组时，只有定义了其中的一项，其他项才默认为0，如果没有初始化，所有相不一定是多少。  </p>
-<p>12.队列queue使用front（）和back（）来访问头和尾结点，栈stack使用top（）来访问栈顶。queue没有clear（）函数</p>
+<p>12.队列queue使用front（）和back（）来访问头和尾结点，栈stack使用top（）来访问栈顶。queue没有clear（）函数。  </p>
+<p>13.如果用map映射对应的struct没有时，可以直接使用if（！=“”）来判断，不使用NULL。  </p>
+<p>14.map的find函数只能查找键，如果查到，返回键对应的迭代器，如果查不到返回end().</p>
 ]]></content>
       <categories>
         <category>考研复试</category>
@@ -3381,6 +3467,18 @@ int main(){
       </tags>
   </entry>
   <entry>
+    <title>PAT甲级英语单词记录</title>
+    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
+]]></content>
+      <categories>
+        <category>PAT</category>
+      </categories>
+      <tags>
+        <tag>算法笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PAT乙级学习笔记（四）</title>
     <url>/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/</url>
     <content><![CDATA[<p>##续接PAT乙级学习笔记（三）<br>##以下PAT乙级其它题目<br>1.B1062最简分数。分数比较的时候可以使用交叉相乘的方法，不要想着使用double类型得到分数的小数形式比较大小。学会使用gcd求最大公倍数的递归写法，当成模板记住。数组定义的时候尽量初始化，不然按照判断数组的数是否为0就会出现错误。以下是代码<a id="more"></a>  </p>
@@ -3807,18 +3905,6 @@ int main(){
     printf(&quot; -1&quot;);    
     return 0;
 }</code></pre>]]></content>
-      <categories>
-        <category>PAT</category>
-      </categories>
-      <tags>
-        <tag>算法笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PAT甲级英语单词记录</title>
-    <url>/2020/02/24/PAT%E7%94%B2%E7%BA%A7%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<p>##记录一下PAT甲级中遇到的不认识的英语单词：<br>1.sublist 子列表<br>2.suffix 后缀<br>3.positive 正数<br>4.integer 整数<br>5.format 格式  <a id="more"></a><br>6.deduplication 重复数据删除<br>7.duplication 不必要的，重复的<br>8.absolute 绝对的，绝对值<br>9.separate 单独的<br>10.acyclic 无环的<br>11.syntax 语法<br>12.binary 二叉，二进制的<br>13.corresponding 相应的<br>14.infix 中缀<br>15.parentheses  圆括号<br>16.precedence  优先级<br>17.indices  索引，指示<br>18.monitor  监控，监管<br>19.capaticy  容器，容量<br>20.negative  负的</p>
-]]></content>
       <categories>
         <category>PAT</category>
       </categories>
