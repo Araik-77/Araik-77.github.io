@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/docker.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/docker.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
+<meta name="keywords" content="算法笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAT甲级学习笔记（二）">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2020&#x2F;05&#x2F;07&#x2F;PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)&#x2F;index.html">
+<meta property="og:site_name" content="晨阳 の blog">
+<meta property="og:description" content="##续接上一篇PAT甲级DFS相关题目1.1030 Travel Plan (30分)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-30T13:53:28.623Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>PAT甲级学习笔记（二） | 晨阳 の blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晨阳 の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>自白</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>时光轴</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          PAT甲级学习笔记（二）
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 22:39:45" itemprop="dateCreated datePublished" datetime="2020-05-07T22:39:45+08:00">2020-05-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-30 21:53:28" itemprop="dateModified" datetime="2020-05-30T21:53:28+08:00">2020-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>##续接上一篇PAT甲级DFS相关题目<br>1.1030 Travel Plan (30分)<a id="more"></a>   </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int INF = 99999999;
+const int MAXN = 510;
+bool vis[MAXN] = {false};
+vector&lt;int&gt; pre[MAXN];
+vector&lt;int&gt; path, tempPath;
+int d[MAXN], minCost = INF;
+//定义图
+int G[MAXN][MAXN], C[MAXN][MAXN]; 
+int n, m, st, ed, c1, c2, dist, cost;
+void Dijkstra(int s){
+    fill(d, d + MAXN, INF);//要初始化距离 
+    d[s] = 0;//千万别忘了定义节点到自己的距离 
+    for(int i = 0; i &lt; n; i++){
+        int u = -1, MIN = INF;
+        for(int j = 0; j &lt; n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; MIN){
+                u = j;
+                MIN = d[j];
+            }
+        }
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt; n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != INF){
+                if(d[v] &gt; G[u][v] + d[u]){
+                    d[v] = G[u][v] + d[u];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == G[u][v] + d[u]){
+//                    d[v] = G[u][v] + d[u];不用更新，距离相等更新啥 
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+} 
+void DFS(int v){
+    if(v == st){
+        tempPath.push_back(v);
+        int tempCost = 0;
+        for(int i = tempPath.size() - 1; i &gt; 0; i--){
+            int id = tempPath[i], idNext = tempPath[i-1];
+            tempCost += C[id][idNext];
+        }
+        if(tempCost &lt; minCost){
+            minCost = tempCost;
+            path = tempPath;
+        }
+        tempPath.pop_back();
+        return;
+    }
+    tempPath.push_back(v);
+    for(int i = 0; i &lt; pre[v].size(); i++){
+        DFS(pre[v][i]);
+    }
+    tempPath.pop_back();
+}
+int main(){
+    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;st, &amp;ed);
+    fill(G[0], G[0] + MAXN * MAXN, INF);//初始化图和花费 
+    fill(C[0], C[0] + MAXN * MAXN, INF);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d%d&quot;, &amp;c1, &amp;c2, &amp;dist, &amp;cost);
+        G[c1][c2] = G[c2][c1] = dist;
+        C[c1][c2] = C[c2][c1] = cost;
+    }
+    Dijkstra(st);
+    DFS(ed);
+    for(int i = path.size()-1; i &gt;= 0; i--){
+        printf(&quot;%d &quot;, path[i]);
+    } 
+    printf(&quot;%d %d\n&quot;, d[ed], minCost);
+    return 0;
+}   </code></pre><p>这是一道很经典的题目，要多看看，固定一下自己的书写方法。这道题需要注意1.一维数组和二维数组的初始化方式要记牢，否则会出现指针错误。2.Dijkstra时注意核心语句if的书写。3.输出路径的时候注意需要倒序输出，不要蒙，pre，tempPath，path不要写乱了。<br>2.1018 Public Bike Management (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int INF = 99999999;
+const int MAXN = 510;
+int G[MAXN][MAXN], d[MAXN], w[MAXN];
+bool vis[MAXN] = {false};
+vector&lt;int&gt; path, tempPath;
+vector&lt;int&gt; pre[MAXN];
+int cmax, n, sp, m, at, bt, ct;
+int minNeed = INF, minRemain = INF;
+void Dijkstra(int s){
+    fill(d, d + MAXN, INF);
+    d[s] = 0;
+    for(int i = 0; i &lt;= n; i++){
+        int u = -1, MIN = INF;
+        for(int j = 0; j &lt;= n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; MIN){
+                u = j;
+                MIN = d[j];
+            }
+        }
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt;= n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != INF){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+}
+void DFS(int u){
+    if(u == 0){
+        tempPath.push_back(u);
+        int need = 0, remain = 0;
+        for(int i = tempPath.size() - 1; i &gt;= 0; i--){
+            int id = tempPath[i];
+            if(w[id] &gt; 0){
+                remain += w[id];
+            }else{
+                if(remain &gt; abs(w[id])){
+                    remain -= abs(w[id]);
+                }else{
+                    need += abs(w[id]) - remain;
+                    remain = 0;
+                }
+            }
+//            tempw += w[tempPath[i]];
+        }
+        if(need &lt; minNeed){
+            minNeed = need;
+            minRemain = remain;
+            path = tempPath;
+        }else if(need == minNeed &amp;&amp; remain &lt; minRemain){
+            minRemain = remain;
+            path = tempPath;
+        }
+        tempPath.pop_back();
+        return;
+    }
+    tempPath.push_back(u);
+    for(int i = 0; i &lt; pre[u].size(); i++){
+        DFS(pre[u][i]);
+    }
+    tempPath.pop_back();
+}
+int main(){
+    scanf(&quot;%d%d%d%d&quot;, &amp;cmax, &amp;n, &amp;sp, &amp;m);
+    fill(G[0], G[0] + MAXN*MAXN, INF);
+//    fill(w, w + MAXN, INF);
+    for(int i = 1; i &lt;= n; i++){
+        scanf(&quot;%d&quot;, &amp;w[i]);
+        w[i] = w[i] - cmax/2;
+    }
+//    w[0] = 0;
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d&quot;, &amp;at, &amp;bt, &amp;ct);
+        G[at][bt] = G[bt][at] = ct;
+    }
+    Dijkstra(0);
+    DFS(sp);
+    printf(&quot;%d &quot;, minNeed);
+    for(int i = path.size()-1; i &gt;= 0; i--){
+        printf(&quot;%d&quot;,path[i]);
+        if(i &gt; 0) printf(&quot;-&gt;&quot;);
+    }
+    printf(&quot; %d&quot;, minRemain);
+    return 0;
+}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。  </p>
+<p>3.1087 All Roads Lead to Rome (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int inf =  99999999;
+const int maxn = 210; 
+map &lt;string, int&gt; m1;
+map &lt;int, string&gt; m2;
+int G[maxn][maxn], d[maxn], weight[maxn];
+vector &lt;int&gt; path, temppath, pre[maxn];
+
+bool vis[maxn] = {false}; 
+int n, k, st;
+int numpath = 0, maxw = 0;
+double maxavg = 0;
+
+void dijks(int s){
+//    cout &lt;&lt;&quot;*&quot;;
+    fill(d, d + maxn, inf);
+    d[s] = 0;
+    for(int i = 0; i &lt; n; i++){
+        int u = -1, min = inf;
+        for(int j = 0; j &lt; n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; min ){
+                u = j;
+                min = d[j];
+            }
+        } 
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt; n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != inf){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }    
+}
+void dfs(int v){
+    if(v == st){
+        temppath.push_back(v);
+        numpath++;
+        int tempw = 0;
+        for(int i = temppath.size() - 2; i &gt;= 0; i--){
+            int id = temppath[i];
+            tempw += weight[id];
+//            cout &lt;&lt; &quot;tempw = &quot; &lt;&lt; tempw &lt;&lt; endl;
+        }
+        double tempavg = 1.0*tempw/(temppath.size()-1);
+        if(tempw &gt; maxw){
+//            tempw = maxw;
+            maxw = tempw;
+            maxavg = tempavg;
+            path = temppath;
+        }else if(tempw == maxw &amp;&amp; tempavg &gt; maxavg){
+            maxavg = tempavg;
+            path = temppath;
+        }
+        temppath.pop_back();
+        return;
+    }
+    temppath.push_back(v);
+    for(int i = 0; i &lt; pre[v].size(); i++){
+        dfs(pre[v][i]);
+    }
+    temppath.pop_back();
+}
+int main(){
+    string c1, c2, start;
+    cin &gt;&gt; n &gt;&gt; k &gt;&gt; start;
+    m1[start] = 0;
+    m2[0] = start;
+    for(int i = 1; i &lt;= n-1; i++){
+        cin &gt;&gt; c1 &gt;&gt; weight[i];
+        m1[c1] = i;
+        m2[i] = c1;
+    }
+    fill(G[0], G[0] + maxn*maxn, inf);
+    for(int i = 0 ; i &lt; k; i++){
+        int cost;
+        cin &gt;&gt; c1 &gt;&gt; c2 &gt;&gt; cost;
+        int city1 = m1[c1], city2 = m1[c2];
+        G[city1][city2] = G[city2][city1] = cost; 
+    }
+    dijks(0);
+    int rom = m1[&quot;ROM&quot;];
+    dfs(rom);
+//    cout &lt;&lt; rom &lt;&lt;&quot;*&quot; &lt;&lt; endl;
+    printf(&quot;%d %d %d %d\n&quot;,numpath, d[rom], maxw, (int)maxavg);
+    for(int i = path.size() - 1; i &gt;= 0; i--){
+        cout &lt;&lt; m2[path[i]];
+        if(i &gt; 0) cout &lt;&lt; &quot;-&gt;&quot;;
+//        cout &lt;&lt;&quot;%&quot;;
+    }   
+    return 0;
+}  </code></pre><p>4.1146 Topological Order (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int main(){
+    int n, m, a, b, k, flag = 0, in[1010];
+    vector&lt;int&gt; v[1010]; 
+    scanf(&quot;%d %d&quot;,&amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].push_back(b);
+        in[b]++;
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        int judge = 1;
+        vector&lt;int&gt; tin(in, in+n+1);
+        //用in来初始化tin，起点表示从in[0]开始，一直到in[n],中间是两个指针迭代器
+        //只包括左边，不包括右边，所以应该是n+1而不是n 
+        for(int j = 0; j &lt; n; j++){
+            scanf(&quot;%d&quot;,&amp;a);
+            if(tin[a] != 0) judge = 0;
+//            for(int it : v[a]) tin[it]--;//遍历v[a]的每一个数,相当于下面的语句 
+            for(int l = 0; l &lt; v[a].size(); l++){
+                tin[v[a][l]]--;
+            } 
+        }
+        if(judge == 1) continue;
+        printf(&quot;%s%d&quot;, flag == 1 ? &quot; &quot; : &quot;&quot;, i);
+        flag = 1;
+    }
+    return 0;
+}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。  </p>
+<p>5.1020 Tree Traversals (25分)  </p>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 50;
+struct node{
+    int data;
+    node* lchild;
+    node* rchild;
+}; 
+int pre[maxn], in[maxn], post[maxn];
+int n; 
+node* create(int postl, int postr, int inl, int inr){
+    if(postl &gt; postr){
+        return NULL;
+    }
+    node* root = new node;
+    root-&gt;data = post[postr];//用来赋值的语句 
+    int k;
+    for(k = inl; k &lt;= inr; k++){
+        if(in[k] == post[postr]){
+            break;
+        }
+    }
+    int numleft = k - inl;
+    root-&gt;lchild = create(postl, postl+numleft-1, inl, k-1);
+    root-&gt;rchild = create(postl+numleft, postr-1, k+1,inr);
+    return root;
+}
+int num = 0;
+void bfs(node* root){
+    queue&lt;node*&gt; q;
+    q.push(root);
+    while(!q.empty()){
+        node* now = q.front();
+        q.pop();
+        printf(&quot;%d&quot;, now-&gt;data);
+        num++;
+        if(num &lt; n) printf(&quot; &quot;);
+        if(now-&gt;lchild != NULL) q.push(now-&gt;lchild);
+        if(now-&gt;rchild != NULL) q.push(now-&gt;rchild);
+    } 
+}
+int main(){
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;post[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;,&amp;in[i]);
+    }
+    node* root = create(0, n-1, 0, n-1);
+    bfs(root);
+    return 0;
+}  </code></pre><p>这是一道关于树给定前序遍历和中序遍历，输出层序遍历的题，简单的思路就是先建立二叉树，然后使用bfs搜索算法求解。当然也可以采用柳神的方法，代码如下：  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int index, value;
+};
+bool cmp(node a, node b){
+    return a.index &lt; b.index;
+}
+vector&lt;int&gt; post, in;
+vector&lt;node&gt; ans;
+void pre(int root, int start, int end, int index){
+    if(start &gt; end) return;//表示递归边界 
+    //下面两行代码表示寻找根节点在后序中的位置 
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != post[root]) i++;
+    //i,start, end都是中序遍历中的，root是后序遍历中的 
+    ans.push_back({index, post[root]});
+    pre(root - (end - i) - 1, start, i - 1, 2*index + 1);
+    pre(root - 1, i + 1, end, 2 * index + 2); 
+}
+int main(){
+    int n;
+    scanf(&quot;%d&quot;, &amp;n);
+    post.resize(n);
+    in.resize(n);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;post[i]);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;in[i]);
+    pre(n - 1, 0, n - 1, 0);
+    sort(ans.begin(), ans.end(), cmp);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) cout &lt;&lt;  &quot; &quot;;
+        cout &lt;&lt; ans[i].value;
+    }
+    return 0;
+}   </code></pre><p>6.1053 Path of Equal Weight (30分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+int target;
+vector&lt;int&gt; path;
+vector&lt;node&gt; v;
+int cmp1(int a, int b){
+    return v[a].w &gt; v[b].w;
+}
+void dfs(int index, int nodenum, int sum){
+    if(sum &gt; target) return;
+    if(sum == target){
+        if(v[index].child.size() != 0) return;
+        for(int i = 0; i &lt; nodenum; i++){
+            printf(&quot;%d%c&quot;, v[path[i]].w, i != nodenum - 1 ? &apos; &apos; : &apos;\n&apos;);
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        int node1 = v[index].child[i];
+        path[nodenum] = node1;
+        dfs(node1, nodenum+1, sum + v[node1].w);
+    }
+}
+int main(){
+    int n, m, a, b;
+    scanf(&quot;%d %d %d&quot;, &amp;n, &amp;m, &amp;target);
+    path.resize(n);
+    v.resize(n); 
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;v[i].w);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].child.resize(b);
+        for(int j = 0; j &lt; b; j++){
+            scanf(&quot;%d&quot;,&amp;v[a].child[j]);
+        }
+        sort(v[a].child.begin(), v[a].child.end(), cmp1);
+    }
+    dfs(0, 1, v[0].w);
+    return 0;
+}  </code></pre><p>这道题给出了如何存储非二叉树，实际上和图的存储类似，甚至比图的存储简单些，这里面给出的非叶子结点只是为了遍历的时候，用作判断边界。注意初始化容器的时候，如果开始没有给出大小，后面输入的时候需要resize();  </p>
+<p>7.1086 Tree Traversals Again (25分)<br>这道题需要注意， 递归遍历搜索的时候，缺谁就使用哪种遍历，这道题使用的是后序遍历。注意根节点都是相对于前序遍历而言的，start， end，i都是相对中序遍历而言的。寻找i的时候，注意while中判断时i &lt; end。起始条件是从n-1开始的，不是从n开始，需要注意，这道题也是一个模板，需要好好理解记忆；  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+using namespace std;
+stack &lt;int&gt; st;
+int pre[35], in[35];
+vector&lt;int&gt; ans;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != pre[root]) i++;
+    post(root + 1, start, i - 1);
+    post(root + i + 1 - start,  i + 1, end);
+    ans.push_back(pre[root]);
+//    printf(&quot;%d &quot;, pre[root]);
+}
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    string s;
+    int a, i = 0, j = 0;
+    for(int k = 0; k &lt; 2 * n; k++){
+        cin &gt;&gt; s;
+        if(s == &quot;Push&quot;){
+            cin &gt;&gt; a;
+            pre[i++] = a;
+            st.push(a);
+        }else{
+            in[j++] = st.top();
+            st.pop();
+        }
+//        cout &lt;&lt; &quot;popnum = &quot; &lt;&lt; popnum &lt;&lt; endl;
+    }
+    post(0, 0, n - 1);
+    for(int k = 0; k &lt; ans.size(); k++){
+        printf(&quot;%d&quot;, ans[k]);
+        if(k != ans.size() - 1) printf(&quot; &quot;);
+    }
+    return 0;
+}   </code></pre><p>8.1102 Invert a Binary Tree (25分)<br>dfs一遍（就相当于中序遍历）将所有的点都标记上下标，和层数，然后按照排序后输出就是层序遍历，直接输出就是中序遍历，所有关于二叉树给定前序后序中序层序的写法都可这样做，如果不是二叉树怎么办呢？就只能建立树然后遍历了。注意树遍历的形式可能是数组，也可能是这道题这样的vector<node>类型。注意两个容器如何相等的写法，使用一个数组去初试另一个数组。  </node></p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int id, l, r, index, level;
+}a[100];//用来存储树 
+vector&lt;node&gt; v1;
+void inorder(int root, int index, int level){
+    if(a[root].r != -1) inorder(a[root].r, index * 2 + 2, level + 1);
+    v1.push_back({root, 0, 0, index, level});
+    if(a[root].l != -1) inorder(a[root].l, index * 2 + 1, level + 1);
+} 
+bool cmp1(node a, node b){
+    if(a.level != b.level) return a.level &lt; b.level;
+    return a.index &gt; b.index;
+}
+int main(){
+    int n, have[100] = {0}, root = 0;
+    //have数组是用来判断根节点是谁的，最开始假设为0
+    //根节点也先设置为0 
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        a[i].id = i;
+        string l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        if(l != &quot;-&quot;){
+            a[i].l = stoi(l);
+            have[stoi(l)] = 1;
+        }else{
+            a[i].l = -1;
+        }
+        if(r != &quot;-&quot;){
+            a[i].r = stoi(r);
+            have[stoi(r)] = 1;
+        }else{
+            a[i].r = -1;
+        }
+    }
+    while(have[root] == 1) root++;//所有点之中没有出现的就是根节点
+    //上面这种方法真的很巧妙 
+//    cout &lt;&lt; root &lt;&lt; endl;
+    inorder(root, 0, 0);
+    vector&lt;node&gt; v2(v1);//这种使用v1来初始化v2的方式之前学过；
+    sort(v2.begin(), v2.end(), cmp1);
+    for(int i = 0; i &lt; v2.size(); i++){
+        cout &lt;&lt; v2[i].id;
+        if(i != v2.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
+    cout &lt;&lt; endl;
+    for(int i = 0; i &lt; v1.size(); i++){
+        cout &lt;&lt; v1[i].id;
+        if(i != v1.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
+    return 0;
+} </code></pre><p>9.1079 Total Sales of Supply Chain (25分)<br>这道题注意dfs的时候尽量维护更少的变量，变量越多出错的概率越高。当对于vector容器想使用[i]这样的形式进行访问或输入的时候，需要确认大小，不然只能push_back。pow使用的时候level是int类型的也可以，因为，C/C++有约定，当一个“短”型值度赋给一个“长”型值时，自动将“短”型值提升为“长”型值。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r, sum = 0.0;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+vector&lt;node&gt; v;
+void dfs(int node, int level){
+    if(v[node].child.size() == 0){
+        sum += pow(1+r, level) * v[node].w;
+        return;
+    }
+//    cout &lt;&lt; &quot;$$&quot;; 
+//    if(num == n){
+//        printf(&quot;%.1f&quot;, sum);
+//        return;
+//    }
+    for(int i = 0; i &lt; v[node].child.size(); i++){
+        int node1 = v[node].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    r /= 100;
+    v.resize(n);//必须要定义大小，不然输出不了 
+    for(int i = 0; i &lt; n; i++){
+        int t, c;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; endl;
+        v[i].child.resize(t);
+//        cout &lt;&lt; &quot;&amp;&amp;&quot;;
+        if(t == 0) scanf(&quot;%d&quot;, &amp;v[i].w);
+        else{
+            for(int j = 0; j &lt; t; j++){
+//                scanf(&quot;%d&quot;, &amp;c);
+//                v[i].child.push_back(c);
+                scanf(&quot;%d&quot;, &amp;v[i].child[j]);
+            }
+        }
+    }
+
+    dfs(0, 0);
+    printf(&quot;%.1f&quot;, sum * p);
+//    cout &lt;&lt; &quot;*&quot;;
+    return 0;
+}   </code></pre><p>10.1090 Highest Price in Supply Chain (25分)<br>这道题注意使用过node结点存储的时候一定是v[root].child.size()。一定要遍历到叶子结点再去处理相关的内容。注意输入错误，是i &lt; n, 不是i&lt; 9!!!  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+struct node{
+//    int isleaf = 1;
+    vector&lt;int&gt; child;
+}; 
+int n, root0;
+double p, r;
+vector&lt;node&gt; v;
+int maxlevel = 0, sum = 0;
+void dfs(int root, int level){
+//        cout &lt;&lt; root &lt;&lt; &quot;&amp;&amp;&quot; &lt;&lt; endl;
+//    cout &lt;&lt; &quot;maxlevel = &quot; &lt;&lt; maxlevel &lt;&lt; endl;
+    if(v[root].child.size() == 0){
+        if(level &gt; maxlevel){
+            maxlevel = level;
+            sum = 0;
+            sum ++;
+        }else if(level == maxlevel){
+            sum++;
+        }
+        return;    
+    }
+    for(int i = 0; i &lt; v[root].child.size(); i++){
+        int node1 = v[root].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    r = r / 100;
+//    cout &lt;&lt; r &lt;&lt; &quot;*&quot; &lt;&lt; endl;
+    for(int i = 0; i &lt; n; i++){
+        int a;
+        scanf(&quot;%d&quot;, &amp;a);
+        if(a != -1){
+            v[a].child.push_back(i);
+//            v[a].isleaf = 0;
+        }else{
+            root0 = i;
+//            v[a].isleaf = 0;
+        }
+    }
+    dfs(root0, 0);
+    printf(&quot;%.2f %d&quot;, p * pow(1 + r, maxlevel), sum);
+    return 0;
+}  </code></pre><p>11.1106 Lowest Price in Supply Chain (25分)<br>这道题和前面的三道题类似，比较简单，注意读入树的时候不能使用scanf(“%d”,&amp;v[i].child[j])这种形式，会出现错误，需要采用题目中的方式。设置最小高度的时候需要大一些，别少一个0就会出现错误。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r;
+struct node{
+    vector&lt;int&gt; child;
+};
+vector&lt;node&gt; v;
+int minlevel = 100005, minsum = 0;
+void dfs(int index, int level){
+    if(v[index].child.size() == 0){
+        if(level &lt; minlevel){
+            minlevel = level;
+            minsum = 1;
+        }else if(level == minlevel){
+            minsum++;
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        dfs(v[index].child[i], level+1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    for(int i = 0; i &lt; n; i++){
+        int t;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;t = &quot; &lt;&lt; t &lt;&lt; endl;
+        for(int j = 0; j &lt; t; j++){
+            int temp;
+             scanf(&quot;%d&quot;, &amp;temp);
+             v[i].child.push_back(temp);
+        }
+    } 
+    dfs(0, 0);
+    printf(&quot;%.4f %d&quot;, p * pow(1 + r / 100, minlevel), minsum);
+
+    return 0;
+}   </code></pre><p>12.1138 Postorder Traversal (25分)<br>简单的一道前序中序转后序，注意这道题就是模板  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int pre[50005], in[50005];
+int f = 0;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; pre[root] != in[i]) i++;
+    post(root + 1, start , i-1);
+    post(root + 1 + i - start,i+1, end);
+    if(f == 0){
+        printf(&quot;%d&quot;, pre[root]);
+        f = 1;
+    }
+}
+int main(){
+    int n, a;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;pre[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;in[i]);
+//        cout &lt;&lt; &quot;8&quot;;
+    }
+    post(0, 0, n-1);
+//    for(int i = 0; i &lt; n; i++){
+//        printf(&quot;%d \n&quot;, ans[i]);
+//    }
+//    printf(&quot;%d&quot;,ans[0]);
+} </code></pre>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" rel="tag"># 算法笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/" rel="next" title="PAT甲级学习笔记（一）">
+                  <i class="fa fa-chevron-left"></i> PAT甲级学习笔记（一）
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/01/02/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.1/" rel="prev" title="王道机试指南2.1枚举">
+                  王道机试指南2.1枚举 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Araik"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Araik</p>
+  <div class="site-description" itemprop="description">越努力，越幸运</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Araik-77" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Araik-77" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:1091977443@qq.com" title="E-Mail &amp;rarr; mailto:1091977443@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Araik</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

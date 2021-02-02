@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/docker.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/docker.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
+<meta name="keywords" content="算法笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PAT甲级学习笔记（一）">
+<meta property="og:url" content="https:&#x2F;&#x2F;araik-77.github.io&#x2F;2020&#x2F;03&#x2F;02&#x2F;PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)&#x2F;index.html">
+<meta property="og:site_name" content="晨阳 の blog">
+<meta property="og:description" content="##以下PAT链表数据结构相关题目1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-01T13:58:28.857Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>PAT甲级学习笔记（一） | 晨阳 の blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">晨阳 の blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>自白</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>时光轴</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://Araik-77.github.io/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="Araik">
+      <meta itemprop="description" content="越努力，越幸运">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晨阳 の blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          PAT甲级学习笔记（一）
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-02 20:41:57" itemprop="dateCreated datePublished" datetime="2020-03-02T20:41:57+08:00">2020-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-01 21:58:28" itemprop="dateModified" datetime="2020-05-01T21:58:28+08:00">2020-05-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PAT/" itemprop="url" rel="index">
+                    <span itemprop="name">PAT</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>##以下PAT链表数据结构相关题目<br>1.A1032Sharing。本题要求你写一个程序找出两个链表中第一个相同的结点的位置，先用list存储结点，遍历第一个链表（注意遍历链表的写法）将所有结点标记为true，再遍历第二个链表，当出现第一个true的时候打印此时的结点地址，也就是list的下标，相对简单，注意这道题目中主函数中有两个返回出口  </p><a id="more"></a>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+struct node{
+    char data;
+    int next;
+    bool flag;
+} list[100000];
+int main(){
+    int start1, start2, n;
+    scanf(&quot;%d %d %d&quot;, &amp;start1, &amp;start2, &amp;n);
+
+    for(int i = 0; i &lt; n; i++){
+        char c;
+        int a, b;
+        scanf(&quot;%d %c %d&quot;,&amp;a, &amp;c, &amp;b);
+        list[a] = {c, b, false};
+    }
+    for(int i = start1; i != -1; i = list[i].next){
+        list[i].flag = true;
+    }
+    for(int i = start2; i != -1; i = list[i].next){
+        if(list[i].flag == true){
+            printf(&quot;%05d&quot;,i);
+            return 0;
+        }
+    }
+    printf(&quot;-1&quot;);
+    return 0;
+}   </code></pre><p>2.A10521052 Linked List Sorting。注意链表元素不在结构中的情况一定要考虑进去，这道题没做出来是因为不会链表的赋值操作，注意柳神代码中的<code>list[a] = {a, b, c, false}</code>的写法。本题的第四个测试点考察如果链表元素为0的时候应该输出0 -1，所以一定要考虑进去  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int address, key, next;
+    bool flag;
+}list[100005];
+bool cmp(node a, node b){
+    return !a.flag || !b.flag ? a.flag &gt; b.flag : a.key &lt; b.key;
+}
+int main(){
+    int n, first, a, b, c, sum = 0;
+    scanf(&quot;%d %d&quot;, &amp;n, &amp;first);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d %d %d&quot;, &amp;a, &amp;b, &amp;c);
+        list[a] = {a, b, c, false};
+    }
+    for(int p = first; p != -1; p = list[p].next ){
+        sum++;
+        list[p].flag = true;
+    }
+    sort(list, list + 100000, cmp);
+    if(sum == 0) printf(&quot;0 -1&quot;);
+    else{
+        printf(&quot;%d %05d\n&quot;, sum, list[0].address);
+        for(int i = 0; i &lt; sum; i++){
+            if(i == 0){
+                printf(&quot;%05d %d&quot;, list[i].address, list[i].key);
+            }else{
+                printf(&quot; %05d\n&quot;, list[i].address);
+                printf(&quot;%05d %d&quot;,list[i].address, list[i].key);
+            }
+        } 
+        printf(&quot; -1&quot;);
+    }
+
+    return 0;
+} </code></pre><p>3.A1097 Deduplication on a Linked List.这道题先输入链表，然后用flag进行标记，已经输出过的地址的flag标记为1，先输出统计没有重复的，然后把重复的赋值给ans，最后再输出。注意题目中的数组大小，避免如果ans数组开小了，会出现段错误  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node {
+    int data,next;
+}list[100005];
+
+struct node1{
+    int address, data;
+}ans[100005];
+
+int flag[10005] = {0};
+int main(){
+    int first, n;
+    scanf(&quot;%d %d&quot;, &amp;first, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        int temp;
+        scanf(&quot;%d&quot;, &amp;temp);
+        scanf(&quot;%d %d&quot;,&amp;list[temp].data, &amp;list[temp].next);
+    }
+    int sgn = 0, sum = 0;
+    for(int p = first; p != -1; p = list[p].next){
+        if(sgn == 0){
+            printf(&quot;%05d %d &quot;, p, list[p].data);
+            flag[abs(list[p].data)] = 1;
+            sgn = 1; 
+        }else{
+            if(flag[abs(list[p].data)] == 0){
+                printf(&quot;%05d\n&quot;, p);
+                printf(&quot;%05d %d &quot;, p, list[p].data);
+                flag[abs(list[p].data)] = 1;
+            }
+            else {
+                ans[sum].address = p;
+                ans[sum].data = list[p].data;
+                sum++;
+
+            }    
+        }
+    }
+    printf(&quot;-1\n&quot;);
+
+    int sgn1 = 0;
+    for(int i = 0; i &lt; sum ; i++){
+        if(sgn1 == 0){
+            printf(&quot;%05d %d&quot;, ans[i].address,ans[i].data);
+            sgn1 = 1; 
+        }else{
+            printf(&quot; %05d\n&quot;, ans[i].address);
+            printf(&quot;%05d %d&quot;, ans[i].address, ans[i].data);
+        }
+    }
+    if(sum != 0) printf(&quot; -1&quot;);
+    return 0;
+}  </code></pre><p>柳神的代码使用定义结构体中，增加一个num标记，不需要删除的结点num等于cnt1，需要删除的结点等于cnt2+max，然后按照num大小进行排序，再输出就会得到最后的结果。真的很巧妙。<br>4.A1074Reversing Linked List。这道题有定义变量的时候，next可能是头文件的关键字，所有如果把next数组定义在main函数外边会出现编译不通过的现象。题目中说的是每k个元素反转一次，认真读题，使用数组的一个好处是可以使用sort函数，更加方便，柳神甲级和乙级的题解不太一样，甲级没有使用sort函数，比较麻烦。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int list[100000], data[100000], ans[100000];
+int next0[100000];
+int main(){
+    int first, n, k;
+    int temp;
+
+    scanf(&quot;%d %d %d&quot;, &amp;first, &amp;n, &amp;k);
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; temp;
+        cin &gt;&gt; data[temp] &gt;&gt; next0[temp];
+    }
+    int sum = 0;
+    while(first != -1){
+        list[sum++] = first;
+        first = next0[first];
+    }
+    for(int i = 0; i &lt; sum; i++) ans[i] = list[i];
+    for(int i = 0; i &lt; (sum - sum % k); i += k){//每k个结点一逆转 
+        reverse(begin(list) + i, begin(list) + i + k ); 
+    } 
+    for(int i = 0; i &lt; sum - 1; i++)
+        printf(&quot;%05d %d %05d\n&quot;, list[i], data[list[i]], list[i + 1]);
+    printf(&quot;%05d %d -1&quot;,list[sum - 1], data[list[sum - 1]]);    
+    return 0;
+}   </code></pre><p>##以下是PAT甲级dfs题目<br>1.A1013 Battle Over Cities.这道题注意理解dfstrave的部分直接放在了main（）函数当中。这是求连通分量的一个模板解法，要记下来  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int G[1010][1010];
+bool visit[1010];
+int n;
+void dfs(int u){
+    visit[u] = true;
+    for(int i = 1; i &lt;= n; i++){
+        if(visit[i] == false &amp;&amp; G[u][i] == 1)//结点没有被访问，并且结点到下一个结点有路径 
+            dfs(i);
+    } 
+}
+int main(){
+    int m, k, a, b;
+    scanf(&quot;%d%d%d&quot;,&amp;n, &amp;m, &amp;k);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d&quot;,&amp;a, &amp;b);
+        G[a][b] = G[b][a] = 1;
+    }
+    for(int i = 0; i &lt; k; i++){
+        fill(visit, visit + 1010, false);
+        scanf(&quot;%d&quot;, &amp;a);
+        int cnt = 0;
+        visit[a] = true;
+        for(int j = 1; j &lt;= n; j++){
+            if(visit[j] == false){
+                dfs(j);
+                cnt++;
+            }
+        }
+        printf(&quot;%d\n&quot;, cnt - 1);
+    }
+    return 0;
+}</code></pre><p>2.A1021 Deepest Root。这道题注意用vector存储图的情况。连通分量的求法同1013.两次遍历就可以求出来所有最大深度的根  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt; 
+#include &lt;set&gt;
+using namespace std;
+int n, maxheight = 0;
+vector&lt;vector&lt;int&gt; &gt; v;//用来存储图 
+bool visit[10010];
+set&lt;int&gt; s;
+vector&lt;int&gt; temp;
+void dfs(int node, int height){
+    if(height &gt; maxheight){
+        temp.clear();
+        temp.push_back(node);
+        maxheight = height;
+    }else if(height == maxheight){
+        temp.push_back(node);
+    }
+    visit[node] = true;
+    for(int i = 0; i &lt; v[node].size(); i++){
+        if(visit[v[node][i]] == false){
+            dfs(v[node][i], height + 1);
+        }
+    }
+}
+int main(){
+    scanf(&quot;%d&quot;, &amp;n);
+    v.resize(n + 1);//必须要有 
+    int cnt = 0, s1 = 0, a, b;
+    for(int i = 0; i &lt; n - 1; i++){
+        scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+        v[a].push_back(b);
+        v[b].push_back(a);
+    }
+    for(int i = 1; i &lt;= n; i++){
+        if(visit[i] == false){
+            dfs(i, 1);
+            if(i == 1){
+                if(temp.size() != 0) s1 = temp[0];
+                for(int j = 0; j &lt; temp.size(); j++)
+                    s.insert(temp[j]);
+            }
+            cnt++;
+        }
+    }
+    if(cnt &gt;= 2){
+        printf(&quot;Error: %d components&quot;, cnt);
+    }else{
+        temp.clear();
+        maxheight = 0;
+        fill(visit, visit + 10010, false);
+        dfs(s1, 1);
+        for(int i = 0; i &lt; temp.size(); i++)
+            s.insert(temp[i]);
+        for(auto it = s.begin(); it != s.end(); it++)
+            printf(&quot;%d\n&quot;, *it);
+    } 
+    return 0;
+}  </code></pre><p>3.A1103Integer Factorization 这道题要注意剪枝</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n, k, p, maxFacSum = -1;
+vector&lt;int&gt; v, ans, tempAns;
+void init(){
+    int temp = 0, index = 1;
+    while(temp &lt;= n){
+        v.push_back(temp);
+        temp = pow(index, p);
+        index++;
+    }
+}
+void dfs(int index, int tempSum, int tempK, int facSum){
+    if(tempK == k){
+        if(tempSum == n &amp;&amp; facSum &gt; maxFacSum){
+            ans = tempAns;//两个容器直接相等了
+            maxFacSum = facSum; 
+        }
+        return;//表明得到了结果直接退出dfs 
+    }
+    while(index &gt;= 1){
+        if(tempSum + v[index] &lt;= n){
+            tempAns[tempK] = index;
+            dfs(index, tempSum + v[index], tempK + 1, facSum + index);
+        }
+        if(index == 1) return;
+        index--;
+    } 
+}
+int main(){
+    scanf(&quot;%d%d%d&quot;,&amp;n, &amp;k, &amp;p);
+    init();
+    tempAns.resize(k);
+    dfs(v.size() - 1, 0, 0, 0);
+    if(maxFacSum == -1){
+        printf(&quot;Impossible&quot;);
+        return 0;
+    }
+    printf(&quot;%d = &quot;, n);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) printf(&quot; + &quot;);
+        printf(&quot;%d^%d&quot;, ans[i], p);
+    }
+    return 0;
+}</code></pre><p>4.A1131Subway Map 代码都看不懂  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;unordered_map&gt;
+using namespace std;
+vector&lt;vector&lt;int&gt; &gt; v(10000);
+int visit[10000], minCnt, minTransfer, start, end1;
+unordered_map&lt;int, int&gt; line;
+vector&lt;int&gt; path, tempPath;
+int transferCnt(vector&lt;int&gt; a){
+    int cnt = -1, preLine = 0;//两个站相邻也需要一次换乘，preLine为0 
+    for(int i = 1; i &lt; a.size(); i++){
+        if(line[a[i-1]*10000+a[i]] != preLine) cnt++;
+        preLine = line[a[i-1]*10000+a[i]];
+    }
+    return cnt;
+} 
+void dfs(int node, int cnt){
+    if(node == end1 &amp;&amp; (cnt &lt; minCnt || (cnt == minCnt &amp;&amp; transferCnt(tempPath) &lt; minTransfer))){
+        minCnt = cnt;
+        minTransfer = transferCnt(tempPath);
+        path = tempPath;
+    }
+    if(node == end1) return;//到了最后一个结点，直接退出
+    for(int i = 0; i &lt; v[node].size(); i++){
+        if(visit[v[node][i]] == 0){
+            visit[v[node][i]] = 1;
+            tempPath.push_back(v[node][i]);
+            dfs(v[node][i], cnt + 1);
+            visit[v[node][i]] = 0; 
+            tempPath.pop_back();
+        }
+    } 
+}
+int main(){
+    int n, m, k, pre, temp;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d%d&quot;, &amp;m, &amp;pre);
+        for(int j = 1; j &lt; m; j++){
+            scanf(&quot;%d&quot;, &amp;temp);
+            v[pre].push_back(temp);
+            v[temp].push_back(pre);
+            line[pre*10000+temp] = line[temp*10000+pre] = i+1;
+            pre = temp;
+        }
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        scanf(&quot;%d%d&quot;, &amp;start, &amp;end1);
+        minCnt = 99999, minTransfer = 99999;
+        tempPath.clear();
+        tempPath.push_back(start);
+        visit[start] = 1;//设置第一项为已经访问，之后要清空 
+        dfs(start, 0);
+        visit[start] = 0;
+        printf(&quot;%d\n&quot;, minCnt);
+        int preLine = 0, preTransfer = start;
+        for(int j = 1; j &lt; path.size(); j++){
+            if(line[path[j-1]*10000+path[j]] != preLine){
+                if(preLine != 0){
+                    printf(&quot;Take Line#%d from %04d to %04d.\n&quot;, preLine, preTransfer, path[j-1]);
+                }
+                preLine = line[path[j-1]*10000+path[j]];
+                preTransfer = path[j-1];
+            }
+        }
+         printf(&quot;Take Line#%d from %04d to %04d.\n&quot;, preLine, preTransfer,end1);
+    }
+    return 0;
+}  </code></pre><p>5.1130 Infix Expression (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+struct node {
+    string data;
+    int l, r;
+}a[100];//任何一个结点都包括一个string数据，和两个int型孩子
+string dfs(int root){
+
+    if(a[root].l == -1 &amp;&amp; a[root].r != -1) return &quot;(&quot; + a[root].data + dfs(a[root].r) + &quot;)&quot;;
+
+    if(a[root].l != -1 &amp;&amp; a[root].r != -1) return &quot;(&quot; + dfs(a[root].l) + a[root].data + dfs(a[root].r) + &quot;)&quot;;
+    if(a[root].l == -1 &amp;&amp; a[root].r == -1) return a[root].data;//表示从叶子结点网上返回 
+}
+
+int main(){
+    int n, judge[100] = {0}, root = 1;
+    cin &gt;&gt; n;
+    for(int i = 1; i &lt;= n; i++){
+        cin &gt;&gt; a[i].data &gt;&gt; a[i].l &gt;&gt; a[i].r;
+        if(a[i].l != -1) judge[a[i].l] = 1;
+        if(a[i].r != -1) judge[a[i].r] = 1;
+    }
+    while(judge[root] == 1) root++;//用来计算根节点的序号。即所有的孩子结点都没有它 
+    string ans = dfs(root);
+    if(ans[0] == &apos;(&apos;) ans = ans.substr(1, ans.size() - 2);
+    cout &lt;&lt; ans;
+
+    return 0;
+}   </code></pre><p>6.A1142 Maximal Clique (25分)</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int e[210][210];
+int main(){
+    int nv, ne, m, ta, tb, k;
+    scanf(&quot;%d%d&quot;,&amp;nv, &amp;ne);
+    for(int i = 0; i &lt; ne; i++){
+        scanf(&quot;%d%d&quot;, &amp;ta, &amp;tb);
+        e[ta][tb] = e[tb][ta] = 1; 
+    }
+    scanf(&quot;%d&quot;, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d&quot;, &amp;k);
+        vector&lt;int&gt; v(k);//注意学习这种存储方式,表示大小为k 
+        int hash[210] = {0}, isclique = 1, ismaximal = 1;
+        for(int j = 0; j &lt; k; j++){
+            scanf(&quot;%d&quot;,&amp;v[j]);//不需要设置临时变量，直接读入容器 
+            hash[v[j]] = 1;//相当于vis 
+        }
+
+        for(int j = 0; j &lt; k; j++){
+            if(isclique == 0) break;//再跳出来上一层循环 
+            for(int l = j + 1; l &lt; k; l++){
+                if(e[v[j]][v[l]] == 0){
+                    isclique = 0;
+                    printf(&quot;Not a Clique\n&quot;);
+                    break;//只能跳出一层循环 
+                }
+            }
+        } 
+
+        if(isclique == 0) continue;//表示判断结束了，直接下一组数据 
+        for(int j = 1; j &lt;= nv; j++){
+            if(hash[j] == 0){
+                for(int l = 0; l &lt; k; l++){
+                    if(e[v[l]][j] == 0) break;
+                    if(l == k - 1) ismaximal = 0;//表明里面的结点都选完了 
+                }
+            }
+            if(ismaximal == 0){
+                printf(&quot;Not Maximal\n&quot;);
+                break;
+            }
+        }
+        if(ismaximal == 1) printf(&quot;Yes\n&quot;);
+    }    
+    return 0;
+}   </code></pre><p>7.1150 Travelling Salesman Problem (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int e[210][210], n, m, k, ans = 99999999, ansid;
+vector&lt;int&gt; v;
+void check(int index){
+    int sum = 0, cnt, flag = 1;
+    scanf(&quot;%d&quot;, &amp;cnt);
+    set&lt;int&gt; s;
+    vector &lt;int&gt; v(cnt);
+    for(int i = 0; i &lt; cnt; i++){
+        scanf(&quot;%d&quot;, &amp;v[i]);
+        s.insert(v[i]);
+    } 
+    for(int i = 0; i &lt; cnt - 1; i++){
+        if(e[v[i]][v[i+1]] == 0) flag =0;
+        sum += e[v[i]][v[i+1]];
+    }
+    if(flag == 0){
+        printf(&quot;Path %d: NA (Not a TS cycle)\n&quot;, index);    
+    }else if(v[0] != v[cnt-1] || s.size() != n){
+        printf(&quot;Path %d: %d (Not a TS cycle)\n&quot;, index, sum);
+    }else if(cnt != n+1){//真是巧妙 
+        printf(&quot;Path %d: %d (TS cycle)\n&quot;, index, sum);
+        if(sum &lt; ans){
+            ans = sum;
+            ansid = index;
+        }
+    }else{
+        printf(&quot;Path %d: %d (TS simple cycle)\n&quot;, index, sum);
+         if (sum &lt; ans) {
+             ans = sum;
+             ansid = index;
+         }
+    }
+}
+int main(){
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        int t1, t2, t;
+        scanf(&quot;%d%d%d&quot;, &amp;t1, &amp;t2, &amp;t);
+        e[t1][t2] = e[t2][t1] = t;
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 1; i&lt;= k; i++) check(i);
+    printf(&quot;Shortest Dist(%d) = %d\n&quot;, ansid, ans);
+    return 0;    
+}  </code></pre><p>上面使用set来计算访问结点的个数真是巧妙，要学会；本题明显适应于使用函数的方法来解决问题，要有分段处理的思想；对于是不是旅行图的判断要认真学会。  </p>
+<p>8.1122 Hamiltonian Cycle (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+int G[210][210] = {0};
+vector&lt;int&gt; path;
+int main(){
+    int n, m, ta, tb;
+    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d&quot;, &amp;ta, &amp;tb);
+        G[ta][tb] = G[tb][ta] = 1;
+    }
+    int k;
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        int n1, start, t;
+        path.clear();
+        set&lt;int&gt; s;
+        scanf(&quot;%d%d&quot;, &amp;n1, &amp;start);
+        path.push_back(start);
+        for(int j = 0; j &lt; n1-1; j++){
+            scanf(&quot;%d&quot;, &amp;t);
+            path.push_back(t);
+            s.insert(t);
+        }
+        int flag = 1;
+        for(int j = 0; j &lt; n1 - 1; j++){
+            if(G[path[j]][path[j+1]] == 0) flag = 0;
+        }
+//        cout &lt;&lt; flag &lt;&lt;&quot;$$&quot; &lt;&lt; endl;
+        if(flag == 0){
+            printf(&quot;NO\n&quot;);
+            continue;
+        }
+        if(start == path[n1-1] &amp;&amp; s.size() == n &amp;&amp; n == n1-1) printf(&quot;YES\n&quot;);
+        else printf(&quot;NO\n&quot;);
+    }
+    return 0;
+} </code></pre><p>这是第一道自己做出来的图的题。注意使用数组的时候，一定要注意会不会越界，尤其是path[n-2]这样的情况，否则会出现段错误；这道题需要考虑道路走不通的情况；按照柳神的代码，优化的地方有：1.只有计数功能的循环，可以直接使用while(cnt–)这样的形式。2.分析问题的时候可以画出顺序图，这道题，多走，少走，或者成环设置成flag1， 道路走不通设置成flag2，逻辑就十分清晰。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" rel="tag"># 算法笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/02/24/PAT%E4%B9%99%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B)/" rel="next" title="PAT乙级学习笔记（四）">
+                  <i class="fa fa-chevron-left"></i> PAT乙级学习笔记（四）
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/" rel="prev" title="PAT甲级学习笔记（二）">
+                  PAT甲级学习笔记（二） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Araik"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Araik</p>
+  <div class="site-description" itemprop="description">越努力，越幸运</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Araik-77" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;Araik-77" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:1091977443@qq.com" title="E-Mail &amp;rarr; mailto:1091977443@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Araik</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
