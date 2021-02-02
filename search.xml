@@ -416,6 +416,72 @@ int main(){
         }
     }
     return 0;
+}    </code></pre><p>习题10.4 统计同成绩的学生（浙江大学上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n &amp;&amp; n != 0){
+        map&lt;int, int&gt; mp;
+        for(int i = 0; i &lt; n; i++){
+            int temp;
+            cin &gt;&gt; temp;
+            mp[temp]++;
+        }
+        int testnum;
+        cin &gt;&gt; testnum;
+        cout &lt;&lt; mp[testnum] &lt;&lt; endl;
+    }
+}     </code></pre><p>习题10.5 开门人和关门人    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int toSecond(int hour, int min, int sec){
+    return hour * 3600 + min * 60 + sec;
+}
+int main(){
+    int n, opentime = 24*3600, closetime = 0;
+    string tempnum, opennum, closenum;
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; tempnum;
+        int hour, min, sec;
+        scanf(&quot;%d:%d:%d&quot;, &amp;hour, &amp;min, &amp;sec);
+        if(toSecond(hour, min, sec) &lt; opentime){
+            opennum = tempnum;
+            opentime = toSecond(hour, min, sec);
+        }
+        scanf(&quot;%d:%d:%d&quot;, &amp;hour, &amp;min, &amp;sec);
+        if( toSecond(hour, min, sec) &gt; closetime){
+            closenum = tempnum;
+            closetime = toSecond(hour, min, sec);
+        }
+    }
+    cout &lt;&lt; opennum &lt;&lt; &quot; &quot; &lt;&lt; closenum &lt;&lt; endl;
+    return 0;
+}    </code></pre><p>习题10.6 谁是你潜在的朋友（北京大学复试上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    map&lt;int, int&gt; book;//用于记录i号书的读者数
+    int reader[201];
+    for(int i = 0; i &lt; n; i++){
+        int temp;
+        cin &gt;&gt; temp;
+        book[temp]++;
+        reader[i] = temp;
+    }
+    for(int i = 0; i &lt; n; i++){
+        if(book[reader[i]] &gt; 1) cout &lt;&lt; book[reader[i]] - 1 &lt;&lt; endl;
+        else cout &lt;&lt; &quot;BeiJu&quot; &lt;&lt; endl;
+    }
 }</code></pre>]]></content>
       <categories>
         <category>考研复试</category>

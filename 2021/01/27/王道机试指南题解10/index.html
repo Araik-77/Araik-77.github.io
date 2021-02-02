@@ -60,7 +60,7 @@
 <meta property="og:site_name" content="晨阳 の blog">
 <meta property="og:description" content="例题10.1二叉树遍历（清华大学上机）    #include&amp;lt;iostream&amp;gt; #include&amp;lt;cstdio&amp;gt; #include&amp;lt;string&amp;gt; using namespace std; struct node{&#x2F;&#x2F;定义结点     char data;     node* lchild;     node* rchild;     node(char(c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-01-31T03:52:36.129Z">
+<meta property="og:updated_time" content="2021-02-02T02:28:36.401Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://araik-77.github.io/2021/01/27/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A310/">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-31 11:52:36" itemprop="dateModified" datetime="2021-01-31T11:52:36+08:00">2021-01-31</time>
+                <time title="修改时间：2021-02-02 10:28:36" itemprop="dateModified" datetime="2021-02-02T10:28:36+08:00">2021-02-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,6 +666,72 @@ int main(){
         }
     }
     return 0;
+}    </code></pre><p>习题10.4 统计同成绩的学生（浙江大学上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n;
+    while(cin &gt;&gt; n &amp;&amp; n != 0){
+        map&lt;int, int&gt; mp;
+        for(int i = 0; i &lt; n; i++){
+            int temp;
+            cin &gt;&gt; temp;
+            mp[temp]++;
+        }
+        int testnum;
+        cin &gt;&gt; testnum;
+        cout &lt;&lt; mp[testnum] &lt;&lt; endl;
+    }
+}     </code></pre><p>习题10.5 开门人和关门人    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;string&gt;
+using namespace std;
+int toSecond(int hour, int min, int sec){
+    return hour * 3600 + min * 60 + sec;
+}
+int main(){
+    int n, opentime = 24*3600, closetime = 0;
+    string tempnum, opennum, closenum;
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        cin &gt;&gt; tempnum;
+        int hour, min, sec;
+        scanf(&quot;%d:%d:%d&quot;, &amp;hour, &amp;min, &amp;sec);
+        if(toSecond(hour, min, sec) &lt; opentime){
+            opennum = tempnum;
+            opentime = toSecond(hour, min, sec);
+        }
+        scanf(&quot;%d:%d:%d&quot;, &amp;hour, &amp;min, &amp;sec);
+        if( toSecond(hour, min, sec) &gt; closetime){
+            closenum = tempnum;
+            closetime = toSecond(hour, min, sec);
+        }
+    }
+    cout &lt;&lt; opennum &lt;&lt; &quot; &quot; &lt;&lt; closenum &lt;&lt; endl;
+    return 0;
+}    </code></pre><p>习题10.6 谁是你潜在的朋友（北京大学复试上机）    </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;map&gt;
+using namespace std;
+int main(){
+    int n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    map&lt;int, int&gt; book;//用于记录i号书的读者数
+    int reader[201];
+    for(int i = 0; i &lt; n; i++){
+        int temp;
+        cin &gt;&gt; temp;
+        book[temp]++;
+        reader[i] = temp;
+    }
+    for(int i = 0; i &lt; n; i++){
+        if(book[reader[i]] &gt; 1) cout &lt;&lt; book[reader[i]] - 1 &lt;&lt; endl;
+        else cout &lt;&lt; &quot;BeiJu&quot; &lt;&lt; endl;
+    }
 }</code></pre>
     </div>
 
