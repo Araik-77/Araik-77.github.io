@@ -1,0 +1,1986 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PAT甲级学习笔记（二）, 晨阳 の blog">
+    <meta name="description" content="越努力，越幸运">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>PAT甲级学习笔记（二） | 晨阳 の blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">晨阳 の blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>时光轴</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>联系我</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">晨阳 の blog</div>
+        <div class="logo-desc">
+            
+            越努力，越幸运
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			时光轴
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			联系我
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PAT甲级学习笔记（二）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">算法笔记</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/PAT/" class="post-category">
+                                PAT
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2020-05-07
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>##续接上一篇PAT甲级DFS相关题目<br>1.1030 Travel Plan (30分)<a id="more"></a>   </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int INF = 99999999;
+const int MAXN = 510;
+bool vis[MAXN] = {false};
+vector&lt;int&gt; pre[MAXN];
+vector&lt;int&gt; path, tempPath;
+int d[MAXN], minCost = INF;
+//定义图
+int G[MAXN][MAXN], C[MAXN][MAXN]; 
+int n, m, st, ed, c1, c2, dist, cost;
+void Dijkstra(int s){
+    fill(d, d + MAXN, INF);//要初始化距离 
+    d[s] = 0;//千万别忘了定义节点到自己的距离 
+    for(int i = 0; i &lt; n; i++){
+        int u = -1, MIN = INF;
+        for(int j = 0; j &lt; n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; MIN){
+                u = j;
+                MIN = d[j];
+            }
+        }
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt; n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != INF){
+                if(d[v] &gt; G[u][v] + d[u]){
+                    d[v] = G[u][v] + d[u];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == G[u][v] + d[u]){
+//                    d[v] = G[u][v] + d[u];不用更新，距离相等更新啥 
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+} 
+void DFS(int v){
+    if(v == st){
+        tempPath.push_back(v);
+        int tempCost = 0;
+        for(int i = tempPath.size() - 1; i &gt; 0; i--){
+            int id = tempPath[i], idNext = tempPath[i-1];
+            tempCost += C[id][idNext];
+        }
+        if(tempCost &lt; minCost){
+            minCost = tempCost;
+            path = tempPath;
+        }
+        tempPath.pop_back();
+        return;
+    }
+    tempPath.push_back(v);
+    for(int i = 0; i &lt; pre[v].size(); i++){
+        DFS(pre[v][i]);
+    }
+    tempPath.pop_back();
+}
+int main(){
+    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;st, &amp;ed);
+    fill(G[0], G[0] + MAXN * MAXN, INF);//初始化图和花费 
+    fill(C[0], C[0] + MAXN * MAXN, INF);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d%d&quot;, &amp;c1, &amp;c2, &amp;dist, &amp;cost);
+        G[c1][c2] = G[c2][c1] = dist;
+        C[c1][c2] = C[c2][c1] = cost;
+    }
+    Dijkstra(st);
+    DFS(ed);
+    for(int i = path.size()-1; i &gt;= 0; i--){
+        printf(&quot;%d &quot;, path[i]);
+    } 
+    printf(&quot;%d %d\n&quot;, d[ed], minCost);
+    return 0;
+}   </code></pre><p>这是一道很经典的题目，要多看看，固定一下自己的书写方法。这道题需要注意1.一维数组和二维数组的初始化方式要记牢，否则会出现指针错误。2.Dijkstra时注意核心语句if的书写。3.输出路径的时候注意需要倒序输出，不要蒙，pre，tempPath，path不要写乱了。<br>2.1018 Public Bike Management (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+const int INF = 99999999;
+const int MAXN = 510;
+int G[MAXN][MAXN], d[MAXN], w[MAXN];
+bool vis[MAXN] = {false};
+vector&lt;int&gt; path, tempPath;
+vector&lt;int&gt; pre[MAXN];
+int cmax, n, sp, m, at, bt, ct;
+int minNeed = INF, minRemain = INF;
+void Dijkstra(int s){
+    fill(d, d + MAXN, INF);
+    d[s] = 0;
+    for(int i = 0; i &lt;= n; i++){
+        int u = -1, MIN = INF;
+        for(int j = 0; j &lt;= n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; MIN){
+                u = j;
+                MIN = d[j];
+            }
+        }
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt;= n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != INF){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+}
+void DFS(int u){
+    if(u == 0){
+        tempPath.push_back(u);
+        int need = 0, remain = 0;
+        for(int i = tempPath.size() - 1; i &gt;= 0; i--){
+            int id = tempPath[i];
+            if(w[id] &gt; 0){
+                remain += w[id];
+            }else{
+                if(remain &gt; abs(w[id])){
+                    remain -= abs(w[id]);
+                }else{
+                    need += abs(w[id]) - remain;
+                    remain = 0;
+                }
+            }
+//            tempw += w[tempPath[i]];
+        }
+        if(need &lt; minNeed){
+            minNeed = need;
+            minRemain = remain;
+            path = tempPath;
+        }else if(need == minNeed &amp;&amp; remain &lt; minRemain){
+            minRemain = remain;
+            path = tempPath;
+        }
+        tempPath.pop_back();
+        return;
+    }
+    tempPath.push_back(u);
+    for(int i = 0; i &lt; pre[u].size(); i++){
+        DFS(pre[u][i]);
+    }
+    tempPath.pop_back();
+}
+int main(){
+    scanf(&quot;%d%d%d%d&quot;, &amp;cmax, &amp;n, &amp;sp, &amp;m);
+    fill(G[0], G[0] + MAXN*MAXN, INF);
+//    fill(w, w + MAXN, INF);
+    for(int i = 1; i &lt;= n; i++){
+        scanf(&quot;%d&quot;, &amp;w[i]);
+        w[i] = w[i] - cmax/2;
+    }
+//    w[0] = 0;
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d%d%d&quot;, &amp;at, &amp;bt, &amp;ct);
+        G[at][bt] = G[bt][at] = ct;
+    }
+    Dijkstra(0);
+    DFS(sp);
+    printf(&quot;%d &quot;, minNeed);
+    for(int i = path.size()-1; i &gt;= 0; i--){
+        printf(&quot;%d&quot;,path[i]);
+        if(i &gt; 0) printf(&quot;-&gt;&quot;);
+    }
+    printf(&quot; %d&quot;, minRemain);
+    return 0;
+}  </code></pre><p>注意固定这种题目的写法都是Dijkstra + DFS,不管是不是最优子结构，都固定成这样的写法，这道题是点权，上一道题是边权，这两道题一定要记下来。  </p>
+<p>3.1087 All Roads Lead to Rome (30分)  </p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;string&gt;
+#include&lt;cstring&gt;
+using namespace std;
+const int inf =  99999999;
+const int maxn = 210; 
+map &lt;string, int&gt; m1;
+map &lt;int, string&gt; m2;
+int G[maxn][maxn], d[maxn], weight[maxn];
+vector &lt;int&gt; path, temppath, pre[maxn];
+
+bool vis[maxn] = {false}; 
+int n, k, st;
+int numpath = 0, maxw = 0;
+double maxavg = 0;
+
+void dijks(int s){
+//    cout &lt;&lt;&quot;*&quot;;
+    fill(d, d + maxn, inf);
+    d[s] = 0;
+    for(int i = 0; i &lt; n; i++){
+        int u = -1, min = inf;
+        for(int j = 0; j &lt; n; j++){
+            if(vis[j] == false &amp;&amp; d[j] &lt; min ){
+                u = j;
+                min = d[j];
+            }
+        } 
+        if(u == -1) return;
+        vis[u] = true;
+        for(int v = 0; v &lt; n; v++){
+            if(vis[v] == false &amp;&amp; G[u][v] != inf){
+                if(d[v] &gt; d[u] + G[u][v]){
+                    d[v] = d[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }else if(d[v] == d[u] + G[u][v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }    
+}
+void dfs(int v){
+    if(v == st){
+        temppath.push_back(v);
+        numpath++;
+        int tempw = 0;
+        for(int i = temppath.size() - 2; i &gt;= 0; i--){
+            int id = temppath[i];
+            tempw += weight[id];
+//            cout &lt;&lt; &quot;tempw = &quot; &lt;&lt; tempw &lt;&lt; endl;
+        }
+        double tempavg = 1.0*tempw/(temppath.size()-1);
+        if(tempw &gt; maxw){
+//            tempw = maxw;
+            maxw = tempw;
+            maxavg = tempavg;
+            path = temppath;
+        }else if(tempw == maxw &amp;&amp; tempavg &gt; maxavg){
+            maxavg = tempavg;
+            path = temppath;
+        }
+        temppath.pop_back();
+        return;
+    }
+    temppath.push_back(v);
+    for(int i = 0; i &lt; pre[v].size(); i++){
+        dfs(pre[v][i]);
+    }
+    temppath.pop_back();
+}
+int main(){
+    string c1, c2, start;
+    cin &gt;&gt; n &gt;&gt; k &gt;&gt; start;
+    m1[start] = 0;
+    m2[0] = start;
+    for(int i = 1; i &lt;= n-1; i++){
+        cin &gt;&gt; c1 &gt;&gt; weight[i];
+        m1[c1] = i;
+        m2[i] = c1;
+    }
+    fill(G[0], G[0] + maxn*maxn, inf);
+    for(int i = 0 ; i &lt; k; i++){
+        int cost;
+        cin &gt;&gt; c1 &gt;&gt; c2 &gt;&gt; cost;
+        int city1 = m1[c1], city2 = m1[c2];
+        G[city1][city2] = G[city2][city1] = cost; 
+    }
+    dijks(0);
+    int rom = m1[&quot;ROM&quot;];
+    dfs(rom);
+//    cout &lt;&lt; rom &lt;&lt;&quot;*&quot; &lt;&lt; endl;
+    printf(&quot;%d %d %d %d\n&quot;,numpath, d[rom], maxw, (int)maxavg);
+    for(int i = path.size() - 1; i &gt;= 0; i--){
+        cout &lt;&lt; m2[path[i]];
+        if(i &gt; 0) cout &lt;&lt; &quot;-&gt;&quot;;
+//        cout &lt;&lt;&quot;%&quot;;
+    }   
+    return 0;
+}  </code></pre><p>4.1146 Topological Order (25分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int main(){
+    int n, m, a, b, k, flag = 0, in[1010];
+    vector&lt;int&gt; v[1010]; 
+    scanf(&quot;%d %d&quot;,&amp;n, &amp;m);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].push_back(b);
+        in[b]++;
+    }
+    scanf(&quot;%d&quot;, &amp;k);
+    for(int i = 0; i &lt; k; i++){
+        int judge = 1;
+        vector&lt;int&gt; tin(in, in+n+1);
+        //用in来初始化tin，起点表示从in[0]开始，一直到in[n],中间是两个指针迭代器
+        //只包括左边，不包括右边，所以应该是n+1而不是n 
+        for(int j = 0; j &lt; n; j++){
+            scanf(&quot;%d&quot;,&amp;a);
+            if(tin[a] != 0) judge = 0;
+//            for(int it : v[a]) tin[it]--;//遍历v[a]的每一个数,相当于下面的语句 
+            for(int l = 0; l &lt; v[a].size(); l++){
+                tin[v[a][l]]--;
+            } 
+        }
+        if(judge == 1) continue;
+        printf(&quot;%s%d&quot;, flag == 1 ? &quot; &quot; : &quot;&quot;, i);
+        flag = 1;
+    }
+    return 0;
+}  </code></pre><p>本题是一道关于拓扑排序的题，要注意如何设置临时的tin容器，并使用in数组来初始化，对于下面的遍历部分可以采用我自己的写法，更方便理解，不容易出错。  </p>
+<p>5.1020 Tree Traversals (25分)  </p>
+<pre><code>#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+const int maxn = 50;
+struct node{
+    int data;
+    node* lchild;
+    node* rchild;
+}; 
+int pre[maxn], in[maxn], post[maxn];
+int n; 
+node* create(int postl, int postr, int inl, int inr){
+    if(postl &gt; postr){
+        return NULL;
+    }
+    node* root = new node;
+    root-&gt;data = post[postr];//用来赋值的语句 
+    int k;
+    for(k = inl; k &lt;= inr; k++){
+        if(in[k] == post[postr]){
+            break;
+        }
+    }
+    int numleft = k - inl;
+    root-&gt;lchild = create(postl, postl+numleft-1, inl, k-1);
+    root-&gt;rchild = create(postl+numleft, postr-1, k+1,inr);
+    return root;
+}
+int num = 0;
+void bfs(node* root){
+    queue&lt;node*&gt; q;
+    q.push(root);
+    while(!q.empty()){
+        node* now = q.front();
+        q.pop();
+        printf(&quot;%d&quot;, now-&gt;data);
+        num++;
+        if(num &lt; n) printf(&quot; &quot;);
+        if(now-&gt;lchild != NULL) q.push(now-&gt;lchild);
+        if(now-&gt;rchild != NULL) q.push(now-&gt;rchild);
+    } 
+}
+int main(){
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;post[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;,&amp;in[i]);
+    }
+    node* root = create(0, n-1, 0, n-1);
+    bfs(root);
+    return 0;
+}  </code></pre><p>这是一道关于树给定前序遍历和中序遍历，输出层序遍历的题，简单的思路就是先建立二叉树，然后使用bfs搜索算法求解。当然也可以采用柳神的方法，代码如下：  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int index, value;
+};
+bool cmp(node a, node b){
+    return a.index &lt; b.index;
+}
+vector&lt;int&gt; post, in;
+vector&lt;node&gt; ans;
+void pre(int root, int start, int end, int index){
+    if(start &gt; end) return;//表示递归边界 
+    //下面两行代码表示寻找根节点在后序中的位置 
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != post[root]) i++;
+    //i,start, end都是中序遍历中的，root是后序遍历中的 
+    ans.push_back({index, post[root]});
+    pre(root - (end - i) - 1, start, i - 1, 2*index + 1);
+    pre(root - 1, i + 1, end, 2 * index + 2); 
+}
+int main(){
+    int n;
+    scanf(&quot;%d&quot;, &amp;n);
+    post.resize(n);
+    in.resize(n);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;post[i]);
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;in[i]);
+    pre(n - 1, 0, n - 1, 0);
+    sort(ans.begin(), ans.end(), cmp);
+    for(int i = 0; i &lt; ans.size(); i++){
+        if(i != 0) cout &lt;&lt;  &quot; &quot;;
+        cout &lt;&lt; ans[i].value;
+    }
+    return 0;
+}   </code></pre><p>6.1053 Path of Equal Weight (30分)  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+int target;
+vector&lt;int&gt; path;
+vector&lt;node&gt; v;
+int cmp1(int a, int b){
+    return v[a].w &gt; v[b].w;
+}
+void dfs(int index, int nodenum, int sum){
+    if(sum &gt; target) return;
+    if(sum == target){
+        if(v[index].child.size() != 0) return;
+        for(int i = 0; i &lt; nodenum; i++){
+            printf(&quot;%d%c&quot;, v[path[i]].w, i != nodenum - 1 ? &apos; &apos; : &apos;\n&apos;);
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        int node1 = v[index].child[i];
+        path[nodenum] = node1;
+        dfs(node1, nodenum+1, sum + v[node1].w);
+    }
+}
+int main(){
+    int n, m, a, b;
+    scanf(&quot;%d %d %d&quot;, &amp;n, &amp;m, &amp;target);
+    path.resize(n);
+    v.resize(n); 
+    for(int i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;v[i].w);
+    for(int i = 0; i &lt; m; i++){
+        scanf(&quot;%d %d&quot;, &amp;a, &amp;b);
+        v[a].child.resize(b);
+        for(int j = 0; j &lt; b; j++){
+            scanf(&quot;%d&quot;,&amp;v[a].child[j]);
+        }
+        sort(v[a].child.begin(), v[a].child.end(), cmp1);
+    }
+    dfs(0, 1, v[0].w);
+    return 0;
+}  </code></pre><p>这道题给出了如何存储非二叉树，实际上和图的存储类似，甚至比图的存储简单些，这里面给出的非叶子结点只是为了遍历的时候，用作判断边界。注意初始化容器的时候，如果开始没有给出大小，后面输入的时候需要resize();  </p>
+<p>7.1086 Tree Traversals Again (25分)<br>这道题需要注意， 递归遍历搜索的时候，缺谁就使用哪种遍历，这道题使用的是后序遍历。注意根节点都是相对于前序遍历而言的，start， end，i都是相对中序遍历而言的。寻找i的时候，注意while中判断时i &lt; end。起始条件是从n-1开始的，不是从n开始，需要注意，这道题也是一个模板，需要好好理解记忆；  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;stack&gt;
+#include &lt;vector&gt;
+using namespace std;
+stack &lt;int&gt; st;
+int pre[35], in[35];
+vector&lt;int&gt; ans;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; in[i] != pre[root]) i++;
+    post(root + 1, start, i - 1);
+    post(root + i + 1 - start,  i + 1, end);
+    ans.push_back(pre[root]);
+//    printf(&quot;%d &quot;, pre[root]);
+}
+int main(){
+    int n;
+    cin &gt;&gt; n;
+    string s;
+    int a, i = 0, j = 0;
+    for(int k = 0; k &lt; 2 * n; k++){
+        cin &gt;&gt; s;
+        if(s == &quot;Push&quot;){
+            cin &gt;&gt; a;
+            pre[i++] = a;
+            st.push(a);
+        }else{
+            in[j++] = st.top();
+            st.pop();
+        }
+//        cout &lt;&lt; &quot;popnum = &quot; &lt;&lt; popnum &lt;&lt; endl;
+    }
+    post(0, 0, n - 1);
+    for(int k = 0; k &lt; ans.size(); k++){
+        printf(&quot;%d&quot;, ans[k]);
+        if(k != ans.size() - 1) printf(&quot; &quot;);
+    }
+    return 0;
+}   </code></pre><p>8.1102 Invert a Binary Tree (25分)<br>dfs一遍（就相当于中序遍历）将所有的点都标记上下标，和层数，然后按照排序后输出就是层序遍历，直接输出就是中序遍历，所有关于二叉树给定前序后序中序层序的写法都可这样做，如果不是二叉树怎么办呢？就只能建立树然后遍历了。注意树遍历的形式可能是数组，也可能是这道题这样的vector<node>类型。注意两个容器如何相等的写法，使用一个数组去初试另一个数组。  </node></p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node{
+    int id, l, r, index, level;
+}a[100];//用来存储树 
+vector&lt;node&gt; v1;
+void inorder(int root, int index, int level){
+    if(a[root].r != -1) inorder(a[root].r, index * 2 + 2, level + 1);
+    v1.push_back({root, 0, 0, index, level});
+    if(a[root].l != -1) inorder(a[root].l, index * 2 + 1, level + 1);
+} 
+bool cmp1(node a, node b){
+    if(a.level != b.level) return a.level &lt; b.level;
+    return a.index &gt; b.index;
+}
+int main(){
+    int n, have[100] = {0}, root = 0;
+    //have数组是用来判断根节点是谁的，最开始假设为0
+    //根节点也先设置为0 
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++){
+        a[i].id = i;
+        string l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        if(l != &quot;-&quot;){
+            a[i].l = stoi(l);
+            have[stoi(l)] = 1;
+        }else{
+            a[i].l = -1;
+        }
+        if(r != &quot;-&quot;){
+            a[i].r = stoi(r);
+            have[stoi(r)] = 1;
+        }else{
+            a[i].r = -1;
+        }
+    }
+    while(have[root] == 1) root++;//所有点之中没有出现的就是根节点
+    //上面这种方法真的很巧妙 
+//    cout &lt;&lt; root &lt;&lt; endl;
+    inorder(root, 0, 0);
+    vector&lt;node&gt; v2(v1);//这种使用v1来初始化v2的方式之前学过；
+    sort(v2.begin(), v2.end(), cmp1);
+    for(int i = 0; i &lt; v2.size(); i++){
+        cout &lt;&lt; v2[i].id;
+        if(i != v2.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
+    cout &lt;&lt; endl;
+    for(int i = 0; i &lt; v1.size(); i++){
+        cout &lt;&lt; v1[i].id;
+        if(i != v1.size() - 1) cout &lt;&lt;&quot; &quot;;
+    } 
+    return 0;
+} </code></pre><p>9.1079 Total Sales of Supply Chain (25分)<br>这道题注意dfs的时候尽量维护更少的变量，变量越多出错的概率越高。当对于vector容器想使用[i]这样的形式进行访问或输入的时候，需要确认大小，不然只能push_back。pow使用的时候level是int类型的也可以，因为，C/C++有约定，当一个“短”型值度赋给一个“长”型值时，自动将“短”型值提升为“长”型值。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r, sum = 0.0;
+struct node{
+    int w;
+    vector&lt;int&gt; child;
+}; 
+vector&lt;node&gt; v;
+void dfs(int node, int level){
+    if(v[node].child.size() == 0){
+        sum += pow(1+r, level) * v[node].w;
+        return;
+    }
+//    cout &lt;&lt; &quot;$$&quot;; 
+//    if(num == n){
+//        printf(&quot;%.1f&quot;, sum);
+//        return;
+//    }
+    for(int i = 0; i &lt; v[node].child.size(); i++){
+        int node1 = v[node].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    r /= 100;
+    v.resize(n);//必须要定义大小，不然输出不了 
+    for(int i = 0; i &lt; n; i++){
+        int t, c;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; endl;
+        v[i].child.resize(t);
+//        cout &lt;&lt; &quot;&amp;&amp;&quot;;
+        if(t == 0) scanf(&quot;%d&quot;, &amp;v[i].w);
+        else{
+            for(int j = 0; j &lt; t; j++){
+//                scanf(&quot;%d&quot;, &amp;c);
+//                v[i].child.push_back(c);
+                scanf(&quot;%d&quot;, &amp;v[i].child[j]);
+            }
+        }
+    }
+
+    dfs(0, 0);
+    printf(&quot;%.1f&quot;, sum * p);
+//    cout &lt;&lt; &quot;*&quot;;
+    return 0;
+}   </code></pre><p>10.1090 Highest Price in Supply Chain (25分)<br>这道题注意使用过node结点存储的时候一定是v[root].child.size()。一定要遍历到叶子结点再去处理相关的内容。注意输入错误，是i &lt; n, 不是i&lt; 9!!!  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+struct node{
+//    int isleaf = 1;
+    vector&lt;int&gt; child;
+}; 
+int n, root0;
+double p, r;
+vector&lt;node&gt; v;
+int maxlevel = 0, sum = 0;
+void dfs(int root, int level){
+//        cout &lt;&lt; root &lt;&lt; &quot;&amp;&amp;&quot; &lt;&lt; endl;
+//    cout &lt;&lt; &quot;maxlevel = &quot; &lt;&lt; maxlevel &lt;&lt; endl;
+    if(v[root].child.size() == 0){
+        if(level &gt; maxlevel){
+            maxlevel = level;
+            sum = 0;
+            sum ++;
+        }else if(level == maxlevel){
+            sum++;
+        }
+        return;    
+    }
+    for(int i = 0; i &lt; v[root].child.size(); i++){
+        int node1 = v[root].child[i];
+        dfs(node1, level + 1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    r = r / 100;
+//    cout &lt;&lt; r &lt;&lt; &quot;*&quot; &lt;&lt; endl;
+    for(int i = 0; i &lt; n; i++){
+        int a;
+        scanf(&quot;%d&quot;, &amp;a);
+        if(a != -1){
+            v[a].child.push_back(i);
+//            v[a].isleaf = 0;
+        }else{
+            root0 = i;
+//            v[a].isleaf = 0;
+        }
+    }
+    dfs(root0, 0);
+    printf(&quot;%.2f %d&quot;, p * pow(1 + r, maxlevel), sum);
+    return 0;
+}  </code></pre><p>11.1106 Lowest Price in Supply Chain (25分)<br>这道题和前面的三道题类似，比较简单，注意读入树的时候不能使用scanf(“%d”,&amp;v[i].child[j])这种形式，会出现错误，需要采用题目中的方式。设置最小高度的时候需要大一些，别少一个0就会出现错误。  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+using namespace std;
+int n;
+double p, r;
+struct node{
+    vector&lt;int&gt; child;
+};
+vector&lt;node&gt; v;
+int minlevel = 100005, minsum = 0;
+void dfs(int index, int level){
+    if(v[index].child.size() == 0){
+        if(level &lt; minlevel){
+            minlevel = level;
+            minsum = 1;
+        }else if(level == minlevel){
+            minsum++;
+        }
+        return;
+    }
+    for(int i = 0; i &lt; v[index].child.size(); i++){
+        dfs(v[index].child[i], level+1);
+    }
+}
+int main(){
+    scanf(&quot;%d %lf %lf&quot;, &amp;n, &amp;p, &amp;r);
+    v.resize(n);
+    for(int i = 0; i &lt; n; i++){
+        int t;
+        scanf(&quot;%d&quot;, &amp;t);
+//        cout &lt;&lt; &quot;t = &quot; &lt;&lt; t &lt;&lt; endl;
+        for(int j = 0; j &lt; t; j++){
+            int temp;
+             scanf(&quot;%d&quot;, &amp;temp);
+             v[i].child.push_back(temp);
+        }
+    } 
+    dfs(0, 0);
+    printf(&quot;%.4f %d&quot;, p * pow(1 + r / 100, minlevel), minsum);
+
+    return 0;
+}   </code></pre><p>12.1138 Postorder Traversal (25分)<br>简单的一道前序中序转后序，注意这道题就是模板  </p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int pre[50005], in[50005];
+int f = 0;
+void post(int root, int start, int end){
+    if(start &gt; end) return;
+    int i = start;
+    while(i &lt; end &amp;&amp; pre[root] != in[i]) i++;
+    post(root + 1, start , i-1);
+    post(root + 1 + i - start,i+1, end);
+    if(f == 0){
+        printf(&quot;%d&quot;, pre[root]);
+        f = 1;
+    }
+}
+int main(){
+    int n, a;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;pre[i]);
+    }
+    for(int i = 0; i &lt; n; i++){
+        scanf(&quot;%d&quot;, &amp;in[i]);
+//        cout &lt;&lt; &quot;8&quot;;
+    }
+    post(0, 0, n-1);
+//    for(int i = 0; i &lt; n; i++){
+//        printf(&quot;%d \n&quot;, ans[i]);
+//    }
+//    printf(&quot;%d&quot;,ans[0]);
+} </code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Araik</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://Araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/">https://Araik-77.github.io/2020/05/07/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C)/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">Araik</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">算法笔记</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">感谢您请作者喝咖啡</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2021/01/02/%E7%8E%8B%E9%81%93%E6%9C%BA%E8%AF%95%E6%8C%87%E5%8D%97%E9%A2%98%E8%A7%A32.1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="王道机试指南2.1枚举">
+                        
+                        <span class="card-title">王道机试指南2.1枚举</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95/" class="post-category">
+                                    考研复试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%8E%8B%E9%81%93-%E6%9E%9A%E4%B8%BE/">
+                        <span class="chip bg-color">王道.枚举</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/02/PAT%E7%94%B2%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="PAT甲级学习笔记（一）">
+                        
+                        <span class="card-title">PAT甲级学习笔记（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PAT/" class="post-category">
+                                    PAT
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">算法笔记</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: 晨阳 の blog<br />'
+            + 'Author: Araik<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">Araik</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Araik-77" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1091977443@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1091977443" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1091977443" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
